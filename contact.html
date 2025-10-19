@@ -1,0 +1,1076 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Jijue Hospital</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Contact Page Specific Styles */
+.page-hero {
+    background: linear-gradient(135deg, var(--primary) 0%, #1557b0 100%);
+    color: blue;
+    padding: 100px 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.page-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('https://images.unsplash.com/photo-1586773860418-d37222d8fce3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.1;
+    z-index: 1;
+}
+
+.page-hero .container {
+    position: relative;
+    z-index: 2;
+}
+
+.page-hero h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.page-hero p {
+    font-size: 1.3rem;
+    max-width: 600px;
+    margin: 0 auto;
+    opacity: 0.9;
+    font-weight: 300;
+}
+
+.page-content {
+    padding: 80px 0;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+/* Contact Container Layout */
+.contact-container {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 60px;
+    align-items: start;
+}
+
+/* Contact Information Section */
+.contact-info {
+    background: white;
+    padding: 50px 40px;
+    border-radius: 20px;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-info::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+}
+
+.contact-info h2 {
+    font-size: 2.2rem;
+    margin-bottom: 40px;
+    color: var(--dark);
+    font-weight: 700;
+    text-align: center;
+}
+
+.contact-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 35px;
+    padding: 20px;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+    background: rgba(26, 115, 232, 0.02);
+    border: 1px solid rgba(26, 115, 232, 0.1);
+}
+
+.contact-item:hover {
+    background: rgba(26, 115, 232, 0.05);
+    transform: translateX(10px);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+.contact-icon {
+    font-size: 2rem;
+    margin-right: 20px;
+    color: var(--primary);
+    min-width: 60px;
+    text-align: center;
+    padding: 15px;
+    background: rgba(26, 115, 232, 0.1);
+    border-radius: 12px;
+}
+
+.contact-item h3 {
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+    color: var(--dark);
+    font-weight: 600;
+}
+
+.contact-item p {
+    color: var(--gray);
+    line-height: 1.6;
+    margin: 0;
+    font-size: 1rem;
+}
+
+/* Emergency Contact Highlight */
+.emergency-contact {
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+    color: white;
+    padding: 30px;
+    border-radius: 15px;
+    margin-top: 30px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.emergency-contact::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('https://images.unsplash.com/photo-1584467735871-8db9ac8d55b4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.1;
+}
+
+.emergency-contact .contact-icon {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+.emergency-contact h3 {
+    color: white;
+    margin-bottom: 10px;
+}
+
+.emergency-contact p {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+/* Enhanced Appointment Form */
+.appointment-form {
+    background: white;
+    border-radius: 20px;
+    padding: 50px 40px;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.appointment-form::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--secondary), var(--primary));
+}
+
+.appointment-form h2 {
+    font-size: 2.2rem;
+    margin-bottom: 40px;
+    color: var(--dark);
+    font-weight: 700;
+    text-align: center;
+}
+
+/* Enhanced Form Styles */
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+    margin-bottom: 25px;
+}
+
+.form-group {
+    margin-bottom: 25px;
+    position: relative;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 600;
+    color: var(--dark);
+    font-size: 0.95rem;
+    transition: color 0.3s ease;
+}
+
+.form-group label::after {
+    content: ' *';
+    color: #e74c3c;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.form-group.required label::after {
+    opacity: 1;
+}
+
+.form-control {
+    width: 100%;
+    padding: 16px 20px;
+    border: 2px solid #e9ecef;
+    border-radius: 12px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background: #f8f9fa;
+    color: var(--dark);
+    font-family: inherit;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--primary);
+    background: white;
+    box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.1);
+    transform: translateY(-2px);
+}
+
+.form-control:hover {
+    border-color: #ced4da;
+}
+
+/* Enhanced Select Dropdown */
+.form-control select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%235f6368' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 20px center;
+    background-size: 12px;
+    padding-right: 50px;
+    cursor: pointer;
+}
+
+/* Enhanced Textarea */
+textarea.form-control {
+    resize: vertical;
+    min-height: 140px;
+    line-height: 1.6;
+    font-family: inherit;
+    padding: 20px;
+}
+
+/* Enhanced Submit Button */
+.appointment-form .btn {
+    width: 100%;
+    padding: 18px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 12px;
+    margin-top: 10px;
+    background: linear-gradient(135deg, var(--primary), #1557b0);
+    border: none;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.appointment-form .btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.appointment-form .btn:hover::before {
+    left: 100%;
+}
+
+.appointment-form .btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(26, 115, 232, 0.3);
+}
+
+.appointment-form .btn:active {
+    transform: translateY(-1px);
+}
+
+/* Map Section */
+.map-section {
+    margin-top: 80px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+}
+
+.map-container {
+    height: 400px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.map-placeholder {
+    text-align: center;
+    z-index: 2;
+}
+
+.map-placeholder .map-icon {
+    font-size: 4rem;
+    margin-bottom: 20px;
+}
+
+.map-placeholder h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.map-placeholder p {
+    opacity: 0.9;
+}
+
+/* Contact Methods */
+.contact-methods {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 60px;
+}
+
+.contact-method {
+    background: white;
+    padding: 40px 30px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    border: 1px solid rgba(26, 115, 232, 0.1);
+}
+
+.contact-method:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+}
+
+.contact-method .method-icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: var(--primary);
+}
+
+.contact-method h3 {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    color: var(--dark);
+}
+
+.contact-method p {
+    color: var(--gray);
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.contact-method .btn {
+    padding: 10px 25px;
+    font-size: 0.9rem;
+}
+
+/* Form Validation Styles */
+.form-control:invalid:not(:focus):not(:placeholder-shown) {
+    border-color: #e74c3c;
+    background: #fdf2f2;
+}
+
+.form-control:valid:not(:focus):not(:placeholder-shown) {
+    border-color: var(--secondary);
+    background: #f0f9f4;
+}
+
+.form-group .error-message {
+    color: #e74c3c;
+    font-size: 0.85rem;
+    margin-top: 5px;
+    display: none;
+}
+
+.form-control:invalid:not(:focus):not(:placeholder-shown) + .error-message {
+    display: block;
+}
+
+/* Loading State */
+.appointment-form.loading .btn {
+    pointer-events: none;
+    opacity: 0.7;
+}
+
+.appointment-form.loading .btn::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 50%;
+    left: 50%;
+    margin: -10px 0 0 -10px;
+    border: 2px solid transparent;
+    border-top: 2px solid white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Success Message */
+.form-success {
+    display: none;
+    text-align: center;
+    padding: 60px 40px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+}
+
+.form-success.show {
+    display: block;
+}
+
+.form-success .success-icon {
+    font-size: 5rem;
+    color: var(--secondary);
+    margin-bottom: 30px;
+}
+
+.form-success h4 {
+    color: var(--dark);
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.form-success p {
+    color: var(--gray);
+    margin-bottom: 30px;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+/* Responsive Design for Contact Page */
+@media (max-width: 1024px) {
+    .contact-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    
+    .contact-info,
+    .appointment-form {
+        padding: 40px 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .page-hero {
+        padding: 80px 0;
+    }
+    
+    .page-hero h1 {
+        font-size: 2.2rem;
+    }
+    
+    .page-hero p {
+        font-size: 1.1rem;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+    
+    .contact-item {
+        padding: 15px;
+    }
+    
+    .contact-icon {
+        font-size: 1.5rem;
+        min-width: 50px;
+        padding: 12px;
+    }
+    
+    .map-container {
+        height: 300px;
+    }
+    
+    .contact-methods {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .emergency-contact {
+        padding: 25px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .page-hero h1 {
+        font-size: 1.8rem;
+    }
+    
+    .contact-info,
+    .appointment-form {
+        padding: 30px 20px;
+    }
+    
+    .contact-info h2,
+    .appointment-form h2 {
+        font-size: 1.8rem;
+    }
+    
+    .form-control {
+        padding: 14px 16px;
+    }
+    
+    .contact-item {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .contact-icon {
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+}
+
+/* Animation for contact items */
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.contact-info {
+    animation: fadeInLeft 0.6s ease-out;
+}
+
+.appointment-form {
+    animation: fadeInRight 0.6s ease-out;
+}
+
+.contact-item:nth-child(2) {
+    animation-delay: 0.1s;
+}
+
+.contact-item:nth-child(3) {
+    animation-delay: 0.2s;
+}
+
+.contact-item:nth-child(4) {
+    animation-delay: 0.3s;
+}
+
+.contact-item:nth-child(5) {
+    animation-delay: 0.4s;
+}
+
+/* Print Styles for Contact Page */
+@media print {
+    .appointment-form,
+    .map-section,
+    .contact-methods {
+        display: none;
+    }
+    
+    .contact-info {
+        box-shadow: none;
+        border: 1px solid #ddd;
+    }
+}
+    </style>
+
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <span class="logo-icon">🏥</span>
+                <h1>Jijue Hospital</h1>
+            </div>
+            <button onclick="goBack()">Go Back</button>
+            
+        </div>
+    </header>
+
+    <section class="page-hero">
+        <div class="container">
+            <h1>Contact Us</h1>
+            <p>Get in touch with our healthcare team</p>
+        </div>
+    </section>
+
+    <section class="page-content">
+        <div class="container">
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h2>Get In Touch</h2>
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div>
+                            <h3>Address</h3>
+                            <p>Health Street<br>Nairobi City, Kenya</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📞</div>
+                        <div>
+                            <h3>Phone</h3>
+                            <p>+254115947353</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">✉️</div>
+                        <div>
+                            <h3>Email</h3>
+                            <p>info@jijuehospital.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">🕒</div>
+                        <div>
+                            <h3>Hours</h3>
+                            <p>Monday - Friday: 8am - 6pm<br>Saturday: 9am - 1pm<br>Emergency: 24/7</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Emergency Contact -->
+                    <div class="emergency-contact">
+                        <div class="contact-item">
+                            <div class="contact-icon">🚨</div>
+                            <div>
+                                <h3>Emergency Contact</h3>
+                                <p>+254115947353</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="appointment-form">
+                    <h2>Book an Appointment</h2>
+                    <form id="appointment-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Full Name *</label>
+                                <input type="text" id="name" class="form-control" required placeholder="Enter your full name">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email *</label>
+                                <input type="email" id="email" class="form-control" required placeholder="Enter your email address">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="phone">Phone Number *</label>
+                                <input type="tel" id="phone" class="form-control" required placeholder="Enter your phone number">
+                            </div>
+                            <div class="form-group">
+                                <label for="doctor">Preferred Doctor</label>
+                                <select id="doctor" class="form-control">
+                                    <option value="">Select a doctor</option>
+                                    <option value="dr-johnson">Dr. Sarah Johnson - Cardiologist</option>
+                                    <option value="dr-chen">Dr. Michael Chen - Neurologist</option>
+                                    <option value="dr-rodriguez">Dr. Emily Rodriguez - Pediatrician</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="date">Preferred Date *</label>
+                                <input type="date" id="date" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="time">Preferred Time *</label>
+                                <select id="time" class="form-control" required>
+                                    <option value="">Select a time</option>
+                                    <option value="9am">9:00 AM</option>
+                                    <option value="10am">10:00 AM</option>
+                                    <option value="11am">11:00 AM</option>
+                                    <option value="2pm">2:00 PM</option>
+                                    <option value="3pm">3:00 PM</option>
+                                    <option value="4pm">4:00 PM</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="department">Department</label>
+                            <select id="department" class="form-control">
+                                <option value="">Select department</option>
+                                <option value="cardiology">Cardiology</option>
+                                <option value="neurology">Neurology</option>
+                                <option value="pediatrics">Pediatrics</option>
+                                <option value="orthopedics">Orthopedics</option>
+                                <option value="ophthalmology">Ophthalmology</option>
+                                <option value="general">General Medicine</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Additional Information</label>
+                            <textarea id="message" class="form-control" rows="4" placeholder="Please describe your symptoms or reason for visit..."></textarea>
+                        </div>
+                        <button type="submit" class="btn">Book Appointment</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Contact Methods -->
+            <div class="contact-methods">
+                <div class="contact-method">
+                    <div class="method-icon">📞</div>
+                    <h3>Call Us</h3>
+                    <p>Speak directly with our reception team for immediate assistance</p>
+                    <a href="tel:+254115947353" class="btn">Call Now</a>
+                </div>
+                <div class="contact-method">
+                    <div class="method-icon">✉️</div>
+                    <h3>Email Us</h3>
+                    <p>Send us your queries and we'll respond within 24 hours</p>
+                    <a href="mailto:info@jijuehospital.com" class="btn btn-outline">Send Email</a>
+                </div>
+                <div class="contact-method">
+                    <div class="method-icon">💬</div>
+                    <h3>Live Chat</h3>
+                    <p>Chat with our online support team for quick answers</p>
+                    <button class="btn btn-outline" onclick="startLiveChat()">Start Chat</button>
+                </div>
+                <div class="contact-method">
+                    <div class="method-icon">🏥</div>
+                    <h3>Visit Us</h3>
+                    <p>Come see us in person for a consultation</p>
+                    <a href="#map" class="btn btn-outline">Get Directions</a>
+                </div>
+            </div>
+
+            <!-- Map Section -->
+            <div class="map-section" id="map">
+                <div class="map-container">
+                    <div class="map-placeholder">
+                        <div class="map-icon">🗺️</div>
+                        <h3>Our Location</h3>
+                        <p>Health Street, Nairobi City, Kenya</p>
+                        <p style="margin-top: 10px; font-size: 0.9rem; opacity: 0.8;">
+                            <em>Interactive map would be integrated here</em>
+                        </p>
+                        <a href="https://maps.google.com/?q=Health+Street,Nairobi+City,Kenya" 
+                           target="_blank" 
+                           class="btn" 
+                           style="margin-top: 20px; background: rgba(255,255,255,0.2); border: 2px solid white;">
+                            Open in Google Maps
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Jijue Hospital</h3>
+                    <p>Providing quality healthcare services with compassion and excellence since 2025.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="doctors.html">Our Doctors</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul class="footer-links">
+                        <li>📍 Health Street, Nairobi City</li>
+                        <li>📞 +254115947353</li>
+                        <li>✉️ info@jijuehospital.com</li>
+                        <li>🕒 Mon-Fri: 8am-6pm, Sat: 9am-1pm</li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Emergency</h3>
+                    <p>For medical emergencies, please call:</p>
+                    <h3 style="color: var(--accent); margin-top: 10px;">+254115947353</h3>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Jijue Hospital. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Contact Page JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeContactForm();
+            initializeContactFeatures();
+        });
+
+        function initializeContactForm() {
+            const appointmentForm = document.getElementById('appointment-form');
+            
+            if (appointmentForm) {
+                // Add required indicators
+                const requiredFields = appointmentForm.querySelectorAll('[required]');
+                requiredFields.forEach(field => {
+                    const label = appointmentForm.querySelector(`label[for="${field.id}"]`);
+                    if (label) {
+                        label.classList.add('required');
+                    }
+                });
+
+                // Real-time validation
+                const inputs = appointmentForm.querySelectorAll('.form-control');
+                inputs.forEach(input => {
+                    input.addEventListener('blur', function() {
+                        validateField(this);
+                    });
+                    
+                    input.addEventListener('input', function() {
+                        clearError(this);
+                    });
+                });
+
+                // Form submission
+                appointmentForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    if (validateForm()) {
+                        submitAppointmentForm();
+                    }
+                });
+
+                // Set minimum date to today
+                const dateInput = document.getElementById('date');
+                if (dateInput) {
+                    const today = new Date().toISOString().split('T')[0];
+                    dateInput.min = today;
+                    
+                    dateInput.addEventListener('input', function() {
+                        const selectedDate = new Date(this.value);
+                        const today = new Date();
+                        today.setHours(0, 0, 0, 0);
+                        
+                        if (selectedDate < today) {
+                            this.value = '';
+                            showError(this, 'Please select a future date');
+                        }
+                    });
+                }
+            }
+        }
+
+        function initializeContactFeatures() {
+            // Add click handlers for contact methods
+            const contactMethods = document.querySelectorAll('.contact-method .btn');
+            contactMethods.forEach(method => {
+                method.addEventListener('click', function(e) {
+                    if (this.textContent.includes('Call')) {
+                        // Analytics tracking for call clicks
+                        console.log('Call button clicked');
+                    } else if (this.textContent.includes('Email')) {
+                        // Analytics tracking for email clicks
+                        console.log('Email button clicked');
+                    }
+                });
+            });
+        }
+
+        // Live Chat Functionality
+        window.startLiveChat = function() {
+            alert('Live chat feature would open here!\n\nOur support team is available:\n• Monday-Friday: 8am-6pm\n• Saturday: 9am-1pm\n• Emergency: 24/7\n\nFor now, please call us at +254115947353');
+        };
+
+        // Validation functions
+        function validateField(field) {
+            const value = field.value.trim();
+            
+            switch(field.type) {
+                case 'email':
+                    if (!isValidEmail(value)) {
+                        showError(field, 'Please enter a valid email address');
+                        return false;
+                    }
+                    break;
+                    
+                case 'tel':
+                    if (!isValidPhone(value)) {
+                        showError(field, 'Please enter a valid phone number');
+                        return false;
+                    }
+                    break;
+                    
+                case 'text':
+                    if (field.id === 'name' && value.length < 2) {
+                        showError(field, 'Please enter your full name');
+                        return false;
+                    }
+                    break;
+            }
+            
+            if (field.required && !value) {
+                showError(field, 'This field is required');
+                return false;
+            }
+            
+            clearError(field);
+            return true;
+        }
+
+        function validateForm() {
+            const form = document.getElementById('appointment-form');
+            const fields = form.querySelectorAll('[required]');
+            let isValid = true;
+            
+            fields.forEach(field => {
+                if (!validateField(field)) {
+                    isValid = false;
+                }
+            });
+            
+            return isValid;
+        }
+
+        function showError(field, message) {
+            clearError(field);
+            field.classList.add('error');
+            
+            const errorDiv = document.createElement('div');
+            errorDiv.className = 'error-message';
+            errorDiv.textContent = message;
+            field.parentNode.appendChild(errorDiv);
+        }
+
+        function clearError(field) {
+            field.classList.remove('error');
+            const errorMessage = field.parentNode.querySelector('.error-message');
+            if (errorMessage) {
+                errorMessage.remove();
+            }
+        }
+
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        function isValidPhone(phone) {
+            const phoneRegex = /^[\+]?[1-9][\d]{0,15}$/;
+            return phoneRegex.test(phone.replace(/[\s\-\(\)]/g, ''));
+        }
+
+        function submitAppointmentForm() {
+            const form = document.getElementById('appointment-form');
+            const submitBtn = form.querySelector('.btn');
+            
+            // Show loading state
+            form.classList.add('loading');
+            submitBtn.disabled = true;
+            
+            // Simulate API call
+            setTimeout(() => {
+                form.classList.remove('loading');
+                submitBtn.disabled = false;
+                
+                // Show success message
+                showSuccessMessage();
+            }, 2000);
+        }
+
+        function showSuccessMessage() {
+            const form = document.getElementById('appointment-form');
+            const successHTML = `
+                <div class="form-success show">
+                    <div class="success-icon">✅</div>
+                    <h4>Appointment Request Submitted!</h4>
+                    <p>Thank you for your appointment request. We have received your information and will contact you within 24 hours to confirm your appointment details.</p>
+                    <p><strong>Next Steps:</strong></p>
+                    <ul style="text-align: left; max-width: 400px; margin: 20px auto;">
+                        <li>Our team will review your request</li>
+                        <li>We'll call you to confirm details</li>
+                        <li>You'll receive a confirmation email</li>
+                    </ul>
+                    <button type="button" class="btn" onclick="resetAppointmentForm()" style="margin-top: 20px;">Book Another Appointment</button>
+                </div>
+            `;
+            
+            form.style.display = 'none';
+            form.insertAdjacentHTML('afterend', successHTML);
+        }
+
+        // Global function to reset form
+        window.resetAppointmentForm = function() {
+            const form = document.getElementById('appointment-form');
+            const successMessage = document.querySelector('.form-success');
+            
+            if (successMessage) {
+                successMessage.remove();
+            }
+            
+            form.reset();
+            form.style.display = 'block';
+            
+            // Clear any error messages
+            const errorMessages = form.querySelectorAll('.error-message');
+            errorMessages.forEach(error => error.remove());
+            
+            const errorFields = form.querySelectorAll('.error');
+            errorFields.forEach(field => field.classList.remove('error'));
+        };
+        function goBack() {
+  window.history.back();
+        }
+    </script>
+</body>
+</html>
