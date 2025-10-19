@@ -1,0 +1,1389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jijue Hospital - Quality Healthcare Online</title>
+    <style>
+        /* Global Styles */
+        :root {
+            --primary: #1a73e8;
+            --secondary: #34a853;
+            --accent: #fbbc05;
+            --dark: #202124;
+            --light: #f8f9fa;
+            --gray: #5f6368;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header & Navigation */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo h1 {
+            color: var(--primary);
+            font-size: 1.8rem;
+            margin-left: 10px;
+        }
+        
+        .logo-icon {
+            color: var(--primary);
+            font-size: 2rem;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 5px 0;
+            position: relative;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: width 0.3s;
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--primary);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: #0d5bb9;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .btn-secondary {
+            background-color: var(--secondary);
+        }
+        
+        .btn-secondary:hover {
+            background-color: #2d9247;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        /* Sections */
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .service-icon {
+            background-color: var(--primary);
+            color: white;
+            font-size: 2.5rem;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .service-content {
+            padding: 25px;
+        }
+        
+        .service-content h3 {
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        /* Enhanced Book Appointment Section */
+        .appointment-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+
+        .appointment-section .container {
+            max-width: 900px;
+        }
+
+        .appointment-section .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .appointment-section .section-title p {
+            color: var(--gray);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Enhanced Appointment Form */
+        .appointment-form {
+            background: white;
+            border-radius: 20px;
+            padding: 50px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .appointment-form::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+        }
+
+        /* Enhanced Form Layout */
+        .form-row {
+            display: flex;
+            gap: 25px;
+            margin-bottom: 25px;
+        }
+
+        .form-row .form-group {
+            flex: 1;
+        }
+
+        /* Enhanced Form Group Styles */
+        .form-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark);
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .form-group label::after {
+            content: ' *';
+            color: #e74c3c;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .form-group.required label::after {
+            opacity: 1;
+        }
+
+        /* Enhanced Form Control Styles */
+        .form-control {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #e9ecef;
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: #f8f9fa;
+            color: var(--dark);
+            font-family: inherit;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: white;
+            box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .form-control:hover {
+            border-color: #ced4da;
+        }
+
+        /* Enhanced Select Dropdown */
+        .form-control select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%235f6368' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            background-size: 12px;
+            padding-right: 45px;
+            cursor: pointer;
+        }
+
+        /* Enhanced Textarea */
+        textarea.form-control {
+            resize: vertical;
+            min-height: 120px;
+            line-height: 1.5;
+            font-family: inherit;
+        }
+
+        /* Enhanced Submit Button */
+        .appointment-form .btn {
+            width: 100%;
+            padding: 18px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 12px;
+            margin-top: 10px;
+            background: linear-gradient(135deg, var(--primary), #1557b0);
+            border: none;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .appointment-form .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .appointment-form .btn:hover::before {
+            left: 100%;
+        }
+
+        .appointment-form .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(26, 115, 232, 0.3);
+        }
+
+        .appointment-form .btn:active {
+            transform: translateY(-1px);
+        }
+
+        /* Enhanced Find Doctor Section */
+        .doctors-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #f0f7ff 0%, #e3f2fd 100%);
+        }
+
+        .doctors-section .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .doctors-section .section-title p {
+            color: var(--gray);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Enhanced Doctors Grid */
+        .doctors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .doctor-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .doctor-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+        }
+
+        .doctor-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .doctor-img {
+            height: 280px;
+            background-color: #e0e0e0;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .doctor-img::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 50%;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.3));
+        }
+
+        .doctor-info {
+            padding: 30px;
+            text-align: center;
+            position: relative;
+        }
+
+        .doctor-info h3 {
+            font-size: 1.4rem;
+            margin-bottom: 8px;
+            color: var(--dark);
+            font-weight: 700;
+        }
+
+        .doctor-specialty {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-size: 1rem;
+            display: inline-block;
+            padding: 4px 12px;
+            background: rgba(26, 115, 232, 0.1);
+            border-radius: 20px;
+        }
+
+        .doctor-exp {
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        .doctor-exp::before {
+            content: '⏳';
+            font-size: 0.8rem;
+        }
+
+        .doctor-info p:not(.doctor-specialty):not(.doctor-exp) {
+            color: var(--gray);
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+
+        .doctor-actions {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .doctor-actions .btn {
+            padding: 10px 20px;
+            font-size: 0.9rem;
+            border-radius: 25px;
+            flex: 1;
+            max-width: 140px;
+        }
+
+        .doctor-actions .btn-secondary {
+            background: var(--secondary);
+            border: 2px solid var(--secondary);
+        }
+
+        /* Doctor Availability Badge */
+        .doctor-availability {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--secondary);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            z-index: 2;
+        }
+
+        .doctor-availability.offline {
+            background: var(--gray);
+        }
+
+        /* Doctor Rating */
+        .doctor-rating {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            margin: 10px 0;
+            color: #ffc107;
+        }
+
+        .doctor-rating span:last-child {
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-left: 5px;
+        }
+
+        /* Enhanced Form Validation */
+        .form-control:invalid:not(:focus):not(:placeholder-shown) {
+            border-color: #e74c3c;
+            background: #fdf2f2;
+        }
+
+        .form-control:valid:not(:focus):not(:placeholder-shown) {
+            border-color: var(--secondary);
+            background: #f0f9f4;
+        }
+
+        .form-group .error-message {
+            color: #e74c3c;
+            font-size: 0.85rem;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .form-control:invalid:not(:focus):not(:placeholder-shown) + .error-message {
+            display: block;
+        }
+
+        /* Loading State */
+        .appointment-form.loading .btn {
+            pointer-events: none;
+            opacity: 0.7;
+        }
+
+        .appointment-form.loading .btn::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            top: 50%;
+            left: 50%;
+            margin: -10px 0 0 -10px;
+            border: 2px solid transparent;
+            border-top: 2px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Success Message */
+        .form-success {
+            display: none;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .form-success.show {
+            display: block;
+        }
+
+        .form-success .success-icon {
+            font-size: 4rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+
+        .form-success h4 {
+            color: var(--dark);
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        /* Quick Appointment CTA */
+        .quick-appointment {
+            background: linear-gradient(135deg, var(--primary), #1557b0);
+            color: white;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .quick-appointment h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .quick-appointment p {
+            margin-bottom: 25px;
+            opacity: 0.9;
+        }
+
+        .quick-appointment .btn {
+            background: white;
+            color: var(--primary);
+            border: 2px solid white;
+        }
+
+        .quick-appointment .btn:hover {
+            background: transparent;
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* Page-specific styles */
+        .page-content {
+            min-height: calc(100vh - 400px);
+            padding: 40px 0;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-toggle {
+                display: block;
+            }
+            
+            nav ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: white;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+                padding: 20px;
+            }
+            
+            nav ul.show {
+                display: flex;
+            }
+            
+            nav ul li {
+                margin: 10px 0;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+
+            .appointment-section,
+            .doctors-section {
+                padding: 60px 0;
+            }
+            
+            .appointment-section .section-title h2,
+            .doctors-section .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .appointment-form {
+                padding: 30px 25px;
+                border-radius: 15px;
+                margin: 0 10px;
+            }
+            
+            .doctors-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .doctor-actions {
+                flex-direction: column;
+            }
+            
+            .doctor-actions .btn {
+                max-width: 100%;
+            }
+            
+            .quick-appointment {
+                margin: 30px 10px 0;
+                padding: 30px 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .appointment-form {
+                padding: 25px 20px;
+            }
+            
+            .appointment-section .section-title h2,
+            .doctors-section .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .doctor-info {
+                padding: 20px;
+            }
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        .doctor-card {
+            animation: slideUp 0.6s ease-out;
+        }
+
+        .doctor-card:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+
+        .doctor-card:nth-child(3) {
+            animation-delay: 0.2s;
+        }
+        
+        /* Utility Classes */
+        .text-center {
+            text-align: center;
+        }
+        
+        .mt-20 {
+            margin-top: 20px;
+        }
+        
+        .mb-20 {
+            margin-bottom: 20px;
+        }
+        
+        .hidden {
+            display: none;
+        }
+
+        /* Date Input Custom Styles */
+        input[type="date"] {
+            position: relative;
+        }
+
+        input[type="date"]::-webkit-calendar-picker-indicator {
+            background: transparent;
+            bottom: 0;
+            color: transparent;
+            cursor: pointer;
+            height: auto;
+            left: 0;
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: auto;
+        }
+
+        /* Focus States for Accessibility */
+        .form-control:focus-visible {
+            outline: 2px solid var(--primary);
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <span class="logo-icon">🏥</span>
+                <h1>Jijue Hospital</h1>
+            </div>
+            <button class="nav-toggle">☰</button>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="doctors.html">Doctors</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Home Page Content -->
+        <section class="hero">
+            <div class="container">
+                <h2>Quality Healthcare Made Accessible</h2>
+                <p>Jijue Hospital brings expert medical care to your fingertips. Book appointments, consult with specialists, and access your health records online.</p>
+                <a href="#appointment" class="btn">Book Appointment</a>
+                <a href="#doctors" class="btn btn-secondary">Find a Doctor</a>
+            </div>
+        </section>
+
+        <section>
+            <div class="container">
+                <div class="section-title">
+                    <h2>Our Services</h2>
+                    <p>Comprehensive medical care for all your health needs</p>
+                </div>
+                <div class="services-grid">
+                    <div class="service-card fade-in">
+                        <div class="service-icon">🩺</div>
+                        <div class="service-content">
+                            <h3>Primary Care</h3>
+                            <p>Comprehensive health assessments, preventive care, and treatment for common illnesses.</p>
+                        </div>
+                    </div>
+                    <div class="service-card fade-in">
+                        <div class="service-icon">❤️</div>
+                        <div class="service-content">
+                            <h3>Cardiology</h3>
+                            <p>Advanced heart care including diagnostics, treatment, and rehabilitation services.</p>
+                        </div>
+                    </div>
+                    <div class="service-card fade-in">
+                        <div class="service-icon">🧠</div>
+                        <div class="service-content">
+                            <h3>Neurology</h3>
+                            <p>Expert diagnosis and treatment for disorders of the nervous system.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Enhanced Find Doctor Section -->
+        <section id="doctors" class="doctors-section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Meet Our Doctors</h2>
+                    <p>Experienced medical professionals dedicated to your health</p>
+                </div>
+                <div class="doctors-grid">
+                    <div class="doctor-card">
+                        <div class="doctor-img" style="background-image: url('https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');"></div>
+                        <div class="doctor-info">
+                            <h3>Dr. Sarah Johnson</h3>
+                            <p class="doctor-specialty">Cardiologist</p>
+                            <p class="doctor-exp">15 years experience</p>
+                            <div class="doctor-rating">⭐⭐⭐⭐⭐ <span>(4.9/5)</span></div>
+                            <p>Specialized in preventive cardiology and heart disease management. Board certified with numerous publications.</p>
+                            <div class="doctor-actions">
+                                <a href="#appointment" class="btn">Book Now</a>
+                                <button class="btn btn-outline view-profile">View Profile</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="doctor-card">
+                        <div class="doctor-img" style="background-image: url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');"></div>
+                        <div class="doctor-info">
+                            <h3>Dr. Michael Chen</h3>
+                            <p class="doctor-specialty">Neurologist</p>
+                            <p class="doctor-exp">12 years experience</p>
+                            <div class="doctor-rating">⭐⭐⭐⭐⭐ <span>(4.8/5)</span></div>
+                            <p>Expert in treating neurological disorders with cutting-edge techniques and minimally invasive procedures.</p>
+                            <div class="doctor-actions">
+                                <a href="#appointment" class="btn">Book Now</a>
+                                <button class="btn btn-outline view-profile">View Profile</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="doctor-card">
+                        <div class="doctor-img" style="background-image: url('https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');"></div>
+                        <div class="doctor-info">
+                            <h3>Dr. Emily Rodriguez</h3>
+                            <p class="doctor-specialty">Pediatrician</p>
+                            <p class="doctor-exp">10 years experience</p>
+                            <div class="doctor-rating">⭐⭐⭐⭐⭐ <span>(4.9/5)</span></div>
+                            <p>Dedicated to children's health with a gentle and compassionate approach to pediatric care.</p>
+                            <div class="doctor-actions">
+                                <a href="#appointment" class="btn">Book Now</a>
+                                <button class="btn btn-outline view-profile">View Profile</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center mt-20">
+                    <a href="doctors.html" class="btn">View All Doctors</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Enhanced Book Appointment Section -->
+        <section id="appointment" class="appointment-section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Book an Appointment</h2>
+                    <p>Schedule your visit with our medical specialists</p>
+                </div>
+                <div class="appointment-form">
+                    <form id="appointment-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Full Name</label>
+                                <input type="text" id="name" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="doctor">Preferred Doctor</label>
+                                <select id="doctor" class="form-control" required>
+                                    <option value="">Select a doctor</option>
+                                    <option value="dr-johnson">Dr. Sarah Johnson</option>
+                                    <option value="dr-chen">Dr. Michael Chen</option>
+                                    <option value="dr-rodriguez">Dr. Emily Rodriguez</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="date">Preferred Date</label>
+                                <input type="date" id="date" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="time">Preferred Time</label>
+                                <select id="time" class="form-control" required>
+                                    <option value="">Select a time</option>
+                                    <option value="9am">9:00 AM</option>
+                                    <option value="10am">10:00 AM</option>
+                                    <option value="11am">11:00 AM</option>
+                                    <option value="2pm">2:00 PM</option>
+                                    <option value="3pm">3:00 PM</option>
+                                    <option value="4pm">4:00 PM</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Additional Information</label>
+                            <textarea id="message" class="form-control" rows="4" placeholder="Please describe your symptoms or reason for visit..."></textarea>
+                        </div>
+                        <button type="submit" class="btn">Book Appointment</button>
+                    </form>
+                </div>
+
+                <!-- Quick Appointment CTA -->
+                <div class="quick-appointment">
+                    <h3>Need Immediate Assistance?</h3>
+                    <p>Our emergency team is available 24/7 to provide immediate medical care</p>
+                    <a href="tel:+254115947353" class="btn">Call Emergency: +254115947353</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Jijue Hospital</h3>
+                    <p>Providing quality healthcare services with compassion and excellence since 2025.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="doctors.html">Our Doctors</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul class="footer-links">
+                        <li>📍 Health Street, Nairobi City</li>
+                        <li>📞 +254115947353</li>
+                        <li>✉️ info@jijuehospital.com</li>
+                        <li>🕒 Mon-Fri: 8am-6pm, Sat: 9am-1pm</li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Emergency</h3>
+                    <p>For medical emergencies, please call:</p>
+                    <h3 style="color: var(--accent); margin-top: 10px;">+254115947353</h3>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Jijue Hospital. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Enhanced Appointment and Doctor Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeNavigation();
+            initializeAppointmentForm();
+            initializeDoctorFeatures();
+            initializeScrollAnimations();
+        });
+
+        function initializeNavigation() {
+            // Mobile Navigation Toggle
+            document.querySelector('.nav-toggle').addEventListener('click', function() {
+                document.querySelector('nav ul').classList.toggle('show');
+                
+            });
+
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        }
+
+        function initializeAppointmentForm() {
+            const appointmentForm = document.getElementById('appointment-form');
+            
+            if (appointmentForm) {
+                // Add required indicators
+                const requiredFields = appointmentForm.querySelectorAll('[required]');
+                requiredFields.forEach(field => {
+                    const label = appointmentForm.querySelector(`label[for="${field.id}"]`);
+                    if (label) {
+                        label.classList.add('required');
+                    }
+                });
+
+                // Real-time validation
+                const inputs = appointmentForm.querySelectorAll('.form-control');
+                inputs.forEach(input => {
+                    input.addEventListener('blur', function() {
+                        validateField(this);
+                    });
+                    
+                    input.addEventListener('input', function() {
+                        clearError(this);
+                    });
+                });
+
+                // Form submission
+                appointmentForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    if (validateForm()) {
+                        submitAppointmentForm();
+                    }
+                });
+
+                // Set minimum date to today
+                const dateInput = document.getElementById('date');
+                if (dateInput) {
+                    const today = new Date().toISOString().split('T')[0];
+                    dateInput.min = today;
+                    
+                    dateInput.addEventListener('input', function() {
+                        const selectedDate = new Date(this.value);
+                        const today = new Date();
+                        today.setHours(0, 0, 0, 0);
+                        
+                        if (selectedDate < today) {
+                            this.value = '';
+                            showError(this, 'Please select a future date');
+                        }
+                    });
+                }
+            }
+        }
+
+        function initializeDoctorFeatures() {
+            // Add doctor availability badges
+            const doctorCards = document.querySelectorAll('.doctor-card');
+            doctorCards.forEach((card, index) => {
+                const availability = document.createElement('div');
+                availability.className = 'doctor-availability';
+                availability.textContent = 'Available Today';
+                
+                // Simulate some doctors being offline
+                if (index === 1) {
+                    availability.textContent = 'Offline';
+                    availability.classList.add('offline');
+                }
+                
+                card.querySelector('.doctor-img').appendChild(availability);
+            });
+            
+            // Add view profile functionality
+            document.addEventListener('click', function(e) {
+                if (e.target.classList.contains('view-profile')) {
+                    e.preventDefault();
+                    const doctorCard = e.target.closest('.doctor-card');
+                    const doctorName = doctorCard.querySelector('h3').textContent;
+                    const doctorSpecialty = doctorCard.querySelector('.doctor-specialty').textContent;
+                    
+                    alert(`Viewing profile for ${doctorName}\n\nSpecialty: ${doctorSpecialty}\n\nThis would open a detailed doctor profile page with:\n- Full biography\n- Education & qualifications\n- Patient reviews\n- Available time slots\n- Contact information`);
+                }
+            });
+        }
+
+        function initializeScrollAnimations() {
+            // Scroll Animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in');
+                    }
+                });
+            }, observerOptions);
+
+            // Observe elements for animation
+            document.querySelectorAll('.service-card, .doctor-card').forEach(el => {
+                observer.observe(el);
+            });
+        }
+
+        // Validation functions
+        function validateField(field) {
+            const value = field.value.trim();
+            
+            switch(field.type) {
+                case 'email':
+                    if (!isValidEmail(value)) {
+                        showError(field, 'Please enter a valid email address');
+                        return false;
+                    }
+                    break;
+                    
+                case 'tel':
+                    if (!isValidPhone(value)) {
+                        showError(field, 'Please enter a valid phone number');
+                        return false;
+                    }
+                    break;
+                    
+                case 'text':
+                    if (field.id === 'name' && value.length < 2) {
+                        showError(field, 'Please enter your full name');
+                        return false;
+                    }
+                    break;
+            }
+            
+            if (field.required && !value) {
+                showError(field, 'This field is required');
+                return false;
+            }
+            
+            clearError(field);
+            return true;
+        }
+
+        function validateForm() {
+            const form = document.getElementById('appointment-form');
+            const fields = form.querySelectorAll('[required]');
+            let isValid = true;
+            
+            fields.forEach(field => {
+                if (!validateField(field)) {
+                    isValid = false;
+                }
+            });
+            
+            return isValid;
+        }
+
+        function showError(field, message) {
+            clearError(field);
+            field.classList.add('error');
+            
+            const errorDiv = document.createElement('div');
+            errorDiv.className = 'error-message';
+            errorDiv.textContent = message;
+            field.parentNode.appendChild(errorDiv);
+        }
+
+        function clearError(field) {
+            field.classList.remove('error');
+            const errorMessage = field.parentNode.querySelector('.error-message');
+            if (errorMessage) {
+                errorMessage.remove();
+            }
+        }
+
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        function isValidPhone(phone) {
+            const phoneRegex = /^[\+]?[1-9][\d]{0,15}$/;
+            return phoneRegex.test(phone.replace(/[\s\-\(\)]/g, ''));
+        }
+
+        function submitAppointmentForm() {
+            const form = document.getElementById('appointment-form');
+            const submitBtn = form.querySelector('.btn');
+            
+            // Show loading state
+            form.classList.add('loading');
+            submitBtn.disabled = true;
+            
+            // Simulate API call
+            setTimeout(() => {
+                form.classList.remove('loading');
+                submitBtn.disabled = false;
+                
+                // Show success message
+                showSuccessMessage();
+            }, 2000);
+        }
+
+        function showSuccessMessage() {
+            const form = document.getElementById('appointment-form');
+            const successHTML = `
+                <div class="form-success show">
+                    <div class="success-icon">✅</div>
+                    <h4>Appointment Request Submitted!</h4>
+                    <p>Thank you for your appointment request. We will contact you within 24 hours to confirm your appointment.</p>
+                    <button type="button" class="btn" onclick="resetAppointmentForm()">Book Another Appointment</button>
+                </div>
+            `;
+            
+            form.style.display = 'none';
+            form.insertAdjacentHTML('afterend', successHTML);
+        }
+
+        // Global function to reset form
+        window.resetAppointmentForm = function() {
+            const form = document.getElementById('appointment-form');
+            const successMessage = document.querySelector('.form-success');
+            
+            if (successMessage) {
+                successMessage.remove();
+            }
+            
+            form.reset();
+            form.style.display = 'block';
+            
+            // Clear any error messages
+            const errorMessages = form.querySelectorAll('.error-message');
+            errorMessages.forEach(error => error.remove());
+            
+            const errorFields = form.querySelectorAll('.error');
+            errorFields.forEach(field => field.classList.remove('error'));
+        }
+        
+    </script>
+</body>
+</html>

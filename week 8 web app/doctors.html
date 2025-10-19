@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Doctors - Jijue Hospital</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Doctors Page Specific Styles */
+.page-hero {
+    background: linear-gradient(135deg, var(--primary) 0%, #1557b0 100%);
+    color: blue;
+    padding: 100px 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.page-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.1;
+    z-index: 1;
+}
+
+.page-hero .container {
+    position: relative;
+    z-index: 2;
+}
+
+.page-hero h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.page-hero p {
+    font-size: 1.3rem;
+    max-width: 600px;
+    margin: 0 auto;
+    opacity: 0.9;
+    font-weight: 300;
+}
+
+.page-content {
+    padding: 80px 0;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+/* Doctors Filter Section */
+.doctors-filter {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    margin-bottom: 50px;
+}
+
+.filter-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    align-items: end;
+}
+
+.filter-group {
+    margin-bottom: 0;
+}
+
+.filter-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--dark);
+    font-size: 0.95rem;
+}
+
+.filter-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+.filter-actions .btn {
+    padding: 12px 25px;
+}
+
+.filter-actions .btn-outline {
+    background: transparent;
+    border: 2px solid var(--primary);
+    color: var(--primary);
+}
+
+.filter-actions .btn-outline:hover {
+    background: var(--primary);
+    color: white;
+}
+
+/* Enhanced Doctors Grid */
+.doctors-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.doctor-card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.doctor-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.doctor-card:hover::before {
+    transform: scaleX(1);
+}
+
+.doctor-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+}
+
+.doctor-img {
+    height: 300px;
+    background-color: #e0e0e0;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.doctor-img::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.3));
+}
+
+/* Doctor Availability Badge */
+.doctor-availability {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: var(--secondary);
+    color: white;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    z-index: 2;
+    box-shadow: 0 4px 15px rgba(52, 168, 83, 0.3);
+}
+
+.doctor-availability.offline {
+    background: var(--gray);
+}
+
+.doctor-availability.busy {
+    background: #fbbc05;
+}
+
+/* Doctor Info Section */
+.doctor-info {
+    padding: 30px;
+    position: relative;
+}
+
+.doctor-info h3 {
+    font-size: 1.5rem;
+    margin-bottom: 8px;
+    color: var(--dark);
+    font-weight: 700;
+}
+
+.doctor-specialty {
+    color: var(--primary);
+    font-weight: 600;
+    margin-bottom: 10px;
+    font-size: 1rem;
+    display: inline-block;
+    padding: 6px 15px;
+    background: rgba(26, 115, 232, 0.1);
+    border-radius: 20px;
+}
+
+.doctor-exp {
+    color: var(--gray);
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.doctor-exp::before {
+    content: '⏳';
+    font-size: 0.8rem;
+}
+
+/* Doctor Rating */
+.doctor-rating {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin: 15px 0;
+    color: #ffc107;
+}
+
+.doctor-rating span:last-child {
+    color: var(--gray);
+    font-size: 0.9rem;
+    margin-left: 5px;
+}
+
+.doctor-info p:not(.doctor-specialty):not(.doctor-exp) {
+    color: var(--gray);
+    line-height: 1.7;
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+}
+
+/* Doctor Education & Specialization */
+.doctor-education {
+    background: rgba(26, 115, 232, 0.05);
+    padding: 15px;
+    border-radius: 10px;
+    margin: 20px 0;
+    border-left: 4px solid var(--primary);
+}
+
+.education-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+    color: var(--gray);
+}
+
+.education-item:last-child {
+    margin-bottom: 0;
+}
+
+.education-item::before {
+    content: '🎓';
+    font-size: 0.8rem;
+}
+
+/* Doctor Actions */
+.doctor-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+    margin-top: 25px;
+}
+
+.doctor-actions .btn {
+    padding: 12px 20px;
+    font-size: 0.9rem;
+    border-radius: 25px;
+    flex: 1;
+    text-align: center;
+}
+
+.doctor-actions .btn-secondary {
+    background: var(--secondary);
+    border: 2px solid var(--secondary);
+}
+
+.doctor-actions .btn-outline {
+    background: transparent;
+    border: 2px solid var(--primary);
+    color: var(--primary);
+}
+
+.doctor-actions .btn-outline:hover {
+    background: var(--primary);
+    color: white;
+}
+
+/* Doctor Specializations */
+.doctor-specializations {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 15px 0;
+}
+
+.specialization-tag {
+    background: rgba(26, 115, 232, 0.1);
+    color: var(--primary);
+    padding: 4px 12px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+/* Call to Action Section */
+.doctors-cta {
+    background: linear-gradient(135deg, var(--primary), #1557b0);
+    color: white;
+    padding: 60px 0;
+    margin-top: 80px;
+    text-align: center;
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.doctors-cta::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('https://images.unsplash.com/photo-1584467735871-8db9ac8d55b4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.1;
+}
+
+.doctors-cta .container {
+    position: relative;
+    z-index: 2;
+}
+
+.doctors-cta h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.doctors-cta p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 0.9;
+}
+
+.doctors-cta .btn {
+    background: white;
+    color: var(--primary);
+    border: 2px solid white;
+    font-size: 1.1rem;
+    padding: 15px 30px;
+    margin: 0 10px;
+}
+
+.doctors-cta .btn:hover {
+    background: transparent;
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Statistics Section */
+.doctors-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    margin: 60px 0;
+}
+
+.stat-card {
+    background: white;
+    padding: 40px 20px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+}
+
+.stat-card .stat-icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: var(--primary);
+}
+
+.stat-card .stat-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 10px;
+}
+
+.stat-card .stat-label {
+    color: var(--gray);
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+/* Responsive Design for Doctors Page */
+@media (max-width: 768px) {
+    .page-hero {
+        padding: 80px 0;
+    }
+    
+    .page-hero h1 {
+        font-size: 2.2rem;
+    }
+    
+    .page-hero p {
+        font-size: 1.1rem;
+    }
+    
+    .doctors-filter {
+        padding: 30px 20px;
+    }
+    
+    .filter-row {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .filter-actions {
+        justify-content: stretch;
+    }
+    
+    .filter-actions .btn {
+        flex: 1;
+    }
+    
+    .doctors-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .doctor-img {
+        height: 250px;
+    }
+    
+    .doctor-info {
+        padding: 25px 20px;
+    }
+    
+    .doctor-actions {
+        flex-direction: column;
+    }
+    
+    .doctors-cta {
+        margin-top: 60px;
+        padding: 40px 20px;
+    }
+    
+    .doctors-cta h2 {
+        font-size: 2rem;
+    }
+    
+    .doctors-stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+    
+    .doctors-cta .btn {
+        display: block;
+        margin: 10px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .page-hero h1 {
+        font-size: 1.8rem;
+    }
+    
+    .doctors-stats {
+        grid-template-columns: 1fr;
+    }
+    
+    .stat-card {
+        padding: 30px 15px;
+    }
+    
+    .doctor-actions .btn {
+        padding: 10px 15px;
+    }
+}
+
+/* Animation for doctor cards */
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.doctor-card {
+    animation: slideInUp 0.6s ease-out;
+}
+
+.doctor-card:nth-child(2) {
+    animation-delay: 0.1s;
+}
+
+.doctor-card:nth-child(3) {
+    animation-delay: 0.2s;
+}
+
+.doctor-card:nth-child(4) {
+    animation-delay: 0.3s;
+}
+
+.doctor-card:nth-child(5) {
+    animation-delay: 0.4s;
+}
+
+.doctor-card:nth-child(6) {
+    animation-delay: 0.5s;
+}
+
+/* Print Styles for Doctors Page */
+@media print {
+    .doctor-actions,
+    .doctors-cta,
+    .doctors-filter {
+        display: none;
+    }
+    
+    .doctor-card {
+        break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ddd;
+    }
+}
+    </style>
+
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <span class="logo-icon">🏥</span>
+                <h1>Jijue Hospital</h1>
+            </div>
+            <button onclick="goBack()">Go Back</button>
+        </div>
+    </header>
+
+    <section class="page-hero">
+        <div class="container">
+            <h1>Meet Our Medical Team</h1>
+            <p>Experienced healthcare professionals dedicated to your wellbeing</p>
+        </div>
+    </section>
+
+    <section class="page-content">
+        <div class="container">
+            <!-- Doctors Statistics -->
+            <div class="doctors-stats">
+                <div class="stat-card">
+                    <div class="stat-icon">👨‍⚕️</div>
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Expert Doctors</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">⭐</div>
+                    <div class="stat-number">98%</div>
+                    <div class="stat-label">Patient Satisfaction</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🏆</div>
+                    <div class="stat-number">15+</div>
+                    <div class="stat-label">Years Experience</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🌍</div>
+                    <div class="stat-number">10+</div>
+                    <div class="stat-label">Specialties</div>
+                </div>
+            </div>
+
+            <!-- Doctors Filter -->
+            <div class="doctors-filter">
+                <div class="filter-row">
+                    <div class="filter-group">
+                        <label for="specialty">Specialty</label>
+                        <select id="specialty" class="form-control">
+                            <option value="">All Specialties</option>
+                            <option value="cardiology">Cardiology</option>
+                            <option value="neurology">Neurology</option>
+                            <option value="pediatrics">Pediatrics</option>
+                            <option value="orthopedics">Orthopedics</option>
+                            <option value="ophthalmology">Ophthalmology</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="experience">Experience</label>
+                        <select id="experience" class="form-control">
+                            <option value="">Any Experience</option>
+                            <option value="5">5+ Years</option>
+                            <option value="10">10+ Years</option>
+                            <option value="15">15+ Years</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="availability">Availability</label>
+                        <select id="availability" class="form-control">
+                            <option value="">Any Status</option>
+                            <option value="available">Available Today</option>
+                            <option value="online">Online Consultation</option>
+                        </select>
+                    </div>
+                    <div class="filter-actions">
+                        <button class="btn btn-outline" id="reset-filters">Reset</button>
+                        <button class="btn" id="apply-filters">Apply Filters</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Doctors Grid -->
+            <div class="doctors-grid">
+                <div class="doctor-card" data-specialty="cardiology" data-experience="15" data-availability="available">
+                    <div class="doctor-img" style="background-image: url('https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');"></div>
+                    <div class="doctor-availability">Available Today</div>
+                    <div class="doctor-info">
+                        <h3>Dr. Sarah Johnson</h3>
+                        <p class="doctor-specialty">Cardiologist</p>
+                        <p class="doctor-exp">15 years experience</p>
+                        <div class="doctor-rating">⭐⭐⭐⭐⭐ <span>(4.9/5)</span></div>
+                        
+                        <div class="doctor-education">
+                            <div class="education-item">MD - Harvard Medical School</div>
+                            <div class="education-item">Board Certified Cardiologist</div>
+                        </div>
+                        
+                        <p>Specialized in preventive cardiology and heart disease management. Board certified with numerous publications in leading medical journals.</p>
+                        
+                        <div class="doctor-specializations">
+                            <span class="specialization-tag">Heart Disease</span>
+                            <span class="specialization-tag">Preventive Care</span>
+                            <span class="specialization-tag">Cardiac Rehab</span>
+                        </div>
+                        
+                        <div class="doctor-actions">
+                            <a href="contact.html" class="btn">Book Appointment</a>
+                            <button class="btn btn-outline view-profile">View Profile</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="doctor-card" data-specialty="neurology" data-experience="12" data-availability="online">
+                    <div class="doctor-img" style="background-image: url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');"></div>
+                    <div class="doctor-availability">Online Consultation</div>
+                    <div class="doctor-info">
+                        <h3>Dr. Michael Chen</h3>
+                        <p class="doctor-specialty">Neurologist</p>
+                        <p class="doctor-exp">12 years experience</p>
+                        <div class="doctor-rating">⭐⭐⭐⭐⭐ <span>(4.8/5)</span></div>
+                        
+                        <div class="doctor-education">
+                            <div class="education-item">MD - Johns Hopkins University</div>
+                            <div class="education-item">Fellow of American Neurology</div>
+                        </div>
+                        
+                        <p>Expert in treating neurological disorders with cutting-edge techniques and minimally invasive procedures. Special focus on stroke prevention and treatment.</p>
+                        
+                        <div class="doctor-specializations">
+                            <span class="specialization-tag">Stroke Care</span>
+                            <span class="specialization-tag">Epilepsy</span>
+                            <span class="specialization-tag">Headache</span>
+                        </div>
+                        
+                        <div class="doctor-actions">
+                            <a href="contact.html" class="btn">Book Appointment</a>
+                            <button class="btn btn-outline view-profile">View Profile</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="doctor-card" data-specialty="pediatrics" data-experience="10" data-availability="available">
+                    <div class="doctor-img" style="background-image: url('https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');"></div>
+                    <div class="doctor-availability">Available Today</div>
+                    <div class="doctor-info">
+                        <h3>Dr. Emily Rodriguez</h3>
+                        <p class="doctor-specialty">Pediatrician</p>
+                        <p class="doctor-exp">10 years experience</p>
+                        <div class="doctor-rating">⭐⭐⭐⭐⭐ <span>(4.9/5)</span></div>
+                        
+                        <div class="doctor-education">
+                            <div class="education-item">MD - Stanford University</div>
+                            <div class="education-item">Pediatric Board Certified</div>
+                        </div>
+                        
+                        <p>Dedicated to children's health with a gentle and compassionate approach to pediatric care. Specializes in developmental pediatrics and adolescent medicine.</p>
+                        
+                        <div class="doctor-specializations">
+                            <span class="specialization-tag">Child Development</span>
+                            <span class="specialization-tag">Vaccinations</span>
+                            <span class="specialization-tag">Adolescent Care</span>
+                        </div>
+                        
+                        <div class="doctor-actions">
+                            <a href="contact.html" class="btn">Book Appointment</a>
+                            <button class="btn btn-outline view-profile">View Profile</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Call to Action -->
+            <div class="doctors-cta">
+                <h2>Can't Find the Right Doctor?</h2>
+                <p>Our team will help you find the perfect specialist for your needs. Contact us for personalized assistance.</p>
+                <a href="contact.html" class="btn">Get Personal Assistance</a>
+                <a href="tel:+254115947353" class="btn btn-outline">Call: +254115947353</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Jijue Hospital</h3>
+                    <p>Providing quality healthcare services with compassion and excellence since 2025.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="doctors.html">Our Doctors</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul class="footer-links">
+                        <li>📍 Health Street, Nairobi City</li>
+                        <li>📞 +254115947353</li>
+                        <li>✉️ info@jijuehospital.com</li>
+                        <li>🕒 Mon-Fri: 8am-6pm, Sat: 9am-1pm</li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Emergency</h3>
+                    <p>For medical emergencies, please call:</p>
+                    <h3 style="color: var(--accent); margin-top: 10px;">+254115947353</h3>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Jijue Hospital. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Doctors Page JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            // Filter functionality
+            const specialtySelect = document.getElementById('specialty');
+            const experienceSelect = document.getElementById('experience');
+            const availabilitySelect = document.getElementById('availability');
+            const applyFiltersBtn = document.getElementById('apply-filters');
+            const resetFiltersBtn = document.getElementById('reset-filters');
+            const doctorCards = document.querySelectorAll('.doctor-card');
+
+            function filterDoctors() {
+                const specialty = specialtySelect.value;
+                const experience = experienceSelect.value;
+                const availability = availabilitySelect.value;
+
+                doctorCards.forEach(card => {
+                    const cardSpecialty = card.getAttribute('data-specialty');
+                    const cardExperience = card.getAttribute('data-experience');
+                    const cardAvailability = card.getAttribute('data-availability');
+
+                    const specialtyMatch = !specialty || cardSpecialty === specialty;
+                    const experienceMatch = !experience || parseInt(cardExperience) >= parseInt(experience);
+                    const availabilityMatch = !availability || cardAvailability === availability;
+
+                    if (specialtyMatch && experienceMatch && availabilityMatch) {
+                        card.style.display = 'block';
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                            card.style.transform = 'translateY(0)';
+                        }, 100);
+                    } else {
+                        card.style.opacity = '0';
+                        card.style.transform = 'translateY(20px)';
+                        setTimeout(() => {
+                            card.style.display = 'none';
+                        }, 300);
+                    }
+                });
+            }
+
+            applyFiltersBtn.addEventListener('click', filterDoctors);
+            
+            resetFiltersBtn.addEventListener('click', function() {
+                specialtySelect.value = '';
+                experienceSelect.value = '';
+                availabilitySelect.value = '';
+                filterDoctors();
+            });
+
+            // View Profile functionality
+            const viewProfileButtons = document.querySelectorAll('.view-profile');
+            viewProfileButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const doctorCard = this.closest('.doctor-card');
+                    const doctorName = doctorCard.querySelector('h3').textContent;
+                    const doctorSpecialty = doctorCard.querySelector('.doctor-specialty').textContent;
+                    const doctorExp = doctorCard.querySelector('.doctor-exp').textContent;
+                    
+                    alert(`Doctor Profile: ${doctorName}\n\nSpecialty: ${doctorSpecialty}\nExperience: ${doctorExp}\n\nThis would open a detailed doctor profile page with:\n- Complete biography\n- Education background\n- Professional achievements\n- Patient reviews\n- Available time slots\n- Contact information`);
+                });
+            });
+
+            // Animation on scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            doctorCards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(card);
+            });
+        });
+        function goBack() {
+  window.history.back();
+        }
+    </script>
+</body>
+</html>
