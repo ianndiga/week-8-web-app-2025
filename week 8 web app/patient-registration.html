@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Registration - Jijue Hospital</title>
+    <style>
+        /* Global Styles */
+        :root {
+            --primary: #1a73e8;
+            --secondary: #34a853;
+            --accent: #fbbc05;
+            --dark: #202124;
+            --light: #f8f9fa;
+            --gray: #5f6368;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f0f7ff 0%, #e3f2fd 100%);
+            color: var(--dark);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header */
+        .portal-header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 20px 0;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo h1 {
+            color: var(--primary);
+            font-size: 1.8rem;
+            margin-left: 10px;
+        }
+        
+        .logo-icon {
+            color: var(--primary);
+            font-size: 2rem;
+        }
+        
+        .back-to-portal {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .back-to-portal:hover {
+            text-decoration: underline;
+        }
+        
+        /* Registration Container */
+        .registration-container {
+            display: flex;
+            min-height: calc(100vh - 80px);
+            align-items: center;
+            justify-content: center;
+            padding: 40px 0;
+        }
+        
+        .registration-card {
+            background: white;
+            border-radius: 20px;
+            padding: 50px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 800px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .registration-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+        }
+        
+        .registration-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .registration-header h2 {
+            color: var(--primary);
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+        
+        .registration-header p {
+            color: var(--gray);
+            font-size: 1.1rem;
+        }
+        
+        /* Progress Steps */
+        .progress-steps {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .progress-steps::before {
+            content: '';
+            position: absolute;
+            top: 15px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: #e0e0e0;
+            z-index: 1;
+        }
+        
+        .progress-bar {
+            position: absolute;
+            top: 15px;
+            left: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+            z-index: 2;
+        }
+        
+        .step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 3;
+        }
+        
+        .step-circle {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: #e0e0e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            margin-bottom: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .step.active .step-circle {
+            background: var(--primary);
+        }
+        
+        .step.completed .step-circle {
+            background: var(--secondary);
+        }
+        
+        .step-label {
+            font-size: 0.9rem;
+            color: var(--gray);
+            font-weight: 500;
+        }
+        
+        .step.active .step-label {
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        /* Form Styles */
+        .form-section {
+            display: none;
+        }
+        
+        .form-section.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .form-group {
+            flex: 1;
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        .form-group label::after {
+            content: ' *';
+            color: #e74c3c;
+        }
+        
+        .form-group.optional label::after {
+            content: '';
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: #f8f9fa;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: white;
+            box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.1);
+        }
+        
+        .form-control.select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%235f6368' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 16px center;
+            background-size: 12px;
+            padding-right: 40px;
+        }
+        
+        /* Payment Details Sections */
+        .payment-details {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary);
+        }
+        
+        .payment-details.active {
+            display: block;
+        }
+        
+        /* Form Navigation */
+        .form-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e0e0e0;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 1rem;
+        }
+        
+        .btn:hover {
+            background-color: #0d5bb9;
+            transform: translateY(-2px);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .btn-secondary {
+            background-color: var(--secondary);
+        }
+        
+        .btn-secondary:hover {
+            background-color: #2d9247;
+        }
+        
+        /* Success Message */
+        .success-message {
+            text-align: center;
+            padding: 40px 20px;
+            display: none;
+        }
+        
+        .success-message.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .success-icon {
+            font-size: 4rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+        
+        .success-message h3 {
+            color: var(--dark);
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+        }
+        
+        /* Emergency Contact */
+        .emergency-contact {
+            background: linear-gradient(135deg, var(--primary), #1557b0);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 30px;
+        }
+        
+        .emergency-contact h4 {
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .emergency-contact p {
+            margin-bottom: 15px;
+            opacity: 0.9;
+        }
+        
+        .emergency-contact .btn {
+            background: white;
+            color: var(--primary);
+            border: 2px solid white;
+        }
+        
+        .emergency-contact .btn:hover {
+            background: transparent;
+            color: white;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .registration-card {
+                padding: 30px 25px;
+                margin: 20px;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+            
+            .progress-steps {
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+            
+            .step {
+                flex: 1;
+                min-width: 80px;
+            }
+            
+            .registration-header h2 {
+                font-size: 1.8rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .registration-card {
+                padding: 25px 20px;
+            }
+            
+            .form-navigation {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .form-navigation .btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+        
+        /* Form Validation */
+        .error-message {
+            color: #e74c3c;
+            font-size: 0.85rem;
+            margin-top: 5px;
+            display: none;
+        }
+        
+        .form-control.error {
+            border-color: #e74c3c;
+        }
+        
+        .form-control.error + .error-message {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="portal-header">
+        <div class="container header-container">
+            <div class="logo">
+                <span class="logo-icon">🏥</span>
+                <h1>Jijue Hospital</h1>
+            </div>
+            <a href="patient-portal.html" class="back-to-portal">
+                ← Back to Patient Portal
+            </a>
+        </div>
+    </header>
+
+    <!-- Registration Container -->
+    <div class="registration-container">
+        <div class="registration-card">
+            <!-- Progress Steps -->
+            <div class="progress-steps">
+                <div class="progress-bar" id="progress-bar"></div>
+                <div class="step active" data-step="1">
+                    <div class="step-circle">1</div>
+                    <div class="step-label">Personal Info</div>
+                </div>
+                <div class="step" data-step="2">
+                    <div class="step-circle">2</div>
+                    <div class="step-label">Contact Details</div>
+                </div>
+                <div class="step" data-step="3">
+                    <div class="step-circle">3</div>
+                    <div class="step-label">Medical History</div>
+                </div>
+                <div class="step" data-step="4">
+                    <div class="step-circle">4</div>
+                    <div class="step-label">Payment & Insurance</div>
+                </div>
+            </div>
+
+            <!-- Registration Header -->
+            <div class="registration-header">
+                <h2>Patient Registration</h2>
+                <p>Complete your registration to access all our healthcare services</p>
+            </div>
+
+            <!-- Step 1: Personal Information -->
+            <div class="form-section active" id="step-1">
+                <h3 style="margin-bottom: 20px; color: var(--primary);">Personal Information</h3>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="first-name">First Name</label>
+                        <input type="text" id="first-name" class="form-control" required>
+                        <div class="error-message">Please enter your first name</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="last-name">Last Name</label>
+                        <input type="text" id="last-name" class="form-control" required>
+                        <div class="error-message">Please enter your last name</div>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="date-of-birth">Date of Birth</label>
+                        <input type="date" id="date-of-birth" class="form-control" required>
+                        <div class="error-message">Please enter your date of birth</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="gender">Gender</label>
+                        <select id="gender" class="form-control select" required>
+                            <option value="">Select Gender</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="other">Other</option>
+                            <option value="prefer-not-to-say">Prefer not to say</option>
+                        </select>
+                        <div class="error-message">Please select your gender</div>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="national-id">National ID Number</label>
+                        <input type="text" id="national-id" class="form-control" required>
+                        <div class="error-message">Please enter your national ID number</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="marital-status">Marital Status</label>
+                        <select id="marital-status" class="form-control select">
+                            <option value="">Select Status</option>
+                            <option value="single">Single</option>
+                            <option value="married">Married</option>
+                            <option value="divorced">Divorced</option>
+                            <option value="widowed">Widowed</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-navigation">
+                    <div></div> <!-- Empty div for spacing -->
+                    <button type="button" class="btn" onclick="nextStep(1)">Next →</button>
+                </div>
+            </div>
+
+            <!-- Step 2: Contact Details -->
+            <div class="form-section" id="step-2">
+                <h3 style="margin-bottom: 20px; color: var(--primary);">Contact Details</h3>
+                
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" class="form-control" required>
+                    <div class="error-message">Please enter a valid email address</div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" class="form-control" required>
+                        <div class="error-message">Please enter your phone number</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="alternate-phone">Alternate Phone (Optional)</label>
+                        <input type="tel" id="alternate-phone" class="form-control">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="address">Residential Address</label>
+                    <input type="text" id="address" class="form-control" required>
+                    <div class="error-message">Please enter your address</div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="city">City</label>
+                        <input type="text" id="city" class="form-control" required>
+                        <div class="error-message">Please enter your city</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="postal-code">Postal Code</label>
+                        <input type="text" id="postal-code" class="form-control">
+                    </div>
+                </div>
+                
+                <div class="form-navigation">
+                    <button type="button" class="btn btn-outline" onclick="previousStep(2)">← Previous</button>
+                    <button type="button" class="btn" onclick="nextStep(2)">Next →</button>
+                </div>
+            </div>
+
+            <!-- Step 3: Medical History -->
+            <div class="form-section" id="step-3">
+                <h3 style="margin-bottom: 20px; color: var(--primary);">Medical History</h3>
+                <p style="margin-bottom: 20px; color: var(--gray);">This information helps us provide you with the best possible care.</p>
+                
+                <div class="form-group">
+                    <label for="blood-type">Blood Type</label>
+                    <select id="blood-type" class="form-control select">
+                        <option value="">Select Blood Type</option>
+                        <option value="a+">A+</option>
+                        <option value="a-">A-</option>
+                        <option value="b+">B+</option>
+                        <option value="b-">B-</option>
+                        <option value="ab+">AB+</option>
+                        <option value="ab-">AB-</option>
+                        <option value="o+">O+</option>
+                        <option value="o-">O-</option>
+                        <option value="unknown">Unknown</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="allergies">Allergies (if any)</label>
+                    <textarea id="allergies" class="form-control" rows="3" placeholder="List any allergies to medications, food, or other substances..."></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="current-medications">Current Medications</label>
+                    <textarea id="current-medications" class="form-control" rows="3" placeholder="List any medications you are currently taking..."></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="medical-conditions">Existing Medical Conditions</label>
+                    <textarea id="medical-conditions" class="form-control" rows="3" placeholder="List any existing medical conditions (e.g., diabetes, hypertension, asthma)..."></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="family-history">Family Medical History</label>
+                    <textarea id="family-history" class="form-control" rows="3" placeholder="List any significant medical conditions in your immediate family..."></textarea>
+                </div>
+                
+                <div class="form-navigation">
+                    <button type="button" class="btn btn-outline" onclick="previousStep(3)">← Previous</button>
+                    <button type="button" class="btn" onclick="nextStep(3)">Next →</button>
+                </div>
+            </div>
+
+            <!-- Step 4: Payment & Insurance Information -->
+            <div class="form-section" id="step-4">
+                <h3 style="margin-bottom: 20px; color: var(--primary);">Payment & Insurance Information</h3>
+                <p style="margin-bottom: 20px; color: var(--gray);">Select your preferred payment method and provide relevant details.</p>
+                
+                <!-- Payment Method Selection -->
+                <div class="form-group">
+                    <label for="payment-method">Preferred Payment Method</label>
+                    <select id="payment-method" class="form-control select" required onchange="togglePaymentDetails()">
+                        <option value="">Select Payment Method</option>
+                        <option value="insurance">Medical Insurance</option>
+                        <option value="sha">SHA (Social Health Insurance)</option>
+                        <option value="cash">Cash Payment</option>
+                        <option value="bank">Bank Transfer</option>
+                        <option value="mobile">Mobile Money</option>
+                        <option value="credit">Credit Card</option>
+                        <option value="debit">Debit Card</option>
+                        <option value="other">Other Payment Method</option>
+                    </select>
+                    <div class="error-message">Please select your preferred payment method</div>
+                </div>
+
+                <!-- Insurance Details (Shown only when insurance is selected) -->
+                <div id="insurance-details" class="payment-details">
+                    <div class="form-group">
+                        <label for="insurance-provider">Insurance Provider</label>
+                        <select id="insurance-provider" class="form-control select">
+                            <option value="">Select Provider</option>
+                            <option value="aetna">Aetna</option>
+                            <option value="bluecross">Blue Cross Blue Shield</option>
+                            <option value="cigna">Cigna</option>
+                            <option value="united">UnitedHealthcare</option>
+                            <option value="nhif">National Hospital Insurance Fund (NHIF)</option>
+                            <option value="private">Private Insurance</option>
+                            <option value="other">Other Provider</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="policy-number">Policy/Member Number</label>
+                            <input type="text" id="policy-number" class="form-control" placeholder="Enter your policy number">
+                        </div>
+                        <div class="form-group">
+                            <label for="group-number">Group Number (if applicable)</label>
+                            <input type="text" id="group-number" class="form-control" placeholder="Enter group number">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="insurance-phone">Insurance Provider Phone</label>
+                        <input type="tel" id="insurance-phone" class="form-control" placeholder="Provider contact number">
+                    </div>
+                </div>
+
+                <!-- SHA Details (Shown only when SHA is selected) -->
+                <div id="sha-details" class="payment-details">
+                    <div class="form-group">
+                        <label for="sha-number">SHA Membership Number</label>
+                        <input type="text" id="sha-number" class="form-control" placeholder="Enter your SHA membership number">
+                    </div>
+                    <div class="form-group">
+                        <label for="sha-provider">SHA Provider</label>
+                        <select id="sha-provider" class="form-control select">
+                            <option value="">Select SHA Provider</option>
+                            <option value="nhif">NHIF</option>
+                            <option value="private-sha">Private SHA Provider</option>
+                            <option value="employer">Employer-sponsored</option>
+                            <option value="government">Government Scheme</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Bank Transfer Details -->
+                <div id="bank-details" class="payment-details">
+                    <div class="form-group">
+                        <label for="bank-name">Bank Name</label>
+                        <input type="text" id="bank-name" class="form-control" placeholder="Enter bank name">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="account-number">Account Number</label>
+                            <input type="text" id="account-number" class="form-control" placeholder="Enter account number">
+                        </div>
+                        <div class="form-group">
+                            <label for="account-name">Account Holder Name</label>
+                            <input type="text" id="account-name" class="form-control" placeholder="Enter account holder name">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mobile Money Details -->
+                <div id="mobile-details" class="payment-details">
+                    <div class="form-group">
+                        <label for="mobile-provider">Mobile Money Provider</label>
+                        <select id="mobile-provider" class="form-control select">
+                            <option value="">Select Provider</option>
+                            <option value="mpesa">M-Pesa</option>
+                            <option value="airtel">Airtel Money</option>
+                            <option value="orange">Orange Money</option>
+                            <option value="mtn">MTN Mobile Money</option>
+                            <option value="tigo">Tigo Pesa</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="mobile-number">Mobile Number</label>
+                        <input type="tel" id="mobile-number" class="form-control" placeholder="Enter mobile number">
+                    </div>
+                </div>
+
+                <!-- Card Payment Details -->
+                <div id="card-details" class="payment-details">
+                    <div class="form-group">
+                        <label for="card-type">Card Type</label>
+                        <select id="card-type" class="form-control select">
+                            <option value="">Select Card Type</option>
+                            <option value="visa">Visa</option>
+                            <option value="mastercard">MasterCard</option>
+                            <option value="american-express">American Express</option>
+                            <option value="discover">Discover</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="card-number">Card Number</label>
+                        <input type="text" id="card-number" class="form-control" placeholder="Enter card number">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="expiry-date">Expiry Date</label>
+                            <input type="month" id="expiry-date" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="cvv">CVV</label>
+                            <input type="text" id="cvv" class="form-control" placeholder="CVV" maxlength="4">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Other Payment Method -->
+                <div id="other-details" class="payment-details">
+                    <div class="form-group">
+                        <label for="other-method">Specify Payment Method</label>
+                        <input type="text" id="other-method" class="form-control" placeholder="Please specify your payment method">
+                    </div>
+                    <div class="form-group">
+                        <label for="other-details-text">Additional Details</label>
+                        <textarea id="other-details-text" class="form-control" rows="3" placeholder="Provide any additional details about your payment method..."></textarea>
+                    </div>
+                </div>
+
+                <!-- Cash Payment Notice -->
+                <div id="cash-notice" class="payment-details">
+                    <div style="background: #e7f3ff; padding: 15px; border-radius: 8px; border-left: 4px solid var(--primary);">
+                        <h4 style="color: var(--primary); margin-bottom: 10px;">💵 Cash Payment</h4>
+                        <p style="color: var(--gray); margin-bottom: 0;">
+                            For cash payments, please proceed to the billing department upon arrival at the hospital. 
+                            Payment is required before services are rendered unless otherwise arranged.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Emergency Contact Information -->
+                <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #e0e0e0;">
+                    <h4 style="color: var(--primary); margin-bottom: 15px;">Emergency Contact Information</h4>
+                    
+                    <div class="form-group">
+                        <label for="emergency-contact">Emergency Contact Person</label>
+                        <input type="text" id="emergency-contact" class="form-control" required>
+                        <div class="error-message">Please provide an emergency contact</div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="emergency-phone">Emergency Contact Phone</label>
+                            <input type="tel" id="emergency-phone" class="form-control" required>
+                            <div class="error-message">Please provide emergency contact phone</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="emergency-relationship">Relationship</label>
+                            <input type="text" id="emergency-relationship" class="form-control" required>
+                            <div class="error-message">Please specify relationship</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-navigation">
+                    <button type="button" class="btn btn-outline" onclick="previousStep(4)">← Previous</button>
+                    <button type="button" class="btn btn-secondary" onclick="submitRegistration()">Complete Registration</button>
+                </div>
+            </div>
+
+            <!-- Success Message -->
+            <div class="success-message" id="success-message">
+                <div class="success-icon">✅</div>
+                <h3>Registration Successful!</h3>
+                <p style="margin-bottom: 20px; color: var(--gray);">
+                    Thank you for registering with Jijue Hospital. Your patient account has been created successfully.
+                </p>
+                <p style="margin-bottom: 30px;">
+                    You will receive a confirmation email with your patient ID and login details shortly.
+                </p>
+                <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                    <a href="patient-portal.html" class="btn">Go to Patient Portal</a>
+                    <a href="index.html" class="btn btn-outline">Back to Home</a>
+                </div>
+            </div>
+
+            <!-- Emergency Contact -->
+            <div class="emergency-contact">
+                <h4>Need Immediate Assistance?</h4>
+                <p>Our emergency team is available 24/7 to provide immediate medical care</p>
+                <a href="tel:+254115947353" class="btn">Call Emergency: +254115947353</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentStep = 1;
+        const totalSteps = 4;
+
+        function updateProgressBar() {
+            const progressBar = document.getElementById('progress-bar');
+            const progress = ((currentStep - 1) / (totalSteps - 1)) * 100;
+            progressBar.style.width = `${progress}%`;
+            
+            // Update step circles
+            document.querySelectorAll('.step').forEach((step, index) => {
+                const stepNumber = index + 1;
+                if (stepNumber < currentStep) {
+                    step.classList.add('completed');
+                    step.classList.remove('active');
+                } else if (stepNumber === currentStep) {
+                    step.classList.add('active');
+                    step.classList.remove('completed');
+                } else {
+                    step.classList.remove('active', 'completed');
+                }
+            });
+        }
+
+        function togglePaymentDetails() {
+            const paymentMethod = document.getElementById('payment-method').value;
+            
+            // Hide all payment details sections
+            document.querySelectorAll('.payment-details').forEach(section => {
+                section.style.display = 'none';
+            });
+            
+            // Show relevant payment details based on selection
+            switch(paymentMethod) {
+                case 'insurance':
+                    document.getElementById('insurance-details').style.display = 'block';
+                    break;
+                case 'sha':
+                    document.getElementById('sha-details').style.display = 'block';
+                    break;
+                case 'cash':
+                    document.getElementById('cash-notice').style.display = 'block';
+                    break;
+                case 'bank':
+                    document.getElementById('bank-details').style.display = 'block';
+                    break;
+                case 'mobile':
+                    document.getElementById('mobile-details').style.display = 'block';
+                    break;
+                case 'credit':
+                case 'debit':
+                    document.getElementById('card-details').style.display = 'block';
+                    break;
+                case 'other':
+                    document.getElementById('other-details').style.display = 'block';
+                    break;
+            }
+        }
+
+        function validateStep(step) {
+            let isValid = true;
+            
+            if (step === 1) {
+                const firstName = document.getElementById('first-name');
+                const lastName = document.getElementById('last-name');
+                const dob = document.getElementById('date-of-birth');
+                const gender = document.getElementById('gender');
+                const nationalId = document.getElementById('national-id');
+                
+                if (!firstName.value.trim()) {
+                    showError(firstName, 'Please enter your first name');
+                    isValid = false;
+                } else {
+                    clearError(firstName);
+                }
+                
+                if (!lastName.value.trim()) {
+                    showError(lastName, 'Please enter your last name');
+                    isValid = false;
+                } else {
+                    clearError(lastName);
+                }
+                
+                if (!dob.value) {
+                    showError(dob, 'Please enter your date of birth');
+                    isValid = false;
+                } else {
+                    clearError(dob);
+                }
+                
+                if (!gender.value) {
+                    showError(gender, 'Please select your gender');
+                    isValid = false;
+                } else {
+                    clearError(gender);
+                }
+                
+                if (!nationalId.value.trim()) {
+                    showError(nationalId, 'Please enter your national ID number');
+                    isValid = false;
+                } else {
+                    clearError(nationalId);
+                }
+            }
+            
+            if (step === 2) {
+                const email = document.getElementById('email');
+                const phone = document.getElementById('phone');
+                const address = document.getElementById('address');
+                const city = document.getElementById('city');
+                
+                if (!email.value.trim() || !isValidEmail(email.value)) {
+                    showError(email, 'Please enter a valid email address');
+                    isValid = false;
+                } else {
+                    clearError(email);
+                }
+                
+                if (!phone.value.trim()) {
+                    showError(phone, 'Please enter your phone number');
+                    isValid = false;
+                } else {
+                    clearError(phone);
+                }
+                
+                if (!address.value.trim()) {
+                    showError(address, 'Please enter your address');
+                    isValid = false;
+                } else {
+                    clearError(address);
+                }
+                
+                if (!city.value.trim()) {
+                    showError(city, 'Please enter your city');
+                    isValid = false;
+                } else {
+                    clearError(city);
+                }
+            }
+            
+            if (step === 4) {
+                const paymentMethod = document.getElementById('payment-method');
+                const emergencyContact = document.getElementById('emergency-contact');
+                const emergencyPhone = document.getElementById('emergency-phone');
+                const emergencyRelationship = document.getElementById('emergency-relationship');
+                
+                if (!paymentMethod.value) {
+                    showError(paymentMethod, 'Please select your preferred payment method');
+                    isValid = false;
+                } else {
+                    clearError(paymentMethod);
+                }
+                
+                if (!emergencyContact.value.trim()) {
+                    showError(emergencyContact, 'Please provide an emergency contact');
+                    isValid = false;
+                } else {
+                    clearError(emergencyContact);
+                }
+                
+                if (!emergencyPhone.value.trim()) {
+                    showError(emergencyPhone, 'Please provide emergency contact phone');
+                    isValid = false;
+                } else {
+                    clearError(emergencyPhone);
+                }
+                
+                if (!emergencyRelationship.value.trim()) {
+                    showError(emergencyRelationship, 'Please specify relationship');
+                    isValid = false;
+                } else {
+                    clearError(emergencyRelationship);
+                }
+            }
+            
+            return isValid;
+        }
+
+        function showError(field, message) {
+            field.classList.add('error');
+            const errorDiv = field.nextElementSibling;
+            if (errorDiv && errorDiv.classList.contains('error-message')) {
+                errorDiv.textContent = message;
+                errorDiv.style.display = 'block';
+            }
+        }
+
+        function clearError(field) {
+            field.classList.remove('error');
+            const errorDiv = field.nextElementSibling;
+            if (errorDiv && errorDiv.classList.contains('error-message')) {
+                errorDiv.style.display = 'none';
+            }
+        }
+
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        function nextStep(step) {
+            if (!validateStep(step)) {
+                return;
+            }
+            
+            if (step < totalSteps) {
+                document.getElementById(`step-${step}`).classList.remove('active');
+                document.getElementById(`step-${step + 1}`).classList.add('active');
+                currentStep = step + 1;
+                updateProgressBar();
+            }
+        }
+
+        function previousStep(step) {
+            if (step > 1) {
+                document.getElementById(`step-${step}`).classList.remove('active');
+                document.getElementById(`step-${step - 1}`).classList.add('active');
+                currentStep = step - 1;
+                updateProgressBar();
+            }
+        }
+
+        function submitRegistration() {
+            if (!validateStep(4)) {
+                return;
+            }
+            
+            // Show loading state
+            const submitBtn = document.querySelector('#step-4 .btn-secondary');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Processing...';
+            
+            // Simulate API call
+            setTimeout(() => {
+                // Hide all form sections
+                document.querySelectorAll('.form-section').forEach(section => {
+                    section.classList.remove('active');
+                });
+                
+                // Show success message
+                document.getElementById('success-message').classList.add('active');
+            }, 2000);
+        }
+
+        // Initialize progress bar
+        document.addEventListener('DOMContentLoaded', function() {
+            updateProgressBar();
+            
+            // Add input event listeners for real-time validation
+            document.querySelectorAll('.form-control').forEach(input => {
+                input.addEventListener('input', function() {
+                    clearError(this);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
