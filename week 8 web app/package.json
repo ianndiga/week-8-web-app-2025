@@ -1,0 +1,12 @@
+{
+  "name": "ndiga-ian-portfolio",
+  "version": "1.0.0",
+  "description": "Personal portfolio website",
+  "main": "index.html",
+  "scripts": {
+    "start": "echo 'Static HTML site' && exit 0"
+  },
+  "keywords": ["portfolio", "html", "css", "javascript"],
+  "author": "Ndiga Ian",
+  "license": "MIT"
+}
