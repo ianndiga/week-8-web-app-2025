@@ -1,12 +1,20 @@
 {
-  "name": "ndiga-ian-portfolio",
+  "name": "jijue-hospital",
   "version": "1.0.0",
-  "description": "Personal portfolio website",
+  "description": "Jijue Hospital - Quality Healthcare Online",
   "main": "index.html",
   "scripts": {
-    "start": "echo 'Static HTML site' && exit 0"
+    "start": "serve -s -l 3000",
+    "build": "echo 'No build process for static site'",
+    "dev": "serve -s -l 3000"
   },
-  "keywords": ["portfolio", "html", "css", "javascript"],
-  "author": "Ndiga Ian",
-  "license": "MIT"
+  "keywords": ["hospital", "healthcare", "medical"],
+  "author": "Jijue Hospital",
+  "license": "MIT",
+  "dependencies": {
+    "serve": "^14.2.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
 }
