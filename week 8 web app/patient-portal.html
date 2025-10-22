@@ -13,6 +13,7 @@
             --dark: #202124;
             --light: #f8f9fa;
             --gray: #5f6368;
+            --error: #ea4335;
         }
         
         * {
@@ -186,6 +187,14 @@
             background: var(--primary);
             color: white;
         }
+
+        .btn-error {
+            background-color: var(--error);
+        }
+
+        .btn-error:hover {
+            background-color: #d33426;
+        }
         
         /* Portal Container */
         .portal-container {
@@ -254,6 +263,10 @@
             background: white;
             box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.1);
         }
+
+        .form-control.error {
+            border-color: var(--error);
+        }
         
         .login-options {
             display: flex;
@@ -275,6 +288,28 @@
         
         .forgot-password:hover {
             text-decoration: underline;
+        }
+
+        .error-message {
+            color: var(--error);
+            margin-top: 10px;
+            font-size: 0.9rem;
+            display: none;
+        }
+
+        .create-account-cta {
+            background: linear-gradient(135deg, #fff8e1 0%, #ffecb3 100%);
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            margin-top: 25px;
+            display: none;
+            border: 1px solid var(--accent);
+        }
+
+        .create-account-cta h4 {
+            color: var(--dark);
+            margin-bottom: 15px;
         }
         
         /* Portal Cards */
@@ -544,6 +579,9 @@
                             <label for="password">Password</label>
                             <input type="password" id="password" class="form-control" placeholder="Enter your password" required>
                         </div>
+                        <div class="error-message" id="login-error">
+                            The email or password you entered is incorrect. Don't have an account?
+                        </div>
                         <div class="login-options">
                             <div class="remember-me">
                                 <input type="checkbox" id="remember">
@@ -553,6 +591,15 @@
                         </div>
                         <button type="submit" class="btn" style="width: 100%;">Login to Portal</button>
                     </form>
+                    
+                    <!-- Create Account CTA (shown after failed login) -->
+                    <div class="create-account-cta" id="create-account-cta">
+                        <h4>Don't have an account yet?</h4>
+                        <p style="margin-bottom: 20px; color: var(--dark);">
+                            It looks like you don't have an account with the email you entered. Create an account to access all our healthcare services.
+                        </p>
+                        <a href="patient-registration.html" class="btn btn-secondary">Create Account</a>
+                    </div>
                 </div>
 
                 <!-- Registration CTA -->
@@ -651,12 +698,21 @@
 
             // Login Form Submission
             const loginForm = document.getElementById('login-form');
+            const loginError = document.getElementById('login-error');
+            const createAccountCta = document.getElementById('create-account-cta');
+            
             if (loginForm) {
                 loginForm.addEventListener('submit', function(e) {
                     e.preventDefault();
                     
                     const email = document.getElementById('email').value;
                     const password = document.getElementById('password').value;
+                    
+                    // Reset error states
+                    loginError.style.display = 'none';
+                    createAccountCta.style.display = 'none';
+                    document.getElementById('email').classList.remove('error');
+                    document.getElementById('password').classList.remove('error');
                     
                     // Simple validation
                     if (email && password) {
@@ -667,7 +723,26 @@
                         
                         // Simulate login process
                         setTimeout(() => {
-                            alert('Login functionality would connect to backend system.\nFor demo purposes, this shows the login process.');
+                            // For demo purposes, we'll simulate a failed login
+                            // In a real application, this would check against a database
+                            const validEmails = ['patient@jijuehospital.com', 'user@example.com'];
+                            
+                            if (validEmails.includes(email) && password === 'password') {
+                                // Successful login
+                                alert('Login successful! Redirecting to dashboard...');
+                                // In a real app, redirect to dashboard
+                                // window.location.href = 'patient-dashboard.html';
+                            } else {
+                                // Failed login
+                                loginError.style.display = 'block';
+                                createAccountCta.style.display = 'block';
+                                document.getElementById('email').classList.add('error');
+                                document.getElementById('password').classList.add('error');
+                                
+                                // Scroll to error message
+                                loginError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                            }
+                            
                             submitBtn.disabled = false;
                             submitBtn.textContent = 'Login to Portal';
                         }, 1500);
