@@ -1,4 +1,4 @@
-# Environment variables
+gi# Environment variables
 .env
 .env.*
 !.env.example
