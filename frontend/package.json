@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "fullstack": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev": "nodemon server.js",
+    "dev:frontend": "cd frontend && npx http-server -p 3000 -c-1 -o",
+    "dev:backend": "nodemon server.js",
+    "start:frontend": "cd frontend && npx http-server -p 3000 -c-1 -o"
+  }
+}

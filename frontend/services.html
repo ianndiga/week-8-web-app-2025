@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services - Jijue Hospital</title>
+    <link rel="stylesheet" href="services.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <span class="logo-icon">🏥</span>
+                <h1>Jijue Hospital</h1>
+            </div>
+            
+            <button onclick="goBack()" class="back-btn">← Back</button>
+        </div>
+    </header>
+
+    <section class="page-hero">
+        <div class="container">
+            <h1>Our Medical Services</h1>
+            <p>Comprehensive healthcare solutions for all your needs</p>
+        </div>
+    </section>
+
+    <section class="page-content services-page">
+        <div class="container">
+            <!-- Service Stats -->
+            <div class="service-stats">
+                <div class="stat-card">
+                    <div class="stat-icon">🏥</div>
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Medical Services</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">👨‍⚕️</div>
+                    <div class="stat-number">100+</div>
+                    <div class="stat-label">Expert Doctors</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">⭐</div>
+                    <div class="stat-number">98%</div>
+                    <div class="stat-label">Patient Satisfaction</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🕒</div>
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Emergency Care</div>
+                </div>
+            </div>
+
+            <!-- Service Categories -->
+            <div class="service-categories">
+                <button class="category-btn all-services-btn active" data-category="all">
+                    <span>All Services</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+            </div>
+
+            <!-- Loading Animation -->
+            <div class="loading">
+                <div class="loading-spinner"></div>
+                <p>Loading services...</p>
+            </div>
+
+            <!-- No Results Message -->
+            <div class="no-results">
+                <h3>No services found</h3>
+                <p>Try adjusting your search or filter criteria</p>
+            </div>
+
+            <!-- Services Grid -->
+            <div class="services-grid">
+                <!-- Consultation Service - Always First -->
+                <div class="service-card consultation-service" data-category="consultation">
+                    <div class="service-icon">👨‍⚕️</div>
+                    <div class="service-content">
+                        <h3>General Consultation</h3>
+                        <p>Your first point of contact for comprehensive health assessments, initial diagnosis, and specialist referrals. Perfect for undiagnosed conditions or general health concerns.</p>
+                        <ul class="service-features">
+                            <li>Initial health assessment</li>
+                            <li>Diagnosis of common illnesses (malaria, typhoid, flu)</li>
+                            <li>Specialist referral guidance</li>
+                            <li>Prescription services</li>
+                            <li>Health screening</li>
+                        </ul>
+                        <div class="service-actions">
+                            <button class="btn consultation-booking-btn">Book Consultation</button>
+                            <button class="btn btn-outline learn-more">Learn More</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Other Medical Services -->
+                <div class="service-card" data-category="cardiology">
+                    <div class="service-icon">❤️</div>
+                    <div class="service-content">
+                        <h3>Cardiology</h3>
+                        <p>Advanced heart care including diagnostics, treatment, cardiac rehabilitation, and preventive cardiology.</p>
+                        <ul class="service-features">
+                            <li>Cardiac catheterization</li>
+                            <li>Echocardiography</li>
+                            <li>Stress testing</li>
+                            <li>Pacemaker implantation</li>
+                        </ul>
+                        <div class="service-actions">
+                            <button class="btn" onclick="bookService('cardiology', 'Cardiology')">Book Appointment</button>
+                            <button class="btn btn-outline learn-more">Learn More</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="service-card" data-category="neurology">
+                    <div class="service-icon">🧠</div>
+                    <div class="service-content">
+                        <h3>Neurology</h3>
+                        <p>Expert diagnosis and treatment for disorders of the nervous system, including stroke care and epilepsy management.</p>
+                        <ul class="service-features">
+                            <li>EEG and EMG testing</li>
+                            <li>Stroke rehabilitation</li>
+                            <li>Epilepsy management</li>
+                            <li>Headache treatment</li>
+                        </ul>
+                        <div class="service-actions">
+                            <button class="btn" onclick="bookService('neurology', 'Neurology')">Book Appointment</button>
+                            <button class="btn btn-outline learn-more">Learn More</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="service-card" data-category="pediatrics">
+                    <div class="service-icon">👶</div>
+                    <div class="service-content">
+                        <h3>Pediatrics</h3>
+                        <p>Comprehensive healthcare for infants, children, and adolescents, including well-child visits and vaccinations.</p>
+                        <ul class="service-features">
+                            <li>Well-child examinations</li>
+                            <li>Vaccination programs</li>
+                            <li>Developmental assessments</li>
+                            <li>Adolescent medicine</li>
+                        </ul>
+                        <div class="service-actions">
+                            <button class="btn" onclick="bookService('pediatrics', 'Pediatrics')">Book Appointment</button>
+                            <button class="btn btn-outline learn-more">Learn More</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="service-card" data-category="orthopedics">
+                    <div class="service-icon">🦴</div>
+                    <div class="service-content">
+                        <h3>Orthopedics</h3>
+                        <p>Treatment for musculoskeletal conditions, joint replacements, sports injuries, and fracture care.</p>
+                        <ul class="service-features">
+                            <li>Joint replacement surgery</li>
+                            <li>Arthroscopic procedures</li>
+                            <li>Sports injury treatment</li>
+                            <li>Fracture management</li>
+                        </ul>
+                        <div class="service-actions">
+                            <button class="btn" onclick="bookService('orthopedics', 'Orthopedics')">Book Appointment</button>
+                            <button class="btn btn-outline learn-more">Learn More</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="service-card" data-category="ophthalmology">
+                    <div class="service-icon">👁️</div>
+                    <div class="service-content">
+                        <h3>Ophthalmology</h3>
+                        <p>Complete eye care services including vision correction, cataract surgery, and treatment for eye diseases.</p>
+                        <ul class="service-features">
+                            <li>Cataract surgery</li>
+                            <li>LASIK vision correction</li>
+                            <li>Retinal treatments</li>
+                            <li>Glaucoma management</li>
+                        </ul>
+                        <div class="service-actions">
+                            <button class="btn" onclick="bookService('ophthalmology', 'Ophthalmology')">Book Appointment</button>
+                            <button class="btn btn-outline learn-more">Learn More</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="service-card" data-category="ent">
+                    <div class="service-icon">👂</div>
+                    <div class="service-content">
+                        <h3>ENT</h3>
+                        <p>Comprehensive care for ear, nose, and throat conditions, including hearing tests and sinus treatments.</p>
+                        <ul class="service-features">
+                            <li>Hearing tests</li>
+                            <li>Sinus treatments</li>
+                            <li>Tonsillectomy</li>
+                            <li>Voice therapy</li>
+                        </ul>
+                        <div class="service-actions">
+                            <button class="btn" onclick="bookService('ent', 'ENT')">Book Appointment</button>
+                            <button class="btn btn-outline learn-more">Learn More</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="service-card" data-category="pulmonology">
+                    <div class="service-icon">🫁</div>
+                    <div class="service-content">
+                        <h3>Pulmonology</h3>
+                        <p>Diagnosis and treatment of respiratory conditions, lung diseases, and sleep disorders.</p>
+                        <ul class="service-features">
+                            <li>Asthma management</li>
+                            <li>COPD treatment</li>
+                            <li>Sleep studies</li>
+                            <li>Lung function tests</li>
+                        </ul>
+                        <div class="service-actions">
+                            <button class="btn" onclick="bookService('pulmonology', 'Pulmonology')">Book Appointment</button>
+                            <button class="btn btn-outline learn-more">Learn More</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="service-card" data-category="oncology">
+                    <div class="service-icon">🧬</div>
+                    <div class="service-content">
+                        <h3>Oncology</h3>
+                        <p>Comprehensive cancer care including diagnosis, chemotherapy, radiation therapy, and surgical oncology.</p>
+                        <ul class="service-features">
+                            <li>Chemotherapy</li>
+                            <li>Radiation therapy</li>
+                            <li>Cancer screening</li>
+                            <li>Palliative care</li>
+                        </ul>
+                        <div class="service-actions">
+                            <button class="btn" onclick="bookService('oncology', 'Oncology')">Book Appointment</button>
+                            <button class="btn btn-outline learn-more">Learn More</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="service-card" data-category="hematology">
+                    <div class="service-icon">🩸</div>
+                    <div class="service-content">
+                        <h3>Hematology</h3>
+                        <p>Diagnosis and treatment of blood disorders, anemia, clotting problems, and blood cancers.</p>
+                        <ul class="service-features">
+                            <li>Blood disorder treatment</li>
+                            <li>Anemia management</li>
+                            <li>Clotting disorders</li>
+                            <li>Blood transfusion</li>
+                        </ul>
+                        <div class="service-actions">
+                            <button class="btn" onclick="bookService('hematology', 'Hematology')">Book Appointment</button>
+                            <button class="btn btn-outline learn-more">Learn More</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="service-card" data-category="gastroenterology">
+                    <div class="service-icon">🍽️</div>
+                    <div class="service-content">
+                        <h3>Gastroenterology</h3>
+                        <p>Diagnosis and treatment of digestive system disorders, including endoscopy and colonoscopy.</p>
+                        <ul class="service-features">
+                            <li>Endoscopy</li>
+                            <li>Colonoscopy</li>
+                            <li>Liver disease treatment</li>
+                            <li>IBD management</li>
+                        </ul>
+                        <div class="service-actions">
+                            <button class="btn" onclick="bookService('gastroenterology', 'Gastroenterology')">Book Appointment</button>
+                            <button class="btn btn-outline learn-more">Learn More</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="service-card" data-category="dermatology">
+                    <div class="service-icon">🧴</div>
+                    <div class="service-content">
+                        <h3>Dermatology</h3>
+                        <p>Treatment of skin conditions, cosmetic dermatology, and skin cancer screening.</p>
+                        <ul class="service-features">
+                            <li>Skin cancer screening</li>
+                            <li>Acne treatment</li>
+                            <li>Cosmetic procedures</li>
+                            <li>Eczema management</li>
+                        </ul>
+                        <div class="service-actions">
+                            <button class="btn" onclick="bookService('dermatology', 'Dermatology')">Book Appointment</button>
+                            <button class="btn btn-outline learn-more">Learn More</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="service-card" data-category="dentistry">
+                    <div class="service-icon">🦷</div>
+                    <div class="service-content">
+                        <h3>Dentistry</h3>
+                        <p>Complete dental care including routine check-ups, fillings, crowns, and oral surgery.</p>
+                        <ul class="service-features">
+                            <li>Dental check-ups</li>
+                            <li>Fillings and crowns</li>
+                            <li>Teeth cleaning</li>
+                            <li>Oral surgery</li>
+                        </ul>
+                        <div class="service-actions">
+                            <button class="btn" onclick="bookService('dentistry', 'Dentistry')">Book Appointment</button>
+                            <button class="btn btn-outline learn-more">Learn More</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="service-card" data-category="psychiatry">
+                    <div class="service-icon">🧘</div>
+                    <div class="service-content">
+                        <h3>Psychiatry</h3>
+                        <p>Mental health care including diagnosis, therapy, medication management, and counseling.</p>
+                        <ul class="service-features">
+                            <li>Therapy sessions</li>
+                            <li>Medication management</li>
+                            <li>Counseling</li>
+                            <li>Mental health assessments</li>
+                        </ul>
+                        <div class="service-actions">
+                            <button class="btn" onclick="bookService('psychiatry', 'Psychiatry')">Book Appointment</button>
+                            <button class="btn btn-outline learn-more">Learn More</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="service-card" data-category="obgyn">
+                    <div class="service-icon">🤰</div>
+                    <div class="service-content">
+                        <h3>Obstetrics & Gynecology</h3>
+                        <p>Women's health services including prenatal care, delivery, and gynecological treatments.</p>
+                        <ul class="service-features">
+                            <li>Prenatal care</li>
+                            <li>Delivery services</li>
+                            <li>Gynecological exams</li>
+                            <li>Family planning</li>
+                        </ul>
+                        <div class="service-actions">
+                            <button class="btn" onclick="bookService('obgyn', 'Obstetrics & Gynecology')">Book Appointment</button>
+                            <button class="btn btn-outline learn-more">Learn More</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="service-card" data-category="urology">
+                    <div class="service-icon">🔄</div>
+                    <div class="service-content">
+                        <h3>Urology</h3>
+                        <p>Treatment of urinary tract and male reproductive system conditions.</p>
+                        <ul class="service-features">
+                            <li>Kidney stone treatment</li>
+                            <li>Prostate care</li>
+                            <li>Urinary infections</li>
+                            <li>Male infertility</li>
+                        </ul>
+                        <div class="service-actions">
+                            <button class="btn" onclick="bookService('urology', 'Urology')">Book Appointment</button>
+                            <button class="btn btn-outline learn-more">Learn More</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="service-card" data-category="physical-therapy">
+                    <div class="service-icon">💪</div>
+                    <div class="service-content">
+                        <h3>Physical Therapy</h3>
+                        <p>Rehabilitation services for injury recovery, mobility improvement, and pain management.</p>
+                        <ul class="service-features">
+                            <li>Injury rehabilitation</li>
+                            <li>Pain management</li>
+                            <li>Mobility training</li>
+                            <li>Sports therapy</li>
+                        </ul>
+                        <div class="service-actions">
+                            <button class="btn" onclick="bookService('physical-therapy', 'Physical Therapy')">Book Appointment</button>
+                            <button class="btn btn-outline learn-more">Learn More</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="service-card" data-category="pathology">
+                    <div class="service-icon">🔬</div>
+                    <div class="service-content">
+                        <h3>Pathology</h3>
+                        <p>Laboratory testing and diagnosis services for accurate medical assessment.</p>
+                        <ul class="service-features">
+                            <li>Blood tests</li>
+                            <li>Biopsy analysis</li>
+                            <li>Microbiology</li>
+                            <li>Histopathology</li>
+                        </ul>
+                        <div class="service-actions">
+                            <button class="btn" onclick="bookService('pathology', 'Pathology')">Book Appointment</button>
+                            <button class="btn btn-outline learn-more">Learn More</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="service-card" data-category="radiology">
+                    <div class="service-icon">📷</div>
+                    <div class="service-content">
+                        <h3>Radiology</h3>
+                        <p>Advanced imaging services including X-ray, MRI, CT scan, and ultrasound.</p>
+                        <ul class="service-features">
+                            <li>X-ray imaging</li>
+                            <li>MRI scans</li>
+                            <li>CT scans</li>
+                            <li>Ultrasound</li>
+                        </ul>
+                        <div class="service-actions">
+                            <button class="btn" onclick="bookService('radiology', 'Radiology')">Book Appointment</button>
+                            <button class="btn btn-outline learn-more">Learn More</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="service-card" data-category="geriatrics">
+                    <div class="service-icon">👴</div>
+                    <div class="service-content">
+                        <h3>Geriatrics</h3>
+                        <p>Specialized care for elderly patients, focusing on age-related health conditions.</p>
+                        <ul class="service-features">
+                            <li>Age-related care</li>
+                            <li>Chronic disease management</li>
+                            <li>Mobility assistance</li>
+                            <li>Memory care</li>
+                        </ul>
+                        <div class="service-actions">
+                            <button class="btn" onclick="bookService('geriatrics', 'Geriatrics')">Book Appointment</button>
+                            <button class="btn btn-outline learn-more">Learn More</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Emergency Services Banner -->
+            <div class="emergency-services">
+                <h2>24/7 Emergency Services</h2>
+                <p>Our emergency department is staffed with experienced medical professionals ready to provide immediate care for critical conditions.</p>
+                <a href="tel:+254115947353" class="btn">Call Emergency: +254115947353</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Jijue Hospital</h3>
+                    <p>Providing quality healthcare services with compassion and excellence since 2025.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="doctors.html">Our Doctors</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://maps.google.com/?q=Health+Street,Nairobi+City,Kenya" target="_blank" class="contact-link">📍 Health Street, Nairobi City</a></li>
+                        <li><a href="tel:+254115947353" class="contact-link">📞 +254115947353</a></li>
+                        <li><a href="mailto:info@jijuehospital.com" class="contact-link">✉️ info@jijuehospital.com</a></li>
+                        <li>🕒 Mon-Fri: 8am-6pm, Sat: 9am-1pm</li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Emergency</h3>
+                    <p>For medical emergencies, please call:</p>
+                    <h3 style="margin-top: 10px;">
+                        <a href="tel:+254115947353" class="emergency-link">+254115947353</a>
+                    </h3>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Jijue Hospital. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    // Service Page JavaScript with Collapsible All Services
+    document.addEventListener('DOMContentLoaded', function() {
+        const API_BASE = 'http://localhost:5000/api';
+        
+        // DOM Elements
+        const allServicesBtn = document.querySelector('.all-services-btn');
+        const noResults = document.querySelector('.no-results');
+        const loading = document.querySelector('.loading');
+        const servicesGrid = document.querySelector('.services-grid');
+        
+        let allServices = []; // Store all services for filtering
+        let categories = []; // Store available categories
+        let isAllServicesExpanded = false; // Track if "All Services" is expanded
+
+        // Initialize the page
+        initializeServicesPage();
+
+        // Add event listener for consultation booking button
+        document.addEventListener('click', function(e) {
+            if (e.target.closest('.consultation-booking-btn')) {
+                e.preventDefault();
+                bookConsultation();
+            }
+        });
+
+        async function initializeServicesPage() {
+            try {
+                showLoading(true);
+                await loadServices();
+                await loadCategories();
+                setupEventListeners();
+                showLoading(false);
+                
+                // Initially collapse all services except consultation
+                toggleAllServices(false);
+            } catch (error) {
+                console.error('Error initializing services page:', error);
+                showError('Failed to load services. Please try again.');
+                showLoading(false);
+            }
+        }
+
+        // Load services from API
+        async function loadServices(filters = {}) {
+            try {
+                showLoading(true);
+                
+                // Build query parameters
+                const params = new URLSearchParams();
+                if (filters.category && filters.category !== 'all') {
+                    params.append('category', filters.category);
+                }
+
+                const response = await fetch(`${API_BASE}/services?${params.toString()}`);
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const result = await response.json();
+
+                if (result.success) {
+                    allServices = result.services;
+                    renderServices(allServices);
+                } else {
+                    throw new Error(result.message || 'Failed to load services');
+                }
+            } catch (error) {
+                console.error('Error loading services:', error);
+                // Fallback to client-side filtering
+                filterServicesClientSide();
+            } finally {
+                showLoading(false);
+            }
+        }
+
+        // Load available categories from API
+        async function loadCategories() {
+            try {
+                const response = await fetch(`${API_BASE}/services/categories`);
+                
+                if (response.ok) {
+                    const result = await response.json();
+                    if (result.success) {
+                        categories = result.categories;
+                    }
+                }
+            } catch (error) {
+                console.error('Error loading categories:', error);
+                // Categories are already defined in HTML
+            }
+        }
+
+        function renderServices(services) {
+            if (!servicesGrid) return;
+
+            if (services.length === 0) {
+                servicesGrid.innerHTML = '';
+                noResults.style.display = 'block';
+                return;
+            }
+
+            noResults.style.display = 'none';
+            
+            // Sort services to ensure consultation is first
+            const sortedServices = [...services].sort((a, b) => {
+                if (a.category === 'consultation') return -1;
+                if (b.category === 'consultation') return 1;
+                return a.name.localeCompare(b.name);
+            });
+            
+            servicesGrid.innerHTML = sortedServices.map(service => `
+                <div class="service-card ${service.category === 'consultation' ? 'consultation-service' : ''} scroll-animate" 
+                     data-category="${service.category?.toLowerCase() || 'general'}">
+                    <div class="service-icon">
+                        ${service.icon || getServiceIcon(service.category)}
+                    </div>
+                    <h3>${service.name}</h3>
+                    <p class="service-description">${service.description || 'Professional healthcare service'}</p>
+                    
+                    <div class="service-details">
+                        <div class="service-meta">
+                            <span class="duration">
+                                <i class="fas fa-clock"></i>
+                                ${service.duration || '30-60 mins'}
+                            </span>
+                            <span class="price">
+                                <i class="fas fa-tag"></i>
+                                ${service.price || 'Consultation Fee'}
+                            </span>
+                        </div>
+                        
+                        <div class="service-features">
+                            ${service.features ? service.features.map(feature => `
+                                <span class="feature-tag">${feature}</span>
+                            `).join('') : `
+                                <span class="feature-tag">Expert Care</span>
+                                <span class="feature-tag">Modern Equipment</span>
+                            `}
+                        </div>
+                        
+                        <div class="service-stats">
+                            <div class="stat">
+                                <i class="fas fa-user-md"></i>
+                                <span>${service.specialistsCount || '5+'} Specialists</span>
+                            </div>
+                            <div class="stat">
+                                <i class="fas fa-star"></i>
+                                <span>${service.successRate || '98%'} Success</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="service-actions">
+                        <button class="btn btn-outline" onclick="viewServiceDetails('${service._id || service.id}')">
+                            <i class="fas fa-info-circle"></i> Learn More
+                        </button>
+                        ${service.category === 'consultation' ? 
+                            `<button class="btn consultation-booking-btn">
+                                <i class="fas fa-calendar-plus"></i> Book Consultation
+                            </button>` :
+                            `<button class="btn" onclick="bookService('${service._id || service.id}', '${service.name}')">
+                                <i class="fas fa-calendar-plus"></i> Book Now
+                            </button>`
+                        }
+                    </div>
+                </div>
+            `).join('');
+
+            // Re-initialize animations for new cards
+            initializeScrollAnimations();
+            
+            // Re-attach event listeners to new Learn More buttons
+            attachLearnMoreListeners();
+        }
+
+        function getServiceIcon(category) {
+            const iconMap = {
+                'consultation': '👨‍⚕️',
+                'emergency': '🚑',
+                'cardiology': '❤️',
+                'neurology': '🧠',
+                'pediatrics': '👶',
+                'orthopedics': '🦴',
+                'ophthalmology': '👁️',
+                'ent': '👂',
+                'pulmonology': '🫁',
+                'oncology': '🧬',
+                'hematology': '🩸',
+                'gastroenterology': '🍽️',
+                'dermatology': '🧴',
+                'dentistry': '🦷',
+                'psychiatry': '🧘',
+                'obgyn': '🤰',
+                'urology': '🔄',
+                'physical-therapy': '💪',
+                'pathology': '🔬',
+                'radiology': '📷',
+                'geriatrics': '👴',
+                'default': '🏥'
+            };
+            
+            return iconMap[category?.toLowerCase()] || iconMap.default;
+        }
+
+        // Client-side filtering (fallback)
+        function filterServicesClientSide() {
+            const activeCategory = document.querySelector('.category-btn.active')?.getAttribute('data-category') || 'all';
+            
+            let visibleCount = 0;
+            const serviceCards = document.querySelectorAll('.service-card');
+
+            serviceCards.forEach(card => {
+                const category = card.getAttribute('data-category');
+
+                const matchesCategory = activeCategory === 'all' || category === activeCategory;
+
+                if (matchesCategory) {
+                    card.style.display = 'block';
+                    visibleCount++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            // Show/hide no results message
+            noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+        }
+
+        function toggleAllServices(show) {
+            const serviceCards = document.querySelectorAll('.service-card');
+            const chevronIcon = allServicesBtn.querySelector('i');
+            
+            serviceCards.forEach(card => {
+                if (card.getAttribute('data-category') !== 'consultation') {
+                    card.style.display = show ? 'block' : 'none';
+                }
+            });
+            
+            // Update button state and icon
+            isAllServicesExpanded = show;
+            allServicesBtn.classList.toggle('active', show);
+            
+            if (show) {
+                chevronIcon.className = 'fas fa-chevron-up';
+            } else {
+                chevronIcon.className = 'fas fa-chevron-down';
+            }
+        }
+
+        function handleAllServicesClick() {
+            toggleAllServices(!isAllServicesExpanded);
+        }
+
+        function setupEventListeners() {
+            // Add event listener for the All Services button
+            if (allServicesBtn) {
+                allServicesBtn.addEventListener('click', handleAllServicesClick);
+            }
+        }
+
+        function attachLearnMoreListeners() {
+            const learnMoreButtons = document.querySelectorAll('.btn-outline');
+            learnMoreButtons.forEach(button => {
+                if (button.textContent.includes('Learn More')) {
+                    button.addEventListener('click', function() {
+                        const serviceCard = this.closest('.service-card');
+                        const serviceName = serviceCard.querySelector('h3').textContent;
+                        const serviceId = serviceCard.getAttribute('data-service-id');
+                        
+                        if (serviceId) {
+                            viewServiceDetails(serviceId);
+                        } else {
+                            // Fallback to alert for demo
+                            const serviceDescription = serviceCard.querySelector('.service-description').textContent;
+                            showServiceModal(serviceName, serviceDescription);
+                        }
+                    });
+                }
+            });
+        }
+
+        function showLoading(show) {
+            if (loading) {
+                loading.style.display = show ? 'block' : 'none';
+            }
+            if (servicesGrid) {
+                servicesGrid.style.opacity = show ? '0.5' : '1';
+            }
+        }
+
+        function showError(message) {
+            console.error('Services page error:', message);
+            // You could implement a toast notification system here
+            alert(message);
+        }
+
+        function initializeScrollAnimations() {
+            const serviceCards = document.querySelectorAll('.service-card');
+            
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            serviceCards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(card);
+            });
+        }
+
+        function showServiceModal(serviceName, serviceDescription) {
+            // In a real implementation, show a proper modal
+            alert(`Service: ${serviceName}\n\n${serviceDescription}\n\nThis would open a detailed service page with:\n- Complete service description\n- Treatment procedures\n- Success rates\n- Patient testimonials\n- Pricing information`);
+        }
+    });
+
+    // Function to handle consultation booking
+    function bookConsultation() {
+        try {
+            // Check if user is logged in
+            const currentPatient = JSON.parse(localStorage.getItem('currentPatient'));
+            
+            if (!currentPatient) {
+                if (confirm('You need to login to book a consultation. Would you like to login now?')) {
+                    // Redirect to patient portal for login/registration
+                    window.location.href = 'patient-portal.html?action=book-consultation';
+                }
+                return;
+            }
+
+            // If user is logged in, redirect to patient portal with consultation parameter
+            window.location.href = 'patient-portal.html?action=book-consultation';
+            
+        } catch (error) {
+            console.error('Error booking consultation:', error);
+            alert('Unable to book consultation. Please try again.');
+        }
+    }
+
+    // Global functions for service actions
+    async function viewServiceDetails(serviceId) {
+        try {
+            // Redirect to service details page
+            window.location.href = `service-details.html?id=${serviceId}`;
+            
+            // Alternative: Load service details via API and show in modal
+            // const response = await fetch(`${API_BASE}/services/${serviceId}`);
+            // const result = await response.json();
+            // if (result.success) {
+            //     showServiceDetailModal(result.service);
+            // }
+        } catch (error) {
+            console.error('Error viewing service details:', error);
+            alert('Unable to load service details. Please try again.');
+        }
+    }
+
+    async function bookService(serviceId, serviceName) {
+        try {
+            const currentPatient = JSON.parse(localStorage.getItem('currentPatient'));
+            
+            if (!currentPatient) {
+                if (confirm('You need to login to book a service. Would you like to login now?')) {
+                    window.location.href = 'patient-portal.html';
+                }
+                return;
+            }
+
+            // Redirect to service booking page
+            window.location.href = `book-service.html?serviceId=${serviceId}&serviceName=${encodeURIComponent(serviceName)}`;
+            
+            // Alternative: Open booking modal
+            // const response = await fetch(`${API_BASE}/services/${serviceId}/availability`);
+            // const result = await response.json();
+            // if (result.success) {
+            //     showServiceBookingModal(serviceId, serviceName, result.availability);
+            // }
+        } catch (error) {
+            console.error('Error booking service:', error);
+            alert('Unable to book service. Please try again.');
+        }
+    }
+
+    function goBack() {
+        window.history.back();
+    }
+
+    // Utility function to format service data
+    function formatServiceData(service) {
+        return {
+            id: service._id || service.id,
+            name: service.name,
+            category: service.category,
+            description: service.description,
+            duration: service.duration,
+            price: service.price,
+            specialistsCount: service.specialistsCount,
+            successRate: service.successRate,
+            features: service.features || [],
+            icon: service.icon,
+            detailedDescription: service.detailedDescription,
+            procedures: service.procedures || [],
+            requirements: service.requirements || [],
+            testimonials: service.testimonials || [],
+            images: service.images || []
+        };
+    }
+</script>
+</body>
+</html>

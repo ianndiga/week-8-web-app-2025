@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Jijue Hospital</title>
+    <link rel="stylesheet" href="contact.css">
+   
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <span class="logo-icon">🏥</span>
+                <h1>Jijue Hospital</h1>
+            </div>
+            <button onclick="goBack()" class="btn">Go Back</button>
+        </div>
+    </header>
+
+    <section class="page-hero">
+        <div class="container">
+            <h1>Contact Us</h1>
+            <p>Get in touch with our healthcare team</p>
+        </div>
+    </section>
+
+    <section class="page-content">
+        <div class="container">
+            <div class="contact-container">
+                <div class="contact-info scroll-animate">
+                    <h2>Get In Touch</h2>
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div>
+                            <h3>Address</h3>
+                            <p>
+                                <a href="https://maps.google.com/?q=Health+Street,Nairobi+City,Kenya" target="_blank" class="contact-link">
+                                    Health Street<br>Nairobi City, Kenya
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📞</div>
+                        <div>
+                            <h3>Phone</h3>
+                            <p>
+                                <a href="tel:+254115947353" class="contact-link">
+                                    +254115947353
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">✉️</div>
+                        <div>
+                            <h3>Email</h3>
+                            <p>
+                                <a href="mailto:info@jijuehospital.com" class="contact-link">
+                                    info@jijuehospital.com
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">🕒</div>
+                        <div>
+                            <h3>Hours</h3>
+                            <p>Monday - Friday: 8am - 6pm<br>Saturday: 9am - 1pm<br>Emergency: 24/7</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Emergency Contact -->
+                    <div class="emergency-contact">
+                        <div class="contact-item">
+                            <div class="contact-icon">🚨</div>
+                            <div>
+                                <h3>Emergency Contact</h3>
+                                <p>
+                                    <a href="tel:+254115947353" class="emergency-link">
+                                        +254115947353
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form scroll-animate">
+                    <h2>Send Us a Message</h2>
+                    <form id="contact-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Full Name *</label>
+                                <input type="text" id="name" class="form-control" required placeholder="Enter your full name">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email *</label>
+                                <input type="email" id="email" class="form-control" required placeholder="Enter your email address">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" class="form-control" placeholder="Enter your phone number (optional)">
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject *</label>
+                            <input type="text" id="subject" class="form-control" required placeholder="Enter message subject">
+                        </div>
+                        <div class="form-group">
+                            <label for="department">Department</label>
+                            <select id="department" class="form-control">
+                                <option value="">Select a department (optional)</option>
+                                <option value="general">General Inquiry</option>
+                                <option value="appointment">Appointment Booking</option>
+                                <option value="emergency">Emergency Services</option>
+                                <option value="billing">Billing & Insurance</option>
+                                <option value="feedback">Feedback & Complaints</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Your Message *</label>
+                            <textarea id="message" class="form-control" rows="6" required placeholder="How can we help you?"></textarea>
+                        </div>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+
+                <!-- Map Section -->
+                <div class="map-section scroll-animate" id="map">
+                    <div class="map-container">
+                        <div class="map-placeholder">
+                            <div class="map-icon">🗺️</div>
+                            <h3>Our Location</h3>
+                            <p>Health Street, Nairobi City, Kenya</p>
+                            <p style="margin-top: 10px; font-size: 0.9rem; opacity: 0.8;">
+                                We're conveniently located in the heart of Nairobi
+                            </p>
+                            <a href="https://maps.google.com/?q=Health+Street,Nairobi+City,Kenya" 
+                               target="_blank" 
+                               class="btn" 
+                               style="margin-top: 20px; background: rgba(255,255,255,0.2); border: 2px solid white;">
+                                Open in Google Maps
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Methods -->
+                <div class="contact-methods">
+                    <div class="contact-method scroll-animate">
+                        <div class="method-icon">📞</div>
+                        <h3>Call Us</h3>
+                        <p>Speak directly with our reception team for immediate assistance</p>
+                        <a href="tel:+254115947353" class="btn">Call Now</a>
+                    </div>
+                    <div class="contact-method scroll-animate">
+                        <div class="method-icon">✉️</div>
+                        <h3>Email Us</h3>
+                        <p>Send us your queries and we'll respond within 24 hours</p>
+                        <a href="mailto:info@jijuehospital.com" class="btn btn-outline">Send Email</a>
+                    </div>
+                    <div class="contact-method scroll-animate">
+                        <div class="method-icon">💬</div>
+                        <h3>Live Chat</h3>
+                        <p>Chat with our online support team for quick answers</p>
+                        <button class="btn btn-outline" onclick="startLiveChat()">Start Chat</button>
+                    </div>
+                    <div class="contact-method scroll-animate">
+                        <div class="method-icon">🏥</div>
+                        <h3>Visit Us</h3>
+                        <p>Come see us in person for a consultation</p>
+                        <a href="https://maps.google.com/?q=Health+Street,Nairobi+City,Kenya" target="_blank" class="btn btn-outline">Get Directions</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Jijue Hospital</h3>
+                    <p>Providing quality healthcare services with compassion and excellence since 2025.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="doctors.html">Our Doctors</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://maps.google.com/?q=Health+Street,Nairobi+City,Kenya" target="_blank">📍 Health Street, Nairobi City</a></li>
+                        <li><a href="tel:+254115947353">📞 +254115947353</a></li>
+                        <li><a href="mailto:info@jijuehospital.com">✉️ info@jijuehospital.com</a></li>
+                        <li>🕒 Mon-Fri: 8am-6pm, Sat: 9am-1pm</li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Emergency</h3>
+                    <p>For medical emergencies, please call:</p>
+                    <h3 style="color: var(--accent); margin-top: 10px;">
+                        <a href="tel:+254115947353" style="color: var(--accent); text-decoration: none;">+254115947353</a>
+                    </h3>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Jijue Hospital. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    // Enhanced Contact Page JavaScript with Real API Integration
+    document.addEventListener('DOMContentLoaded', function() {
+        const API_BASE = 'http://localhost:5000/api';
+        
+        initializeContactForm();
+        initializeContactFeatures();
+        initializeScrollAnimations();
+        loadContactInfo();
+    });
+
+    function initializeContactForm() {
+        const contactForm = document.getElementById('contact-form');
+        
+        if (contactForm) {
+            // Add required indicators
+            const requiredFields = contactForm.querySelectorAll('[required]');
+            requiredFields.forEach(field => {
+                const label = contactForm.querySelector(`label[for="${field.id}"]`);
+                if (label) {
+                    label.classList.add('required');
+                }
+            });
+
+            // Enhanced real-time validation
+            const inputs = contactForm.querySelectorAll('.form-control');
+            inputs.forEach(input => {
+                input.addEventListener('blur', function() {
+                    validateField(this);
+                });
+                
+                input.addEventListener('input', function() {
+                    clearError(this);
+                    // Real-time validation for specific fields
+                    if (this.type === 'email' && this.value.length > 0) {
+                        validateField(this);
+                    }
+                });
+            });
+
+            // Phone number formatting
+            const phoneInput = document.getElementById('phone');
+            if (phoneInput) {
+                phoneInput.addEventListener('input', function(e) {
+                    formatPhoneNumber(this);
+                });
+            }
+
+            // Form submission
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                if (validateForm()) {
+                    submitContactForm();
+                }
+            });
+        }
+    }
+
+    async function loadContactInfo() {
+        try {
+            const response = await fetch(`${API_BASE}/contact/info`);
+            const result = await response.json();
+
+            if (result.success) {
+                updateContactUI(result.contactInfo);
+            }
+        } catch (error) {
+            console.error('Error loading contact info:', error);
+            // Use default contact info
+            updateContactUIWithDefaults();
+        }
+    }
+
+    function updateContactUI(contactInfo) {
+        // Update phone numbers
+        const phoneElements = document.querySelectorAll('[data-contact="phone"]');
+        phoneElements.forEach(element => {
+            if (element.tagName === 'A' && element.href.startsWith('tel:')) {
+                element.href = `tel:${contactInfo.phone}`;
+                element.textContent = contactInfo.phone;
+            } else {
+                element.textContent = contactInfo.phone;
+            }
+        });
+
+        // Update email
+        const emailElements = document.querySelectorAll('[data-contact="email"]');
+        emailElements.forEach(element => {
+            if (element.tagName === 'A' && element.href.startsWith('mailto:')) {
+                element.href = `mailto:${contactInfo.email}`;
+                element.textContent = contactInfo.email;
+            } else {
+                element.textContent = contactInfo.email;
+            }
+        });
+
+        // Update address
+        const addressElements = document.querySelectorAll('[data-contact="address"]');
+        addressElements.forEach(element => {
+            element.textContent = contactInfo.address;
+            
+            // Update Google Maps link if it's an anchor tag
+            if (element.tagName === 'A' && element.href.includes('maps.google.com')) {
+                element.href = `https://maps.google.com/?q=${encodeURIComponent(contactInfo.address)}`;
+            }
+        });
+
+        // Update hours
+        const hoursElements = document.querySelectorAll('[data-contact="hours"]');
+        hoursElements.forEach(element => {
+            element.textContent = contactInfo.operatingHours;
+        });
+
+        // Update emergency contact
+        const emergencyElements = document.querySelectorAll('[data-contact="emergency"]');
+        emergencyElements.forEach(element => {
+            if (element.tagName === 'A' && element.href.startsWith('tel:')) {
+                element.href = `tel:${contactInfo.emergencyPhone}`;
+                element.textContent = contactInfo.emergencyPhone;
+            } else {
+                element.textContent = contactInfo.emergencyPhone;
+            }
+        });
+    }
+
+    function updateContactUIWithDefaults() {
+        const defaultContactInfo = {
+            phone: '+254115947353',
+            email: 'info@jijuehospital.com',
+            address: 'Health Street, Nairobi City, Kenya',
+            operatingHours: 'Mon-Fri: 8am-6pm, Sat: 9am-1pm, Sun: Emergency Only',
+            emergencyPhone: '+254115947353'
+        };
+        updateContactUI(defaultContactInfo);
+    }
+
+    function initializeContactFeatures() {
+        // Add click handlers for contact methods
+        const contactMethods = document.querySelectorAll('.contact-method .btn');
+        contactMethods.forEach(method => {
+            method.addEventListener('click', function(e) {
+                if (this.textContent.includes('Call')) {
+                    trackEvent('Contact Method', 'Call');
+                } else if (this.textContent.includes('Email')) {
+                    trackEvent('Contact Method', 'Email');
+                } else if (this.textContent.includes('Directions')) {
+                    trackEvent('Contact Method', 'Directions');
+                }
+            });
+        });
+
+        // Emergency contact highlight animation
+        const emergencyContact = document.querySelector('.emergency-contact');
+        if (emergencyContact) {
+            setInterval(() => {
+                emergencyContact.style.transform = 'scale(1.02)';
+                setTimeout(() => {
+                    emergencyContact.style.transform = 'scale(1)';
+                }, 500);
+            }, 3000);
+        }
+    }
+
+    function initializeScrollAnimations() {
+        const scrollElements = document.querySelectorAll('.scroll-animate');
+        
+        const elementInView = (el, dividend = 1) => {
+            const elementTop = el.getBoundingClientRect().top;
+            return (
+                elementTop <= (window.innerHeight || document.documentElement.clientHeight) / dividend
+            );
+        };
+        
+        const displayScrollElement = (element) => {
+            element.classList.add('animate');
+        };
+        
+        const handleScrollAnimation = () => {
+            scrollElements.forEach((el) => {
+                if (elementInView(el, 1.2)) {
+                    displayScrollElement(el);
+                }
+            });
+        };
+        
+        // Initial check
+        handleScrollAnimation();
+        
+        // Listen for scroll
+        window.addEventListener('scroll', () => {
+            handleScrollAnimation();
+        });
+    }
+
+    // Enhanced Validation functions
+    function validateField(field) {
+        const value = field.value.trim();
+        let isValid = true;
+        let message = '';
+        
+        switch(field.type) {
+            case 'email':
+                if (value && !isValidEmail(value)) {
+                    message = 'Please enter a valid email address';
+                    isValid = false;
+                } else if (value) {
+                    showSuccess(field, 'Email looks good!');
+                }
+                break;
+                
+            case 'text':
+                if (field.id === 'name') {
+                    if (value.length < 2) {
+                        message = 'Please enter your full name (at least 2 characters)';
+                        isValid = false;
+                    } else if (value.length > 1) {
+                        showSuccess(field, 'Name looks good!');
+                    }
+                }
+                if (field.id === 'subject' && value.length < 5) {
+                    message = 'Please enter a meaningful subject (at least 5 characters)';
+                    isValid = false;
+                }
+                break;
+                
+            case 'tel':
+                if (value && !isValidPhone(value)) {
+                    message = 'Please enter a valid phone number';
+                    isValid = false;
+                } else if (value) {
+                    showSuccess(field, 'Phone number looks good!');
+                }
+                break;
+        }
+        
+        if (field.required && !value) {
+            message = 'This field is required';
+            isValid = false;
+        }
+        
+        if (!isValid) {
+            showError(field, message);
+        } else if (!message) {
+            clearError(field);
+        }
+        
+        return isValid;
+    }
+
+    function validateForm() {
+        const form = document.getElementById('contact-form');
+        const fields = form.querySelectorAll('[required]');
+        let isValid = true;
+        
+        fields.forEach(field => {
+            if (!validateField(field)) {
+                isValid = false;
+                // Scroll to first error
+                if (isValid) {
+                    field.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            }
+        });
+        
+        return isValid;
+    }
+
+    function showError(field, message) {
+        clearError(field);
+        clearSuccess(field);
+        field.classList.add('error');
+        
+        const errorDiv = document.createElement('div');
+        errorDiv.className = 'error-message';
+        errorDiv.textContent = message;
+        field.parentNode.appendChild(errorDiv);
+    }
+
+    function showSuccess(field, message) {
+        clearError(field);
+        clearSuccess(field);
+        field.classList.add('success');
+        
+        const successDiv = document.createElement('div');
+        successDiv.className = 'success-message';
+        successDiv.textContent = message;
+        field.parentNode.appendChild(successDiv);
+    }
+
+    function clearError(field) {
+        field.classList.remove('error');
+        const errorMessage = field.parentNode.querySelector('.error-message');
+        if (errorMessage) {
+            errorMessage.remove();
+        }
+    }
+
+    function clearSuccess(field) {
+        field.classList.remove('success');
+        const successMessage = field.parentNode.querySelector('.success-message');
+        if (successMessage) {
+            successMessage.remove();
+        }
+    }
+
+    function isValidEmail(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    }
+
+    function isValidPhone(phone) {
+        const phoneRegex = /^[\+]?[0-9\s\-\(\)]{10,}$/;
+        return phoneRegex.test(phone.replace(/\s/g, ''));
+    }
+
+    function formatPhoneNumber(input) {
+        // Remove all non-digit characters
+        let numbers = input.value.replace(/\D/g, '');
+        
+        // Format based on length
+        if (numbers.length <= 3) {
+            input.value = numbers;
+        } else if (numbers.length <= 6) {
+            input.value = numbers.slice(0, 3) + ' ' + numbers.slice(3);
+        } else if (numbers.length <= 9) {
+            input.value = numbers.slice(0, 3) + ' ' + numbers.slice(3, 6) + ' ' + numbers.slice(6);
+        } else {
+            input.value = numbers.slice(0, 3) + ' ' + numbers.slice(3, 6) + ' ' + numbers.slice(6, 9) + ' ' + numbers.slice(9, 12);
+        }
+    }
+
+    async function submitContactForm() {
+        const form = document.getElementById('contact-form');
+        const submitBtn = form.querySelector('.btn');
+        const originalText = submitBtn.textContent;
+        
+        // Show loading state
+        form.classList.add('loading');
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending...';
+        
+        try {
+            // Collect form data
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                subject: document.getElementById('subject').value,
+                department: document.getElementById('department').value,
+                message: document.getElementById('message').value,
+                timestamp: new Date().toISOString(),
+                source: 'website_contact_form'
+            };
+
+            // Send to backend API
+            const response = await fetch(`${API_BASE}/contact/submit`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData)
+            });
+
+            const result = await response.json();
+
+            if (result.success) {
+                // Show success message
+                showSuccessMessage(formData);
+                trackEvent('Contact Form', 'Submission Success');
+                
+                // Log successful submission
+                console.log('Contact form submitted successfully:', formData);
+            } else {
+                throw new Error(result.message || 'Failed to submit form');
+            }
+
+        } catch (error) {
+            console.error('Error submitting contact form:', error);
+            showErrorMessage('Failed to send message. Please try again or call us directly.');
+            trackEvent('Contact Form', 'Submission Error');
+        } finally {
+            form.classList.remove('loading');
+            submitBtn.disabled = false;
+            submitBtn.textContent = originalText;
+        }
+    }
+
+    function showSuccessMessage(formData) {
+        const form = document.getElementById('contact-form');
+        const successHTML = `
+            <div class="form-success show">
+                <div class="success-icon">✅</div>
+                <h4>Message Sent Successfully!</h4>
+                <p>Thank you <strong>${formData.name}</strong> for contacting Jijue Hospital.</p>
+                <p>We have received your message and will respond to you within 24 hours.</p>
+                <p><strong>Reference ID:</strong> #${generateReferenceId()}</p>
+                <p><strong>What happens next:</strong></p>
+                <ul style="text-align: left; max-width: 400px; margin: 20px auto;">
+                    <li>Our team will review your message</li>
+                    <li>We'll send a response to <strong>${formData.email}</strong></li>
+                    <li>For urgent matters, we may call you at <strong>${formData.phone || 'the number you provided'}</strong></li>
+                </ul>
+                <button type="button" class="btn" onclick="resetContactForm()" style="margin-top: 20px;">Send Another Message</button>
+            </div>
+        `;
+        
+        form.style.display = 'none';
+        form.insertAdjacentHTML('afterend', successHTML);
+    }
+
+    function showErrorMessage(message) {
+        const form = document.getElementById('contact-form');
+        const errorHTML = `
+            <div class="form-error show">
+                <div class="error-icon">❌</div>
+                <h4>Message Not Sent</h4>
+                <p>${message}</p>
+                <div style="margin-top: 20px;">
+                    <p><strong>Alternative Contact Methods:</strong></p>
+                    <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 15px;">
+                        <a href="tel:+254115947353" class="btn btn-outline">
+                            <i class="fas fa-phone"></i> Call Us
+                        </a>
+                        <a href="mailto:info@jijuehospital.com" class="btn btn-outline">
+                            <i class="fas fa-envelope"></i> Email Us
+                        </a>
+                    </div>
+                </div>
+                <button type="button" class="btn" onclick="resetContactForm()" style="margin-top: 20px;">Try Again</button>
+            </div>
+        `;
+        
+        const existingError = document.querySelector('.form-error');
+        if (existingError) {
+            existingError.remove();
+        }
+        
+        form.insertAdjacentHTML('afterend', errorHTML);
+    }
+
+    function generateReferenceId() {
+        return 'CONTACT' + Date.now().toString().slice(-8);
+    }
+
+    // Live Chat Functionality with API Integration
+    window.startLiveChat = async function() {
+        try {
+            // Check if chat support is available
+            const response = await fetch(`${API_BASE}/chat/status`);
+            const result = await response.json();
+
+            if (result.success && result.chatAvailable) {
+                createChatModal();
+                trackEvent('Live Chat', 'Started');
+            } else {
+                alert('Live chat is currently unavailable. Please call us at +254115947353 or email info@jijuehospital.com');
+            }
+        } catch (error) {
+            console.error('Error checking chat status:', error);
+            // Fallback to creating chat modal anyway
+            createChatModal();
+        }
+    };
+
+    function createChatModal() {
+        // Create chat modal
+        const chatModal = document.createElement('div');
+        chatModal.className = 'chat-modal';
+        chatModal.innerHTML = `
+            <div class="chat-container">
+                <div class="chat-header">
+                    <h3>Jijue Hospital Support</h3>
+                    <button class="close-chat" onclick="closeLiveChat()">×</button>
+                </div>
+                <div class="chat-messages" id="chat-messages">
+                    <div class="message bot-message">
+                        <div class="message-content">
+                            Hello! I'm here to help. How can I assist you today?
+                        </div>
+                        <div class="message-time">Just now</div>
+                    </div>
+                </div>
+                <div class="chat-input">
+                    <input type="text" placeholder="Type your message..." id="chat-input">
+                    <button onclick="sendChatMessage()">Send</button>
+                </div>
+            </div>
+        `;
+        
+        // Add styles for chat modal
+        const chatStyles = document.createElement('style');
+        chatStyles.textContent = `
+            .chat-modal {
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                width: 350px;
+                height: 500px;
+                background: white;
+                border-radius: 15px;
+                box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+                z-index: 1000;
+                display: flex;
+                flex-direction: column;
+                overflow: hidden;
+                animation: slideInUp 0.3s ease-out;
+            }
+            .chat-header {
+                background: var(--primary);
+                color: white;
+                padding: 15px 20px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            .chat-header h3 {
+                margin: 0;
+                font-size: 1.1rem;
+            }
+            .close-chat {
+                background: none;
+                border: none;
+                color: white;
+                font-size: 1.5rem;
+                cursor: pointer;
+                padding: 0;
+                width: 30px;
+                height: 30px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .chat-messages {
+                flex: 1;
+                padding: 20px;
+                overflow-y: auto;
+                background: #f8f9fa;
+            }
+            .message {
+                margin-bottom: 15px;
+                display: flex;
+                flex-direction: column;
+            }
+            .bot-message .message-content {
+                background: white;
+                padding: 12px 15px;
+                border-radius: 15px 15px 15px 0;
+                max-width: 80%;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            }
+            .message-time {
+                font-size: 0.7rem;
+                color: var(--gray);
+                margin-top: 5px;
+            }
+            .chat-input {
+                display: flex;
+                padding: 15px;
+                border-top: 1px solid #e9ecef;
+                background: white;
+            }
+            .chat-input input {
+                flex: 1;
+                padding: 12px 15px;
+                border: 1px solid #e9ecef;
+                border-radius: 25px;
+                margin-right: 10px;
+            }
+            .chat-input button {
+                background: var(--primary);
+                color: white;
+                border: none;
+                border-radius: 25px;
+                padding: 0 20px;
+                cursor: pointer;
+            }
+            @keyframes slideInUp {
+                from {
+                    transform: translateY(100%);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateY(0);
+                    opacity: 1;
+                }
+            }
+        `;
+        
+        document.head.appendChild(chatStyles);
+        document.body.appendChild(chatModal);
+        
+        // Focus on input
+        setTimeout(() => {
+            const chatInput = document.getElementById('chat-input');
+            if (chatInput) chatInput.focus();
+        }, 100);
+    };
+
+    window.closeLiveChat = function() {
+        const chatModal = document.querySelector('.chat-modal');
+        const chatStyles = document.querySelector('style');
+        if (chatModal) chatModal.remove();
+        if (chatStyles) chatStyles.remove();
+        trackEvent('Live Chat', 'Closed');
+    };
+
+    window.sendChatMessage = async function() {
+        const chatInput = document.getElementById('chat-input');
+        const chatMessages = document.getElementById('chat-messages');
+        
+        if (chatInput && chatInput.value.trim()) {
+            const userMessage = chatInput.value.trim();
+            
+            // Add user message
+            addChatMessage('user', userMessage);
+            chatInput.value = '';
+            
+            try {
+                // Send message to backend
+                const response = await fetch(`${API_BASE}/chat/message`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        message: userMessage,
+                        timestamp: new Date().toISOString()
+                    })
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    // Add bot response
+                    addChatMessage('bot', result.response);
+                } else {
+                    throw new Error(result.message || 'Failed to get response');
+                }
+            } catch (error) {
+                console.error('Error sending chat message:', error);
+                // Fallback response
+                addChatMessage('bot', 'Thank you for your message. For detailed assistance, please call us at +254115947353 or email info@jijuehospital.com.');
+            }
+        }
+    };
+
+    function addChatMessage(sender, message) {
+        const chatMessages = document.getElementById('chat-messages');
+        const messageDiv = document.createElement('div');
+        messageDiv.className = `message ${sender}-message`;
+        
+        const isUser = sender === 'user';
+        const messageContentStyle = isUser ? 
+            'background: var(--primary); color: white; padding: 12px 15px; border-radius: 15px 15px 0 15px; max-width: 80%; margin-left: auto; box-shadow: 0 2px 5px rgba(0,0,0,0.1);' :
+            'background: white; padding: 12px 15px; border-radius: 15px 15px 15px 0; max-width: 80%; box-shadow: 0 2px 5px rgba(0,0,0,0.1);';
+        
+        const timeAlignment = isUser ? 'text-align: right;' : '';
+        
+        messageDiv.innerHTML = `
+            <div class="message-content" style="${messageContentStyle}">
+                ${message}
+            </div>
+            <div class="message-time" style="${timeAlignment}">${new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</div>
+        `;
+        
+        chatMessages.appendChild(messageDiv);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    // Analytics tracking
+    function trackEvent(category, action) {
+        // In a real implementation, this would send data to Google Analytics
+        console.log(`Event tracked: ${category} - ${action}`);
+        
+        // Example: Send to backend for analytics
+        fetch(`${API_BASE}/analytics/track`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                category,
+                action,
+                timestamp: new Date().toISOString(),
+                page: 'contact'
+            })
+        }).catch(error => console.error('Analytics error:', error));
+    }
+
+    // Global function to reset form
+    window.resetContactForm = function() {
+        const form = document.getElementById('contact-form');
+        const successMessage = document.querySelector('.form-success');
+        const errorMessage = document.querySelector('.form-error');
+        
+        if (successMessage) successMessage.remove();
+        if (errorMessage) errorMessage.remove();
+        
+        form.reset();
+        form.style.display = 'block';
+        
+        // Clear any error/success messages
+        const messages = form.querySelectorAll('.error-message, .success-message');
+        messages.forEach(msg => msg.remove());
+        
+        const fields = form.querySelectorAll('.error, .success');
+        fields.forEach(field => {
+            field.classList.remove('error');
+            field.classList.remove('success');
+        });
+        
+        // Scroll to form
+        form.scrollIntoView({ behavior: 'smooth' });
+    };
+    
+    function goBack() {
+        window.history.back();
+    }
+</script>
+</body>
+</html>

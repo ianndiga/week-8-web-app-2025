@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Registration - Jijue Hospital</title>
+    <link rel="stylesheet" href="patient-registration.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="portal-header">
+        <div class="container header-container">
+            <div class="logo">
+                <span class="logo-icon">🏥</span>
+                <h1>Jijue Hospital</h1>
+            </div>
+            <a href="patient-portal.html" class="back-to-portal">
+                <i class="fas fa-arrow-left"></i>
+                Back to Patient Portal
+            </a>
+        </div>
+    </header>
+
+    <!-- Registration Container -->
+    <div class="registration-container">
+        <div class="registration-card">
+            <!-- Progress Steps -->
+            <div class="progress-steps">
+                <div class="progress-bar" id="progress-bar"></div>
+                <div class="step active" data-step="1">
+                    <div class="step-circle">1</div>
+                    <div class="step-label">Personal Info</div>
+                </div>
+                <div class="step" data-step="2">
+                    <div class="step-circle">2</div>
+                    <div class="step-label">Contact Details</div>
+                </div>
+                <div class="step" data-step="3">
+                    <div class="step-circle">3</div>
+                    <div class="step-label">Medical History</div>
+                </div>
+                <div class="step" data-step="4">
+                    <div class="step-circle">4</div>
+                    <div class="step-label">Payment & Insurance</div>
+                </div>
+            </div>
+
+            <!-- Registration Header -->
+            <div class="registration-header">
+                <h2>Patient Registration</h2>
+                <p>Complete your registration to access all our healthcare services</p>
+                <p style="color: #e74c3c; font-size: 14px; margin-top: 5px;">
+                    <span style="color: #e74c3c;">*</span> Indicates required field
+                </p>
+            </div>
+
+            <!-- Step 1: Personal Information -->
+            <div class="form-section active" id="step-1">
+                <h3 style="margin-bottom: 20px; color: var(--primary);">Personal Information</h3>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="first-name">First Name <span class="required">*</span></label>
+                        <input type="text" id="first-name" class="form-control" required>
+                        <div class="error-message">Please enter your first name</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="last-name">Last Name <span class="required">*</span></label>
+                        <input type="text" id="last-name" class="form-control" required>
+                        <div class="error-message">Please enter your last name</div>
+                    </div>
+                </div>
+                
+                <!-- UPDATED: Date of Birth with custom input -->
+                <div class="form-group">
+                    <label for="date-of-birth">Date of Birth <span class="required">*</span></label>
+                    <div class="date-input-wrapper">
+                        <input type="text" id="date-of-birth" class="form-control" required 
+                               placeholder="YYYY/MM/DD" maxlength="10">
+                    </div>
+                    <div class="date-format-hint">Format: YYYY/MM/DD (e.g., 1990/05/15)</div>
+                    <div class="error-message">Please enter your date of birth in YYYY/MM/DD format</div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="gender">Gender <span class="required">*</span></label>
+                        <select id="gender" class="form-control select" required>
+                            <option value="">Select Gender</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="other">Other</option>
+                            <option value="prefer-not-to-say">Prefer not to say</option>
+                        </select>
+                        <div class="error-message">Please select your gender</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="idNumber">
+                            <i class="fas fa-id-card"></i>
+                            National ID Number <span class="required">*</span>
+                        </label>
+                        <input type="text" id="idNumber" class="form-control" required 
+                               placeholder="Enter your national ID number" maxlength="20">
+                        <div class="error-message">Please enter your national ID number</div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="marital-status">Marital Status <span class="optional-label">(optional)</span></label>
+                    <select id="marital-status" class="form-control select">
+                        <option value="">Select Status</option>
+                        <option value="single">Single</option>
+                        <option value="married">Married</option>
+                        <option value="divorced">Divorced</option>
+                        <option value="widowed">Widowed</option>
+                    </select>
+                </div>
+                
+                <div class="form-navigation">
+                    <a href="patient-portal.html" class="btn btn-outline">
+                        <i class="fas fa-arrow-left"></i>
+                        Back to Portal
+                    </a>
+                    <button type="button" class="btn" onclick="nextStep(1)">
+                        Next Step
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Step 2: Contact Details -->
+            <div class="form-section" id="step-2">
+                <h3 style="margin-bottom: 20px; color: var(--primary);">Contact Details</h3>
+                
+                <div class="form-group">
+                    <label for="email">Email Address <span class="required">*</span></label>
+                    <input type="email" id="email" class="form-control" required>
+                    <div class="error-message">Please enter a valid email address</div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="phone">Phone Number <span class="required">*</span></label>
+                        <input type="tel" id="phone" class="form-control" required>
+                        <div class="error-message">Please enter your phone number</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="alternate-phone">Alternate Phone <span class="optional-label">(optional)</span></label>
+                        <input type="tel" id="alternate-phone" class="form-control" placeholder="Optional">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="address">Residential Address <span class="required">*</span></label>
+                    <input type="text" id="address" class="form-control" required>
+                    <div class="error-message">Please enter your address</div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="city">City <span class="required">*</span></label>
+                        <input type="text" id="city" class="form-control" required>
+                        <div class="error-message">Please enter your city</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="postal-code">Postal Code <span class="optional-label">(optional)</span></label>
+                        <input type="text" id="postal-code" class="form-control" placeholder="Optional">
+                    </div>
+                </div>
+                
+                <div class="form-navigation">
+                    <button type="button" class="btn btn-outline" onclick="previousStep(2)">
+                        <i class="fas fa-arrow-left"></i>
+                        Previous
+                    </button>
+                    <button type="button" class="btn" onclick="nextStep(2)">
+                        Next Step
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Step 3: Medical History -->
+            <div class="form-section" id="step-3">
+                <h3 style="margin-bottom: 20px; color: var(--primary);">Medical History</h3>
+                <p style="margin-bottom: 20px; color: var(--gray);">This information helps us provide you with the best possible care. All fields are optional.</p>
+                
+                <div class="form-group">
+                    <label for="blood-type">Blood Type <span class="optional-label">(optional)</span></label>
+                    <select id="blood-type" class="form-control select">
+                        <option value="">Select Blood Type</option>
+                        <option value="a+">A+</option>
+                        <option value="a-">A-</option>
+                        <option value="b+">B+</option>
+                        <option value="b-">B-</option>
+                        <option value="ab+">AB+</option>
+                        <option value="ab-">AB-</option>
+                        <option value="o+">O+</option>
+                        <option value="o-">O-</option>
+                        <option value="unknown">Unknown</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="allergies">Allergies <span class="optional-label">(optional)</span></label>
+                    <textarea id="allergies" class="form-control" rows="3" placeholder="List any allergies to medications, food, or other substances"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="current-medications">Current Medications <span class="optional-label">(optional)</span></label>
+                    <textarea id="current-medications" class="form-control" rows="3" placeholder="List any medications you are currently taking"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="medical-conditions">Existing Medical Conditions <span class="optional-label">(optional)</span></label>
+                    <textarea id="medical-conditions" class="form-control" rows="3" placeholder="List any existing medical conditions (e.g., diabetes, hypertension, asthma)"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="family-history">Family Medical History <span class="optional-label">(optional)</span></label>
+                    <textarea id="family-history" class="form-control" rows="3" placeholder="List any significant medical conditions in your immediate family"></textarea>
+                </div>
+                
+                <div class="form-navigation">
+                    <button type="button" class="btn btn-outline" onclick="previousStep(3)">
+                        <i class="fas fa-arrow-left"></i>
+                        Previous
+                    </button>
+                    <button type="button" class="btn" onclick="nextStep(3)">
+                        Next Step
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Step 4: Payment & Insurance Information -->
+            <div class="form-section" id="step-4">
+                <h3 style="margin-bottom: 20px; color: var(--primary);">Payment & Insurance Information</h3>
+                <p style="margin-bottom: 20px; color: var(--gray);">Select your preferred payment method and provide relevant details.</p>
+                
+                <!-- Payment Method Selection -->
+                <div class="form-group">
+                    <label for="payment-method">Preferred Payment Method <span class="required">*</span></label>
+                    <select id="payment-method" class="form-control select" required onchange="togglePaymentDetails()">
+                        <option value="">Select Payment Method</option>
+                        <option value="insurance">Medical Insurance</option>
+                        <option value="sha">SHA (Social Health Insurance)</option>
+                        <option value="cash">Cash Payment</option>
+                        <option value="bank">Bank Transfer</option>
+                        <option value="mobile">Mobile Money</option>
+                        <option value="credit">Credit Card</option>
+                        <option value="debit">Debit Card</option>
+                        <option value="other">Other Payment Method</option>
+                    </select>
+                    <div class="error-message">Please select your preferred payment method</div>
+                </div>
+
+                <!-- Insurance Details (Shown only when insurance is selected) -->
+                <div id="insurance-details" class="payment-details">
+                    <div class="form-group">
+                        <label for="insurance-provider">Insurance Provider <span class="optional-label">(optional)</span></label>
+                        <select id="insurance-provider" class="form-control select">
+                            <option value="">Select Provider</option>
+                            <option value="aetna">Aetna</option>
+                            <option value="bluecross">Blue Cross Blue Shield</option>
+                            <option value="cigna">Cigna</option>
+                            <option value="united">UnitedHealthcare</option>
+                            <option value="nhif">National Hospital Insurance Fund (NHIF)</option>
+                            <option value="private">Private Insurance</option>
+                            <option value="other">Other Provider</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="policy-number">Policy/Member Number <span class="optional-label">(optional)</span></label>
+                            <input type="text" id="policy-number" class="form-control" placeholder="Enter your policy number">
+                        </div>
+                        <div class="form-group">
+                            <label for="group-number">Group Number <span class="optional-label">(optional)</span></label>
+                            <input type="text" id="group-number" class="form-control" placeholder="Enter group number">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="insurance-phone">Insurance Provider Phone <span class="optional-label">(optional)</span></label>
+                        <input type="tel" id="insurance-phone" class="form-control" placeholder="Provider contact number">
+                    </div>
+                </div>
+
+                <!-- SHA Details (Shown only when SHA is selected) -->
+                <div id="sha-details" class="payment-details">
+                    <div class="form-group">
+                        <label for="sha-number">SHA Membership Number <span class="optional-label">(optional)</span></label>
+                        <input type="text" id="sha-number" class="form-control" placeholder="Enter your SHA membership number">
+                    </div>
+                    <div class="form-group">
+                        <label for="sha-provider">SHA Provider <span class="optional-label">(optional)</span></label>
+                        <select id="sha-provider" class="form-control select">
+                            <option value="">Select SHA Provider</option>
+                            <option value="nhif">NHIF</option>
+                            <option value="private-sha">Private SHA Provider</option>
+                            <option value="employer">Employer-sponsored</option>
+                            <option value="government">Government Scheme</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Bank Transfer Details -->
+                <div id="bank-details" class="payment-details">
+                    <div class="form-group">
+                        <label for="bank-name">Bank Name <span class="optional-label">(optional)</span></label>
+                        <input type="text" id="bank-name" class="form-control" placeholder="Enter bank name">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="account-number">Account Number <span class="optional-label">(optional)</span></label>
+                            <input type="text" id="account-number" class="form-control" placeholder="Enter account number">
+                        </div>
+                        <div class="form-group">
+                            <label for="account-name">Account Holder Name <span class="optional-label">(optional)</span></label>
+                            <input type="text" id="account-name" class="form-control" placeholder="Enter account holder name">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mobile Money Details -->
+                <div id="mobile-details" class="payment-details">
+                    <div class="form-group">
+                        <label for="mobile-provider">Mobile Money Provider <span class="optional-label">(optional)</span></label>
+                        <select id="mobile-provider" class="form-control select">
+                            <option value="">Select Provider</option>
+                            <option value="mpesa">M-Pesa</option>
+                            <option value="airtel">Airtel Money</option>
+                            <option value="orange">Orange Money</option>
+                            <option value="mtn">MTN Mobile Money</option>
+                            <option value="tigo">Tigo Pesa</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="mobile-number">Mobile Number <span class="optional-label">(optional)</span></label>
+                        <input type="tel" id="mobile-number" class="form-control" placeholder="Enter mobile number">
+                    </div>
+                </div>
+
+                <!-- Card Payment Details -->
+                <div id="card-details" class="payment-details">
+                    <div class="form-group">
+                        <label for="card-type">Card Type <span class="optional-label">(optional)</span></label>
+                        <select id="card-type" class="form-control select">
+                            <option value="">Select Card Type</option>
+                            <option value="visa">Visa</option>
+                            <option value="mastercard">MasterCard</option>
+                            <option value="american-express">American Express</option>
+                            <option value="discover">Discover</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="card-number">Card Number <span class="optional-label">(optional)</span></label>
+                        <input type="text" id="card-number" class="form-control" placeholder="Enter card number">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="expiry-date">Expiry Date <span class="optional-label">(optional)</span></label>
+                            <input type="month" id="expiry-date" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="cvv">CVV <span class="optional-label">(optional)</span></label>
+                            <input type="text" id="cvv" class="form-control" placeholder="CVV" maxlength="4">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Other Payment Method -->
+                <div id="other-details" class="payment-details">
+                    <div class="form-group">
+                        <label for="other-method">Specify Payment Method <span class="optional-label">(optional)</span></label>
+                        <input type="text" id="other-method" class="form-control" placeholder="Please specify your payment method">
+                    </div>
+                    <div class="form-group">
+                        <label for="other-details-text">Additional Details <span class="optional-label">(optional)</span></label>
+                        <textarea id="other-details-text" class="form-control" rows="3" placeholder="Provide any additional details about your payment method..."></textarea>
+                    </div>
+                </div>
+
+                <!-- Cash Payment Notice -->
+                <div id="cash-notice" class="payment-details">
+                    <div style="background: #e7f3ff; padding: 15px; border-radius: 8px; border-left: 4px solid var(--primary);">
+                        <h4 style="color: var(--primary); margin-bottom: 10px;">💵 Cash Payment</h4>
+                        <p style="color: var(--gray); margin-bottom: 0;">
+                            For cash payments, please proceed to the billing department upon arrival at the hospital. 
+                            Payment is required before services are rendered unless otherwise arranged.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Emergency Contact Information -->
+                <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid var(--light-gray);">
+                    <h4 style="color: var(--primary); margin-bottom: 15px;">Emergency Contact Information</h4>
+                    
+                    <div class="form-group">
+                        <label for="emergency-contact">Emergency Contact Person <span class="required">*</span></label>
+                        <input type="text" id="emergency-contact" class="form-control" required>
+                        <div class="error-message">Please provide an emergency contact</div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="emergency-phone">Emergency Contact Phone <span class="required">*</span></label>
+                            <input type="tel" id="emergency-phone" class="form-control" required>
+                            <div class="error-message">Please provide emergency contact phone</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="emergency-relationship">Relationship <span class="required">*</span></label>
+                            <input type="text" id="emergency-relationship" class="form-control" required>
+                            <div class="error-message">Please specify relationship</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-navigation">
+                    <button type="button" class="btn btn-outline" onclick="previousStep(4)">
+                        <i class="fas fa-arrow-left"></i>
+                        Previous
+                    </button>
+                    <button type="button" class="btn btn-secondary" onclick="submitRegistration()">
+                        <i class="fas fa-check"></i>
+                        Complete Registration
+                    </button>
+                </div>
+            </div>
+
+            <!-- Success Message -->
+            <div class="success-message" id="success-message">
+                <div class="success-icon">✅</div>
+                <h3>Registration Successful!</h3>
+                <p style="margin-bottom: 20px; color: var(--gray);">
+                    Thank you for registering with Jijue Hospital. Your patient account has been created successfully.
+                </p>
+                <p style="margin-bottom: 30px;">
+                    <strong>Login Details:</strong><br>
+                    Email: <span id="registered-email"></span><br>
+                    ID Number: <span id="registered-id"></span>
+                </p>
+                <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                    <a href="patient-portal.html?registration=success&name=" id="success-portal-link" class="btn">
+                        <i class="fas fa-user-circle"></i>
+                        Go to Patient Portal
+                    </a>
+                    <a href="index.html" class="btn btn-outline">
+                        <i class="fas fa-home"></i>
+                        Back to Home
+                    </a>
+                </div>
+            </div>
+
+            <!-- Emergency Contact -->
+            <div class="emergency-contact">
+                <div class="content">
+                    <h4>Need Immediate Assistance?</h4>
+                    <p>Our emergency team is available 24/7 to provide immediate medical care</p>
+                    <a href="tel:+254115947353" class="btn">
+                        <i class="fas fa-phone"></i>
+                        Call Emergency: +254115947353
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script>
+    let currentStep = 1;
+    const totalSteps = 4;
+    const API_BASE = 'http://localhost:5000/api';
+
+    // Enhanced Date of Birth functions
+    function setupDateInput() {
+        const dobInput = document.getElementById('date-of-birth');
+        
+        // Add event listeners for manual input
+        dobInput.addEventListener('input', function(e) {
+            let value = e.target.value;
+            
+            // Auto-format as user types
+            value = value.replace(/\D/g, ''); // Remove non-digits
+            
+            if (value.length > 4) {
+                value = value.substring(0, 4) + '/' + value.substring(4);
+            }
+            if (value.length > 7) {
+                value = value.substring(0, 7) + '/' + value.substring(7, 9);
+            }
+            
+            e.target.value = value;
+            validateDateOfBirth();
+        });
+        
+        // Add placeholder behavior
+        dobInput.addEventListener('focus', function(e) {
+            if (!e.target.value) {
+                e.target.setAttribute('placeholder', 'YYYY/MM/DD');
+            }
+        });
+        
+        dobInput.addEventListener('blur', function(e) {
+            e.target.removeAttribute('placeholder');
+        });
+    }
+
+    function validateDateOfBirth() {
+        const dobInput = document.getElementById('date-of-birth');
+        const dobValue = dobInput.value.trim();
+        
+        if (!dobValue) {
+            return { isValid: false, message: 'Please enter your date of birth' };
+        }
+        
+        // Check if the date is in YYYY/MM/DD format
+        const dateRegex = /^\d{4}\/\d{2}\/\d{2}$/;
+        if (!dateRegex.test(dobValue)) {
+            return { isValid: false, message: 'Please enter date in YYYY/MM/DD format' };
+        }
+        
+        // Parse the date components
+        const parts = dobValue.split('/');
+        const year = parseInt(parts[0]);
+        const month = parseInt(parts[1]);
+        const day = parseInt(parts[2]);
+        
+        // Basic validation
+        const currentYear = new Date().getFullYear();
+        if (year < 1900 || year > currentYear) {
+            return { isValid: false, message: `Please enter a valid year (1900-${currentYear})` };
+        }
+        
+        if (month < 1 || month > 12) {
+            return { isValid: false, message: 'Please enter a valid month (1-12)' };
+        }
+        
+        // Check day validity based on month
+        const daysInMonth = new Date(year, month, 0).getDate();
+        if (day < 1 || day > daysInMonth) {
+            return { isValid: false, message: `Please enter a valid day (1-${daysInMonth} for ${month}/${year})` };
+        }
+        
+        const selectedDate = new Date(year, month - 1, day);
+        const today = new Date();
+        today.setHours(0, 0, 0, 0); // Reset time part for accurate comparison
+        
+        if (selectedDate > today) {
+            return { isValid: false, message: 'Date of birth cannot be in the future' };
+        }
+        
+        const minDate = new Date(1900, 0, 1);
+        if (selectedDate < minDate) {
+            return { isValid: false, message: 'Please enter a valid date of birth (after 1900)' };
+        }
+        
+        return { isValid: true };
+    }
+
+    function getSelectedDate() {
+        const dobInput = document.getElementById('date-of-birth');
+        let dobValue = dobInput.value.trim();
+        
+        if (!dobValue) return '';
+        
+        // Convert from YYYY/MM/DD to YYYY-MM-DD for backend
+        if (dobValue.includes('/')) {
+            dobValue = dobValue.replace(/\//g, '-');
+        }
+        
+        return dobValue;
+    }
+
+    function updateProgressBar() {
+        const progressBar = document.getElementById('progress-bar');
+        const progress = ((currentStep - 1) / (totalSteps - 1)) * 100;
+        progressBar.style.width = progress + '%';
+        
+        document.querySelectorAll('.step').forEach(function(step, index) {
+            const stepNumber = index + 1;
+            if (stepNumber < currentStep) {
+                step.classList.add('completed');
+                step.classList.remove('active');
+            } else if (stepNumber === currentStep) {
+                step.classList.add('active');
+                step.classList.remove('completed');
+            } else {
+                step.classList.remove('active', 'completed');
+            }
+        });
+    }
+
+    function togglePaymentDetails() {
+        const paymentMethod = document.getElementById('payment-method').value;
+        
+        document.querySelectorAll('.payment-details').forEach(function(section) {
+            section.style.display = 'none';
+        });
+        
+        switch(paymentMethod) {
+            case 'insurance':
+                document.getElementById('insurance-details').style.display = 'block';
+                break;
+            case 'sha':
+                document.getElementById('sha-details').style.display = 'block';
+                break;
+            case 'cash':
+                document.getElementById('cash-notice').style.display = 'block';
+                break;
+            case 'bank':
+                document.getElementById('bank-details').style.display = 'block';
+                break;
+            case 'mobile':
+                document.getElementById('mobile-details').style.display = 'block';
+                break;
+            case 'credit':
+            case 'debit':
+                document.getElementById('card-details').style.display = 'block';
+                break;
+            case 'other':
+                document.getElementById('other-details').style.display = 'block';
+                break;
+        }
+    }
+
+    function validateStep(step) {
+        let isValid = true;
+        
+        if (step === 1) {
+            const firstName = document.getElementById('first-name');
+            const lastName = document.getElementById('last-name');
+            const gender = document.getElementById('gender');
+            const idNumber = document.getElementById('idNumber');
+            
+            if (!firstName.value.trim()) {
+                showError(firstName, 'Please enter your first name');
+                isValid = false;
+            } else {
+                clearError(firstName);
+            }
+            
+            if (!lastName.value.trim()) {
+                showError(lastName, 'Please enter your last name');
+                isValid = false;
+            } else {
+                clearError(lastName);
+            }
+            
+            const dobValidation = validateDateOfBirth();
+            if (!dobValidation.isValid) {
+                showError(document.getElementById('date-of-birth'), dobValidation.message);
+                isValid = false;
+            } else {
+                clearError(document.getElementById('date-of-birth'));
+            }
+            
+            if (!gender.value) {
+                showError(gender, 'Please select your gender');
+                isValid = false;
+            } else {
+                clearError(gender);
+            }
+            
+            if (!idNumber.value.trim()) {
+                showError(idNumber, 'Please enter your national ID number');
+                isValid = false;
+            } else {
+                clearError(idNumber);
+            }
+        }
+        
+        if (step === 2) {
+            const email = document.getElementById('email');
+            const phone = document.getElementById('phone');
+            const address = document.getElementById('address');
+            const city = document.getElementById('city');
+            
+            if (!email.value.trim() || !isValidEmail(email.value)) {
+                showError(email, 'Please enter a valid email address');
+                isValid = false;
+            } else {
+                clearError(email);
+            }
+            
+            if (!phone.value.trim()) {
+                showError(phone, 'Please enter your phone number');
+                isValid = false;
+            } else {
+                clearError(phone);
+            }
+            
+            if (!address.value.trim()) {
+                showError(address, 'Please enter your address');
+                isValid = false;
+            } else {
+                clearError(address);
+            }
+            
+            if (!city.value.trim()) {
+                showError(city, 'Please enter your city');
+                isValid = false;
+            } else {
+                clearError(city);
+            }
+        }
+        
+        if (step === 4) {
+            const paymentMethod = document.getElementById('payment-method');
+            const emergencyContact = document.getElementById('emergency-contact');
+            const emergencyPhone = document.getElementById('emergency-phone');
+            const emergencyRelationship = document.getElementById('emergency-relationship');
+            
+            if (!paymentMethod.value) {
+                showError(paymentMethod, 'Please select your preferred payment method');
+                isValid = false;
+            } else {
+                clearError(paymentMethod);
+            }
+            
+            if (!emergencyContact.value.trim()) {
+                showError(emergencyContact, 'Please provide an emergency contact');
+                isValid = false;
+            } else {
+                clearError(emergencyContact);
+            }
+            
+            if (!emergencyPhone.value.trim()) {
+                showError(emergencyPhone, 'Please provide emergency contact phone');
+                isValid = false;
+            } else {
+                clearError(emergencyPhone);
+            }
+            
+            if (!emergencyRelationship.value.trim()) {
+                showError(emergencyRelationship, 'Please specify relationship');
+                isValid = false;
+            } else {
+                clearError(emergencyRelationship);
+            }
+        }
+        
+        return isValid;
+    }
+
+    function showError(field, message) {
+        field.classList.add('error');
+        const errorDiv = field.nextElementSibling;
+        if (errorDiv && errorDiv.classList.contains('error-message')) {
+            errorDiv.textContent = message;
+            errorDiv.style.display = 'block';
+        }
+    }
+
+    function clearError(field) {
+        field.classList.remove('error');
+        const errorDiv = field.nextElementSibling;
+        if (errorDiv && errorDiv.classList.contains('error-message')) {
+            errorDiv.style.display = 'none';
+        }
+    }
+
+    function isValidEmail(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    }
+
+    function nextStep(step) {
+        if (!validateStep(step)) {
+            return;
+        }
+        
+        if (step < totalSteps) {
+            document.getElementById('step-' + step).classList.remove('active');
+            document.getElementById('step-' + (step + 1)).classList.add('active');
+            currentStep = step + 1;
+            updateProgressBar();
+        }
+    }
+
+    function previousStep(step) {
+        if (step > 1) {
+            document.getElementById('step-' + step).classList.remove('active');
+            document.getElementById('step-' + (step - 1)).classList.add('active');
+            currentStep = step - 1;
+            updateProgressBar();
+        }
+    }
+
+    async function testBackendConnection() {
+        try {
+            const response = await fetch(API_BASE + '/health');
+            if (response.ok) {
+                console.log('Backend connection successful');
+                return true;
+            } else {
+                console.error('Backend health check failed');
+                return false;
+            }
+        } catch (error) {
+            console.error('Cannot connect to backend:', error);
+            return false;
+        }
+    }
+
+    async function autoLoginAfterRegistration(patientData) {
+        try {
+            console.log('Auto-login after registration...');
+            
+            const loginResponse = await fetch(API_BASE + '/patients/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    email: patientData.email,
+                    idNumber: patientData.idNumber
+                })
+            });
+
+            if (loginResponse.ok) {
+                const loginResult = await loginResponse.json();
+                
+                if (loginResult.success) {
+                    localStorage.setItem('currentPatient', JSON.stringify(loginResult.patient));
+                    localStorage.setItem('authToken', loginResult.token);
+                    
+                    console.log('Auto-login successful, redirecting to dashboard...');
+                    
+                    showSuccessMessage(loginResult.patient);
+                    
+                    setTimeout(function() {
+                        window.location.href = 'patient-dashboard.html';
+                    }, 2000);
+                    
+                    return true;
+                }
+            }
+            
+            console.warn('Auto-login failed, showing manual login option');
+            showManualLoginOption(patientData);
+            return false;
+            
+        } catch (error) {
+            console.error('Auto-login error:', error);
+            showManualLoginOption(patientData);
+            return false;
+        }
+    }
+
+    function showSuccessMessage(patient) {
+        document.querySelectorAll('.form-section').forEach(function(section) {
+            section.classList.remove('active');
+        });
+        
+        document.getElementById('registered-email').textContent = patient.email;
+        document.getElementById('registered-id').textContent = patient.idNumber;
+        
+        const successMessage = document.getElementById('success-message');
+        
+        successMessage.innerHTML = [
+            '<div class="success-icon">✅</div>',
+            '<h3>Registration Successful!</h3>',
+            '<p style="margin-bottom: 20px; color: var(--gray);">',
+            'Thank you for registering with Jijue Hospital. Your patient account has been created successfully.',
+            '</p>',
+            '<p style="margin-bottom: 30px;">',
+            '<strong>Login Details:</strong><br>',
+            'Email: <span id="registered-email">' + patient.email + '</span><br>',
+            'ID Number: <span id="registered-id">' + patient.idNumber + '</span>',
+            '</p>',
+            '<div class="redirect-countdown">',
+            '<i class="fas fa-spinner fa-spin"></i>',
+            '<span>Redirecting to dashboard in <span id="countdown">3</span> seconds...</span>',
+            '</div>',
+            '<div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-top: 20px;">',
+            '<button class="btn" onclick="redirectToDashboardNow()">',
+            '<i class="fas fa-tachometer-alt"></i>',
+            'Go to Dashboard Now',
+            '</button>',
+            '<button class="btn btn-outline" onclick="showManualLoginOption()">',
+            '<i class="fas fa-sign-in-alt"></i>',
+            'Manual Login',
+            '</button>',
+            '</div>'
+        ].join('');
+        
+        successMessage.classList.add('active');
+        successMessage.scrollIntoView({ behavior: 'smooth' });
+        
+        startCountdown();
+    }
+
+    function startCountdown() {
+        let countdown = 3;
+        const countdownElement = document.getElementById('countdown');
+        const countdownInterval = setInterval(function() {
+            countdown--;
+            if (countdownElement) {
+                countdownElement.textContent = countdown;
+            }
+            if (countdown <= 0) {
+                clearInterval(countdownInterval);
+                window.location.href = 'patient-dashboard.html';
+            }
+        }, 1000);
+    }
+
+    function redirectToDashboardNow() {
+        window.location.href = 'patient-dashboard.html';
+    }
+
+    function showManualLoginOption(patientData) {
+        const successMessage = document.getElementById('success-message');
+        
+        if (patientData) {
+            successMessage.innerHTML = [
+                '<div class="success-icon">✅</div>',
+                '<h3>Registration Successful!</h3>',
+                '<p style="margin-bottom: 20px; color: var(--gray);">',
+                'Thank you for registering with Jijue Hospital. Your patient account has been created successfully.',
+                '</p>',
+                '<p style="margin-bottom: 30px;">',
+                '<strong>Login Details:</strong><br>',
+                'Email: <span>' + patientData.email + '</span><br>',
+                'ID Number: <span>' + patientData.idNumber + '</span>',
+                '</p>',
+                '<div style="background: #e7f3ff; padding: 15px; border-radius: 8px; margin-bottom: 20px;">',
+                '<p style="margin: 0; color: var(--primary);">',
+                '<i class="fas fa-info-circle"></i>',
+                'Please use your email and ID number to login to your account.',
+                '</p>',
+                '</div>',
+                '<div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">',
+                '<a href="patient-portal.html" class="btn">',
+                '<i class="fas fa-sign-in-alt"></i>',
+                'Go to Login Page',
+                '</a>',
+                '<a href="index.html" class="btn btn-outline">',
+                '<i class="fas fa-home"></i>',
+                'Back to Home',
+                '</a>',
+                '</div>'
+            ].join('');
+        }
+        
+        successMessage.classList.add('active');
+        successMessage.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    async function submitRegistration() {
+        if (!validateStep(4)) {
+            return;
+        }
+        
+        const submitBtn = document.querySelector('#step-4 .btn-secondary');
+        const originalText = submitBtn.innerHTML;
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+        
+        try {
+            const isConnected = await testBackendConnection();
+            if (!isConnected) {
+                throw new Error('Cannot connect to server. Please make sure the backend is running.');
+            }
+
+            const formData = {
+                firstName: document.getElementById('first-name').value.trim(),
+                lastName: document.getElementById('last-name').value.trim(),
+                dateOfBirth: getSelectedDate(),
+                gender: document.getElementById('gender').value,
+                idNumber: document.getElementById('idNumber').value.trim(),
+                maritalStatus: document.getElementById('marital-status').value,
+                email: document.getElementById('email').value.trim(),
+                phone: document.getElementById('phone').value.trim(),
+                alternatePhone: document.getElementById('alternate-phone').value.trim(),
+                address: document.getElementById('address').value.trim(),
+                city: document.getElementById('city').value.trim(),
+                postalCode: document.getElementById('postal-code').value.trim(),
+                bloodType: document.getElementById('blood-type').value,
+                allergies: document.getElementById('allergies').value.trim(),
+                currentMedications: document.getElementById('current-medications').value.trim(),
+                medicalConditions: document.getElementById('medical-conditions').value.trim(),
+                familyHistory: document.getElementById('family-history').value.trim(),
+                paymentMethod: document.getElementById('payment-method').value,
+                emergencyContact: document.getElementById('emergency-contact').value.trim(),
+                emergencyPhone: document.getElementById('emergency-phone').value.trim(),
+                emergencyRelationship: document.getElementById('emergency-relationship').value.trim(),
+                insuranceProvider: document.getElementById('insurance-provider') ? document.getElementById('insurance-provider').value : '',
+                policyNumber: document.getElementById('policy-number') ? document.getElementById('policy-number').value : ''
+            };
+
+            console.log('Sending registration data:', formData);
+
+            const response = await fetch(API_BASE + '/patients/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData)
+            });
+
+            console.log('Response status:', response.status);
+
+            if (!response.ok) {
+                let errorMessage = 'HTTP error! status: ' + response.status;
+                try {
+                    const errorData = await response.json();
+                    errorMessage = errorData.message || errorMessage;
+                } catch (e) {
+                    errorMessage = response.statusText || errorMessage;
+                }
+                throw new Error(errorMessage);
+            }
+
+            const result = await response.json();
+            console.log('Registration response:', result);
+
+            if (result.success) {
+                const autoLoginSuccess = await autoLoginAfterRegistration({
+                    email: formData.email,
+                    idNumber: formData.idNumber
+                });
+                
+                if (!autoLoginSuccess) {
+                    showManualLoginOption({
+                        email: result.patient.email,
+                        idNumber: result.patient.idNumber
+                    });
+                }
+                
+            } else {
+                throw new Error(result.message || 'Registration failed');
+            }
+
+        } catch (error) {
+            console.error('Registration error:', error);
+            
+            if (error.name === 'TypeError' && error.message.includes('Failed to fetch')) {
+                alert('Cannot connect to server. Please:\n\n1. Make sure the backend server is running on port 5000\n2. Check that you are accessing the site through http://localhost:3000\n3. Refresh the page and try again');
+            } else if (error.message.includes('NetworkError')) {
+                alert('Network error. Please check your internet connection and try again.');
+            } else if (error.message.includes('Cannot connect to server')) {
+                alert('Backend server is not running. Please start the server and try again.');
+            } else {
+                alert('Registration failed: ' + error.message);
+            }
+            
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = originalText;
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('Patient registration form loaded');
+        console.log('Frontend: http://localhost:3000');
+        console.log('Backend API:', API_BASE);
+        
+        // Setup the date input for manual entry
+        setupDateInput();
+        
+        testBackendConnection();
+        
+        updateProgressBar();
+        
+        document.querySelectorAll('.form-control').forEach(function(input) {
+            input.addEventListener('input', function() {
+                clearError(this);
+            });
+        });
+        
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.portal-header');
+            if (window.scrollY > 50) {
+                header.style.boxShadow = '0 5px 20px rgba(0,0,0,0.1)';
+                header.style.background = 'rgba(255,255,255,0.95)';
+                header.style.backdropFilter = 'blur(10px)';
+            } else {
+                header.style.boxShadow = '0 2px 15px rgba(0,0,0,0.1)';
+                header.style.background = 'white';
+                header.style.backdropFilter = 'none';
+            }
+        });
+
+        const paymentMethod = document.getElementById('payment-method');
+        if (paymentMethod) {
+            paymentMethod.addEventListener('change', togglePaymentDetails);
+        }
+    });
+</script>
+</body>
+</html>
