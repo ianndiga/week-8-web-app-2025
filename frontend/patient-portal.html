@@ -212,10 +212,8 @@
         const backBtn = document.querySelector('.back-btn');
         const navMenu = document.querySelector('nav ul');
         
-        // ✅ FIX: Use relative path for API
         const API_BASE = 'http://localhost:5000/api';
         
-        // ✅ ADD: Connection test function
         async function testBackendConnection() {
             try {
                 console.log('🔍 Testing backend connection...');
@@ -234,13 +232,10 @@
             }
         }
 
-        // Test connection on page load
         testBackendConnection();
 
-        // Back button functionality - FIXED: Always go to home page
         if (backBtn) {
             backBtn.addEventListener('click', function() {
-                // Always redirect to home page
                 window.location.href = 'index.html';
             });
         }
@@ -277,35 +272,43 @@
                     try {
                         console.log('🔄 Attempting login to:', `${API_BASE}/patients/login`);
                         
-                        // Better detection for email vs phone
-                        const isEmail = emailOrPhone.includes('@') && emailOrPhone.includes('.');
+                        // DIRECT APPROACH: Send both email and phone fields, let backend handle it
                         const loginData = {
                             idNumber: idNumber.trim()
                         };
                         
-                        if (isEmail) {
+                        // Check if it's email (contains @) or phone
+                        if (emailOrPhone.includes('@')) {
                             loginData.email = emailOrPhone.trim();
                             console.log('📧 Detected as email:', emailOrPhone);
                         } else {
-                            // It's a phone number - clean it up
+                            // It's a phone number - format it properly
                             let phone = emailOrPhone.trim();
-                            // Remove any non-digit characters except +
+                            
+                            // Remove all non-digit characters except +
                             phone = phone.replace(/[^\d+]/g, '');
-                            // Ensure it starts with country code if it doesn't
+                            
+                            console.log('📞 Raw phone input:', emailOrPhone);
+                            console.log('📞 Cleaned phone:', phone);
+                            
+                            // Format phone number to +254 format
                             if (!phone.startsWith('+')) {
                                 if (phone.startsWith('0')) {
-                                    phone = '+254' + phone.substring(1); // Convert 07... to +2547...
+                                    phone = '+254' + phone.substring(1); // 0747801812 -> +254747801812
+                                } else if (phone.startsWith('254') && phone.length === 12) {
+                                    phone = '+' + phone; // 254747801812 -> +254747801812
                                 } else if (phone.length === 9) {
-                                    phone = '+254' + phone; // Add +254 to 9-digit numbers
-                                } else if (phone.length === 10 && phone.startsWith('1')) {
-                                    phone = '+254' + phone; // Add +254 to 10-digit numbers starting with 1
+                                    phone = '+254' + phone; // 747801812 -> +254747801812
                                 }
                             }
+                            
+                            // Send as both phone and email (for compatibility)
                             loginData.phone = phone;
-                            console.log('📞 Detected as phone:', phone);
+                            loginData.email = ''; // Send empty email to avoid undefined
+                            console.log('📞 Final phone for login:', phone);
                         }
                         
-                        console.log('📤 Sending login data:', loginData);
+                        console.log('📤 Sending login data to backend:', JSON.stringify(loginData, null, 2));
                         
                         // Send login request to backend API
                         const response = await fetch(`${API_BASE}/patients/login`, {
@@ -317,12 +320,22 @@
                         });
 
                         console.log('📡 Login response status:', response.status);
+                        console.log('📡 Login response headers:', response.headers);
 
-                        const result = await response.json();
-                        console.log('📦 Login response:', result);
+                        let result;
+                        try {
+                            result = await response.json();
+                            console.log('📦 Login response:', JSON.stringify(result, null, 2));
+                        } catch (parseError) {
+                            console.error('❌ Failed to parse response JSON:', parseError);
+                            const textResponse = await response.text();
+                            console.log('📦 Raw response text:', textResponse);
+                            throw new Error('Invalid response from server');
+                        }
 
                         if (result.success) {
                             // Successful login
+                            console.log('✅ Login successful!');
                             if (loginSuccess) {
                                 loginSuccess.style.display = 'block';
                                 loginSuccess.textContent = result.message || 'Login successful! Redirecting...';
@@ -341,11 +354,18 @@
                             }, 1500);
                         } else {
                             // Failed login
+                            console.log('❌ Login failed:', result.message);
+                            
+                            // Show specific error message from backend
                             if (loginError) {
-                                loginError.textContent = result.message || 'Invalid email, phone or ID number. Don\'t have an account? ';
+                                let errorMessage = result.message || 'Invalid email, phone or ID number.';
+                                if (result.details) {
+                                    errorMessage += ' ' + result.details;
+                                }
+                                
                                 loginError.innerHTML = '<i class="fas fa-exclamation-circle" style="margin-right: 8px;"></i>' + 
-                                    (result.message || 'Invalid email, phone or ID number. Don\'t have an account?') + 
-                                    ' <a href="patient-registration.html" style="margin-left: 5px; color: var(--primary); font-weight: 600;">Sign up</a>';
+                                    errorMessage + 
+                                    ' Don\'t have an account? <a href="patient-registration.html" style="margin-left: 5px; color: var(--primary); font-weight: 600;">Sign up</a>';
                                 loginError.style.display = 'block';
                             }
                             
@@ -366,7 +386,14 @@
                     } catch (error) {
                         console.error('Login error:', error);
                         if (loginError) {
-                            loginError.textContent = 'Cannot connect to server. Please try again later.';
+                            let errorMessage = 'Cannot connect to server. Please try again later.';
+                            if (error.message.includes('Failed to fetch')) {
+                                errorMessage = 'Cannot connect to the server. Please make sure the backend is running.';
+                            } else if (error.message.includes('Invalid response')) {
+                                errorMessage = 'Server returned an invalid response. Please try again.';
+                            }
+                            
+                            loginError.textContent = errorMessage;
                             loginError.style.display = 'block';
                         }
                         
@@ -376,27 +403,38 @@
                         // Get stored registration data from localStorage
                         const storedPatients = JSON.parse(localStorage.getItem('registeredPatients') || '[]');
                         
-                        // Try both email and phone matching
+                        // Try multiple phone formats for matching
                         const foundPatient = storedPatients.find(patient => {
                             const input = emailOrPhone.trim();
-                            const isEmailInput = input.includes('@') && input.includes('.');
+                            const isEmailInput = input.includes('@');
                             
                             if (isEmailInput) {
                                 return patient.email === input && patient.idNumber === idNumber;
                             } else {
                                 // For phone matching, try different formats
                                 let phoneInput = input.replace(/[^\d+]/g, '');
-                                let patientPhone = patient.phone ? patient.phone.replace(/[^\d+]/g, '') : '';
                                 
-                                return (patientPhone === phoneInput || 
-                                       patientPhone === '+254' + phoneInput.substring(1) ||
-                                       patient.phone === input) && 
-                                       patient.idNumber === idNumber;
+                                // Try different phone format combinations
+                                const possibleFormats = [
+                                    phoneInput,
+                                    '+' + phoneInput,
+                                    phoneInput.startsWith('0') ? '+254' + phoneInput.substring(1) : null,
+                                    phoneInput.startsWith('254') ? '+' + phoneInput : null,
+                                    phoneInput.startsWith('+254') ? phoneInput : null,
+                                    phoneInput.length === 9 ? '+254' + phoneInput : null
+                                ].filter(Boolean);
+                                
+                                const patientPhone = patient.phone ? patient.phone.replace(/[^\d+]/g, '') : '';
+                                
+                                return possibleFormats.some(format => 
+                                    patientPhone === format
+                                ) && patient.idNumber === idNumber;
                             }
                         });
                         
                         if (foundPatient) {
                             // Successful login with localStorage fallback
+                            console.log('✅ Login successful via localStorage fallback');
                             if (loginSuccess) {
                                 loginSuccess.style.display = 'block';
                                 loginSuccess.textContent = 'Login successful! Redirecting...';
@@ -454,23 +492,14 @@
                     console.log('🔍 Forgot ID request to:', `${API_BASE}/patients/forgot-id`);
                     
                     // Determine if input is email or phone
-                    const isEmail = emailOrPhone.includes('@') && emailOrPhone.includes('.');
+                    const isEmail = emailOrPhone.includes('@');
                     const requestData = {};
                     
                     if (isEmail) {
                         requestData.email = emailOrPhone.trim();
                     } else {
-                        // Clean phone number
-                        let phone = emailOrPhone.trim();
-                        phone = phone.replace(/[^\d+]/g, '');
-                        if (!phone.startsWith('+')) {
-                            if (phone.startsWith('0')) {
-                                phone = '+254' + phone.substring(1);
-                            } else if (phone.length === 9) {
-                                phone = '+254' + phone;
-                            }
-                        }
-                        requestData.phone = phone;
+                        // For phone, use the exact input
+                        requestData.phone = emailOrPhone.trim();
                     }
                     
                     // Try to check with backend API first
@@ -599,7 +628,7 @@
         }, 300);
     });
 
-    // Global API Base - ✅ FIXED: Use relative path
+    // Global API Base
     const API_BASE = '/api';
 
     // Enhanced Appointment Booking Function

@@ -13,6 +13,8 @@
     --error: #ea4335;
     --error-dark: #d33426;
     --success: #34a853;
+    --light-blue: #f0f7ff;
+    --light-bg: #f8f9fa;
 }
 
 * {
@@ -275,6 +277,117 @@ body {
     padding-right: 40px;
 }
 
+/* Country Code Selector Styles */
+.phone-input-wrapper {
+    display: flex;
+    width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 2px solid var(--light-gray);
+    transition: all 0.3s ease;
+    background: #f8f9fa;
+}
+
+.phone-input-wrapper:focus-within {
+    border-color: var(--primary);
+    background: white;
+    box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.1);
+    transform: translateY(-2px);
+}
+
+.country-code-selector {
+    position: relative;
+    min-width: 150px;
+    border-right: 2px solid var(--light-gray);
+    background: #f8f9fa;
+    transition: all 0.3s ease;
+}
+
+.phone-input-wrapper:focus-within .country-code-selector {
+    background: white;
+    border-right-color: var(--primary);
+}
+
+.country-code-select {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: transparent;
+    padding: 14px 16px;
+    font-size: 1rem;
+    color: var(--dark);
+    cursor: pointer;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%235f6368' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    background-size: 12px;
+    padding-right: 40px;
+    font-weight: 500;
+}
+
+.country-code-select:focus {
+    outline: none;
+    background-color: var(--light-blue);
+}
+
+.country-code-select option {
+    padding: 12px 16px;
+    font-size: 1rem;
+    background: white;
+    color: var(--dark);
+}
+
+.phone-number {
+    flex: 1;
+    border: none;
+    padding: 14px 16px;
+    font-size: 1rem;
+    background: transparent;
+    color: var(--dark);
+    transition: all 0.3s ease;
+}
+
+.phone-number:focus {
+    outline: none;
+    background-color: var(--light-blue);
+}
+
+.phone-number::placeholder {
+    color: var(--gray);
+    opacity: 0.7;
+}
+
+/* Error state for phone input */
+.phone-input-wrapper.error {
+    border-color: var(--error);
+    background: rgba(234, 67, 53, 0.02);
+    box-shadow: 0 0 0 3px rgba(234, 67, 53, 0.1);
+}
+
+.phone-input-wrapper.error .country-code-selector {
+    border-right-color: var(--error);
+    background: rgba(234, 67, 53, 0.05);
+}
+
+.phone-input-wrapper.error .country-code-select,
+.phone-input-wrapper.error .phone-number {
+    background: transparent;
+}
+
+/* Hover effects */
+.phone-input-wrapper:not(.error):hover {
+    border-color: var(--primary);
+    background: white;
+}
+
+.phone-input-wrapper:not(.error):hover .country-code-selector {
+    border-right-color: var(--primary);
+    background: var(--light-blue);
+}
+
 /* Date Picker Styles */
 .date-input-wrapper {
     position: relative;
@@ -490,53 +603,6 @@ input[type="date"]::after {
     20%, 40%, 60%, 80% { transform: translateX(5px); }
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    .registration-card {
-        padding: 30px 25px;
-        margin: 20px;
-    }
-    
-    .form-row {
-        flex-direction: column;
-        gap: 0;
-    }
-    
-    .progress-steps {
-        flex-wrap: wrap;
-        gap: 15px;
-    }
-    
-    .step {
-        flex: 1;
-        min-width: 80px;
-    }
-    
-    .registration-header h2 {
-        font-size: 1.8rem;
-    }
-    
-    .form-navigation {
-        flex-direction: column;
-        gap: 15px;
-    }
-    
-    .form-navigation .btn {
-        width: 100%;
-        justify-content: center;
-    }
-}
-
-@media (max-width: 480px) {
-    .registration-card {
-        padding: 25px 20px;
-    }
-    
-    .registration-header h2 {
-        font-size: 1.6rem;
-    }
-}
-
 /* Form Validation */
 .error-message {
     color: var(--error);
@@ -551,6 +617,10 @@ input[type="date"]::after {
 }
 
 .form-control.error + .error-message {
+    display: block;
+}
+
+.phone-input-wrapper.error + .error-message {
     display: block;
 }
 
@@ -601,6 +671,94 @@ input[type="date"]::after {
 .redirect-countdown #countdown {
     font-weight: bold;
     color: var(--secondary);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .registration-card {
+        padding: 30px 25px;
+        margin: 20px;
+    }
+    
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+    
+    .progress-steps {
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+    
+    .step {
+        flex: 1;
+        min-width: 80px;
+    }
+    
+    .registration-header h2 {
+        font-size: 1.8rem;
+    }
+    
+    .form-navigation {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .form-navigation .btn {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    /* Mobile phone input styles */
+    .phone-input-wrapper {
+        flex-direction: column;
+        border-radius: 10px;
+    }
+    
+    .country-code-selector {
+        min-width: 100%;
+        border-right: none;
+        border-bottom: 2px solid var(--light-gray);
+    }
+    
+    .country-code-select {
+        padding: 12px 16px;
+        background-position: right 16px center;
+    }
+    
+    .phone-number {
+        padding: 12px 16px;
+    }
+    
+    .phone-input-wrapper:focus-within .country-code-selector {
+        border-right: none;
+        border-bottom-color: var(--primary);
+    }
+}
+
+@media (max-width: 480px) {
+    .registration-card {
+        padding: 25px 20px;
+    }
+    
+    .registration-header h2 {
+        font-size: 1.6rem;
+    }
+    
+    .country-code-selector {
+        min-width: 100%;
+    }
+    
+    .country-code-select {
+        font-size: 0.95rem;
+        padding: 10px 14px;
+        padding-right: 35px;
+    }
+    
+    .phone-number {
+        padding: 10px 14px;
+        font-size: 0.95rem;
+    }
 }
 
 /* Remove old date input group styles */

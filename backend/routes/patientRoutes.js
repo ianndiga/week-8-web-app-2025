@@ -358,33 +358,39 @@ router.post('/register', async (req, res) => {
   }
 });
 
-// Patient login - REAL IMPLEMENTATION WITH DATABASE CHECK
+// Patient login - UPDATED TO HANDLE BOTH EMAIL AND PHONE
 router.post('/login', async (req, res) => {
   try {
-    const { email, idNumber } = req.body;
+    const { email, phone, idNumber } = req.body;
 
-    console.log('🔐 Login attempt for:', { email, idNumber });
+    console.log('🔐 Login attempt for:', { email, phone, idNumber });
 
-    // Validate required fields
-    if (!email || !idNumber) {
+    // Validate required fields - allow either email OR phone
+    if ((!email && !phone) || !idNumber) {
       return res.status(400).json({ 
         success: false, 
-        message: 'Email and ID number are required' 
+        message: 'Either email or phone number, and ID number are required' 
       });
     }
 
-    // Find patient by email and ID number
-    const patient = await Patient.findOne({ 
-      email: email.toLowerCase().trim(), 
-      idNumber: idNumber.trim()
-    }).select('-__v');
+    // Build search query for either email or phone
+    let searchQuery = { idNumber: idNumber.trim() };
+    
+    if (email) {
+      searchQuery.email = email.toLowerCase().trim();
+    } else if (phone) {
+      searchQuery.phone = phone.trim();
+    }
+
+    // Find patient by email/phone and ID number
+    const patient = await Patient.findOne(searchQuery).select('-__v');
 
     console.log('Found patient:', patient ? patient.patientId : 'No patient found');
 
     if (!patient) {
       return res.status(401).json({ 
         success: false, 
-        message: 'Invalid email or ID number' 
+        message: 'Invalid email/phone or ID number' 
       });
     }
 
@@ -997,33 +1003,42 @@ router.post('/:patientId/appointments/book', async (req, res) => {
   }
 });
 
-// Forgot ID number endpoint
+// Forgot ID number endpoint - UPDATED TO HANDLE PHONE
 router.post('/forgot-id', async (req, res) => {
   try {
-    const { email } = req.body;
+    const { email, phone } = req.body;
 
-    if (!email) {
+    // Validate that either email or phone is provided
+    if (!email && !phone) {
       return res.status(400).json({
         success: false,
-        message: 'Email is required'
+        message: 'Email or phone number is required'
       });
     }
 
-    // Find patient by email
-    const patient = await Patient.findOne({ email: email.toLowerCase() });
+    // Build search query
+    let searchQuery = {};
+    if (email) {
+      searchQuery.email = email.toLowerCase();
+    } else {
+      searchQuery.phone = phone;
+    }
+
+    // Find patient by email or phone
+    const patient = await Patient.findOne(searchQuery);
 
     if (!patient) {
       return res.status(404).json({ 
         success: false, 
-        message: 'No account found with this email address' 
+        message: 'No account found with this email address or phone number' 
       });
     }
 
-    // In a real application, you would send an email here
+    // In a real application, you would send an email/SMS here
     // For demo purposes, we'll just return success
     res.json({
       success: true,
-      message: 'ID number retrieval instructions sent to your email'
+      message: 'ID number retrieval instructions sent to your email/phone'
     });
 
   } catch (error) {
@@ -1276,6 +1291,7 @@ router.post('/:patientId/prescriptions/request', async (req, res) => {
         status: prescription.status,
         requestedDate: prescription.requestedDate
       }
+   
     });
 
   } catch (error) {
