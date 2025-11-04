@@ -133,21 +133,86 @@
             <div class="form-section" id="step-2">
                 <h3 style="margin-bottom: 20px; color: var(--primary);">Contact Details</h3>
                 
+                <!-- UPDATED: Email made optional -->
                 <div class="form-group">
-                    <label for="email">Email Address <span class="required">*</span></label>
-                    <input type="email" id="email" class="form-control" required>
+                    <label for="email">Email Address <span class="optional-label">(optional)</span></label>
+                    <input type="email" id="email" class="form-control" placeholder="Enter your email address (optional)">
+                    <div class="field-hint">If you don't have an email, you can login with your phone number and ID</div>
                     <div class="error-message">Please enter a valid email address</div>
                 </div>
                 
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="phone">Phone Number <span class="required">*</span></label>
-                        <input type="tel" id="phone" class="form-control" required>
-                        <div class="error-message">Please enter your phone number</div>
+                <!-- UPDATED: Phone number with country code selection -->
+                <div class="form-group">
+                    <label for="phone">Phone Number <span class="required">*</span></label>
+                    <div class="phone-input-wrapper">
+                        <div class="country-code-selector">
+                            <select id="country-code" class="country-code-select">
+                                <option value="+254">Kenya (+254)</option>
+                                <option value="+255">Tanzania (+255)</option>
+                                <option value="+256">Uganda (+256)</option>
+                                <option value="+257">Burundi (+257)</option>
+                                <option value="+250">Rwanda (+250)</option>
+                                <option value="+211">South Sudan (+211)</option>
+                                <option value="+253">Djibouti (+253)</option>
+                                <option value="+252">Somalia (+252)</option>
+                                <option value="+251">Ethiopia (+251)</option>
+                                <option value="+249">Sudan (+249)</option>
+                                <option value="+27">South Africa (+27)</option>
+                                <option value="+234">Nigeria (+234)</option>
+                                <option value="+233">Ghana (+233)</option>
+                                <option value="+1">USA/Canada (+1)</option>
+                                <option value="+44">UK (+44)</option>
+                                <option value="+91">India (+91)</option>
+                                <option value="+86">China (+86)</option>
+                                <option value="+81">Japan (+81)</option>
+                                <option value="+49">Germany (+49)</option>
+                                <option value="+33">France (+33)</option>
+                                <option value="+39">Italy (+39)</option>
+                                <option value="+34">Spain (+34)</option>
+                                <option value="+61">Australia (+61)</option>
+                                <option value="+64">New Zealand (+64)</option>
+                            </select>
+                        </div>
+                        <input type="tel" id="phone" class="form-control phone-number" required 
+                               placeholder="Enter phone number">
                     </div>
-                    <div class="form-group">
-                        <label for="alternate-phone">Alternate Phone <span class="optional-label">(optional)</span></label>
-                        <input type="tel" id="alternate-phone" class="form-control" placeholder="Optional">
+                    <div class="field-hint">Your phone number will be used for login and communications</div>
+                    <div class="error-message">Please enter your phone number</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="alternate-phone">Alternate Phone <span class="optional-label">(optional)</span></label>
+                    <div class="phone-input-wrapper">
+                        <div class="country-code-selector">
+                            <select id="alternate-country-code" class="country-code-select">
+                                <option value="+254">Kenya (+254)</option>
+                                <option value="+255">Tanzania (+255)</option>
+                                <option value="+256">Uganda (+256)</option>
+                                <option value="+257">Burundi (+257)</option>
+                                <option value="+250">Rwanda (+250)</option>
+                                <option value="+211">South Sudan (+211)</option>
+                                <option value="+253">Djibouti (+253)</option>
+                                <option value="+252">Somalia (+252)</option>
+                                <option value="+251">Ethiopia (+251)</option>
+                                <option value="+249">Sudan (+249)</option>
+                                <option value="+27">South Africa (+27)</option>
+                                <option value="+234">Nigeria (+234)</option>
+                                <option value="+233">Ghana (+233)</option>
+                                <option value="+1">USA/Canada (+1)</option>
+                                <option value="+44">UK (+44)</option>
+                                <option value="+91">India (+91)</option>
+                                <option value="+86">China (+86)</option>
+                                <option value="+81">Japan (+81)</option>
+                                <option value="+49">Germany (+49)</option>
+                                <option value="+33">France (+33)</option>
+                                <option value="+39">Italy (+39)</option>
+                                <option value="+34">Spain (+34)</option>
+                                <option value="+61">Australia (+61)</option>
+                                <option value="+64">New Zealand (+64)</option>
+                            </select>
+                        </div>
+                        <input type="tel" id="alternate-phone" class="form-control phone-number" 
+                               placeholder="Enter alternate phone number (optional)">
                     </div>
                 </div>
                 
@@ -405,17 +470,48 @@
                         <div class="error-message">Please provide an emergency contact</div>
                     </div>
                     
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="emergency-phone">Emergency Contact Phone <span class="required">*</span></label>
-                            <input type="tel" id="emergency-phone" class="form-control" required>
-                            <div class="error-message">Please provide emergency contact phone</div>
+                    <!-- UPDATED: Emergency contact phone with country code -->
+                    <div class="form-group">
+                        <label for="emergency-phone">Emergency Contact Phone <span class="required">*</span></label>
+                        <div class="phone-input-wrapper">
+                            <div class="country-code-selector">
+                                <select id="emergency-country-code" class="country-code-select">
+                                    <option value="+254">Kenya (+254)</option>
+                                    <option value="+255">Tanzania (+255)</option>
+                                    <option value="+256">Uganda (+256)</option>
+                                    <option value="+257">Burundi (+257)</option>
+                                    <option value="+250">Rwanda (+250)</option>
+                                    <option value="+211">South Sudan (+211)</option>
+                                    <option value="+253">Djibouti (+253)</option>
+                                    <option value="+252">Somalia (+252)</option>
+                                    <option value="+251">Ethiopia (+251)</option>
+                                    <option value="+249">Sudan (+249)</option>
+                                    <option value="+27">South Africa (+27)</option>
+                                    <option value="+234">Nigeria (+234)</option>
+                                    <option value="+233">Ghana (+233)</option>
+                                    <option value="+1">USA/Canada (+1)</option>
+                                    <option value="+44">UK (+44)</option>
+                                    <option value="+91">India (+91)</option>
+                                    <option value="+86">China (+86)</option>
+                                    <option value="+81">Japan (+81)</option>
+                                    <option value="+49">Germany (+49)</option>
+                                    <option value="+33">France (+33)</option>
+                                    <option value="+39">Italy (+39)</option>
+                                    <option value="+34">Spain (+34)</option>
+                                    <option value="+61">Australia (+61)</option>
+                                    <option value="+64">New Zealand (+64)</option>
+                                </select>
+                            </div>
+                            <input type="tel" id="emergency-phone" class="form-control phone-number" required 
+                                   placeholder="Enter emergency contact phone">
                         </div>
-                        <div class="form-group">
-                            <label for="emergency-relationship">Relationship <span class="required">*</span></label>
-                            <input type="text" id="emergency-relationship" class="form-control" required>
-                            <div class="error-message">Please specify relationship</div>
-                        </div>
+                        <div class="error-message">Please provide emergency contact phone</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="emergency-relationship">Relationship <span class="required">*</span></label>
+                        <input type="text" id="emergency-relationship" class="form-control" required>
+                        <div class="error-message">Please specify relationship</div>
                     </div>
                 </div>
                 
@@ -440,8 +536,7 @@
                 </p>
                 <p style="margin-bottom: 30px;">
                     <strong>Login Details:</strong><br>
-                    Email: <span id="registered-email"></span><br>
-                    ID Number: <span id="registered-id"></span>
+                    <span id="login-method-display"></span>
                 </p>
                 <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
                     <a href="patient-portal.html?registration=success&name=" id="success-portal-link" class="btn">
@@ -473,6 +568,30 @@
     let currentStep = 1;
     const totalSteps = 4;
     const API_BASE = 'http://localhost:5000/api';
+
+    // Function to get formatted phone number with country code
+    function getFormattedPhoneNumber(countryCodeId, phoneInputId) {
+        const countryCode = document.getElementById(countryCodeId).value;
+        const phoneNumber = document.getElementById(phoneInputId).value.trim();
+        
+        if (!phoneNumber) return '';
+        
+        // Remove any existing country code from the phone number
+        let cleanPhone = phoneNumber.replace(/[^\d]/g, '');
+        
+        // If phone number already starts with country code (without +), remove it
+        const countryCodeDigits = countryCode.replace('+', '');
+        if (cleanPhone.startsWith(countryCodeDigits)) {
+            cleanPhone = cleanPhone.substring(countryCodeDigits.length);
+        }
+        
+        // Remove leading zero if present
+        if (cleanPhone.startsWith('0')) {
+            cleanPhone = cleanPhone.substring(1);
+        }
+        
+        return countryCode + cleanPhone;
+    }
 
     // Enhanced Date of Birth functions
     function setupDateInput() {
@@ -678,13 +797,15 @@
             const address = document.getElementById('address');
             const city = document.getElementById('city');
             
-            if (!email.value.trim() || !isValidEmail(email.value)) {
+            // Email is now optional, but if provided, must be valid
+            if (email.value.trim() && !isValidEmail(email.value)) {
                 showError(email, 'Please enter a valid email address');
                 isValid = false;
             } else {
                 clearError(email);
             }
             
+            // Phone is required
             if (!phone.value.trim()) {
                 showError(phone, 'Please enter your phone number');
                 isValid = false;
@@ -815,7 +936,8 @@
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    email: patientData.email,
+                    email: patientData.email || '',
+                    phone: patientData.phone,
                     idNumber: patientData.idNumber
                 })
             });
@@ -855,8 +977,17 @@
             section.classList.remove('active');
         });
         
-        document.getElementById('registered-email').textContent = patient.email;
-        document.getElementById('registered-id').textContent = patient.idNumber;
+        // Update login method display based on available credentials
+        const loginMethodDisplay = document.getElementById('login-method-display');
+        let loginInfo = '';
+        
+        if (patient.email) {
+            loginInfo += 'Email: ' + patient.email + '<br>';
+        }
+        loginInfo += 'Phone: ' + patient.phone + '<br>';
+        loginInfo += 'ID Number: ' + patient.idNumber;
+        
+        loginMethodDisplay.innerHTML = loginInfo;
         
         const successMessage = document.getElementById('success-message');
         
@@ -868,8 +999,7 @@
             '</p>',
             '<p style="margin-bottom: 30px;">',
             '<strong>Login Details:</strong><br>',
-            'Email: <span id="registered-email">' + patient.email + '</span><br>',
-            'ID Number: <span id="registered-id">' + patient.idNumber + '</span>',
+            loginInfo,
             '</p>',
             '<div class="redirect-countdown">',
             '<i class="fas fa-spinner fa-spin"></i>',
@@ -916,6 +1046,13 @@
         const successMessage = document.getElementById('success-message');
         
         if (patientData) {
+            let loginInfo = '';
+            if (patientData.email) {
+                loginInfo += 'Email: ' + patientData.email + '<br>';
+            }
+            loginInfo += 'Phone: ' + patientData.phone + '<br>';
+            loginInfo += 'ID Number: ' + patientData.idNumber;
+            
             successMessage.innerHTML = [
                 '<div class="success-icon">✅</div>',
                 '<h3>Registration Successful!</h3>',
@@ -924,13 +1061,12 @@
                 '</p>',
                 '<p style="margin-bottom: 30px;">',
                 '<strong>Login Details:</strong><br>',
-                'Email: <span>' + patientData.email + '</span><br>',
-                'ID Number: <span>' + patientData.idNumber + '</span>',
+                loginInfo,
                 '</p>',
                 '<div style="background: #e7f3ff; padding: 15px; border-radius: 8px; margin-bottom: 20px;">',
                 '<p style="margin: 0; color: var(--primary);">',
                 '<i class="fas fa-info-circle"></i>',
-                'Please use your email and ID number to login to your account.',
+                'Please use your phone number and ID number to login to your account.',
                 '</p>',
                 '</div>',
                 '<div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">',
@@ -973,9 +1109,10 @@
                 gender: document.getElementById('gender').value,
                 idNumber: document.getElementById('idNumber').value.trim(),
                 maritalStatus: document.getElementById('marital-status').value,
-                email: document.getElementById('email').value.trim(),
-                phone: document.getElementById('phone').value.trim(),
-                alternatePhone: document.getElementById('alternate-phone').value.trim(),
+                email: document.getElementById('email').value.trim() || '', // Email is now optional
+                phone: getFormattedPhoneNumber('country-code', 'phone'), // Get formatted phone with country code
+                alternatePhone: document.getElementById('alternate-phone').value.trim() ? 
+                    getFormattedPhoneNumber('alternate-country-code', 'alternate-phone') : '',
                 address: document.getElementById('address').value.trim(),
                 city: document.getElementById('city').value.trim(),
                 postalCode: document.getElementById('postal-code').value.trim(),
@@ -986,7 +1123,7 @@
                 familyHistory: document.getElementById('family-history').value.trim(),
                 paymentMethod: document.getElementById('payment-method').value,
                 emergencyContact: document.getElementById('emergency-contact').value.trim(),
-                emergencyPhone: document.getElementById('emergency-phone').value.trim(),
+                emergencyPhone: getFormattedPhoneNumber('emergency-country-code', 'emergency-phone'),
                 emergencyRelationship: document.getElementById('emergency-relationship').value.trim(),
                 insuranceProvider: document.getElementById('insurance-provider') ? document.getElementById('insurance-provider').value : '',
                 policyNumber: document.getElementById('policy-number') ? document.getElementById('policy-number').value : ''
@@ -1021,12 +1158,14 @@
             if (result.success) {
                 const autoLoginSuccess = await autoLoginAfterRegistration({
                     email: formData.email,
+                    phone: formData.phone,
                     idNumber: formData.idNumber
                 });
                 
                 if (!autoLoginSuccess) {
                     showManualLoginOption({
                         email: result.patient.email,
+                        phone: result.patient.phone,
                         idNumber: result.patient.idNumber
                     });
                 }
