@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "Jijue Hospital - Fullstack Healthcare Application",
   "main": "server.js",
-  "type": "module",
   "scripts": {
     "fullstack": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
     "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",

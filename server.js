@@ -1,10 +1,20 @@
-const express = require('express');
-const cors = require('cors');
-const helmet = require('helmet');
-const rateLimit = require('express-rate-limit');
-require('dotenv').config();
+import express from 'express';
+import cors from 'cors';
+import helmet from 'helmet';
+import rateLimit from 'express-rate-limit';
+import dotenv from 'dotenv';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
 
-const connectDB = require('./backend/config/database');
+// ES modules equivalent for __dirname
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+// Load environment variables
+dotenv.config();
+
+// Import database connection
+const connectDB = (await import('./backend/config/database.js')).default;
 const app = express();
 
 // Connect to Database
@@ -41,9 +51,10 @@ app.use((req, res, next) => {
 });
 
 // API Routes with Error Handling
-const setupRoute = (routePath, routeFile) => {
+const setupRoute = async (routePath, routeFile) => {
   try {
-    app.use(routePath, require(routeFile));
+    const routeModule = await import(routeFile);
+    app.use(routePath, routeModule.default || routeModule);
     console.log(`✅ Route loaded: ${routePath}`);
   } catch (error) {
     console.error(`❌ Failed to load route ${routePath}:`, error.message);
@@ -60,10 +71,10 @@ const setupRoute = (routePath, routeFile) => {
 };
 
 // Load API Routes
-setupRoute('/api/auth', './backend/routes/authRoutes');
-setupRoute('/api/patients', './backend/routes/patientRoutes');
-setupRoute('/api/departments', './backend/routes/departmentRoutes');
-setupRoute('/api/doctors', './backend/routes/doctorRoutes');
+await setupRoute('/api/auth', './backend/routes/authRoutes.js');
+await setupRoute('/api/patients', './backend/routes/patientRoutes.js');
+await setupRoute('/api/departments', './backend/routes/departmentRoutes.js');
+await setupRoute('/api/doctors', './backend/routes/doctorRoutes.js');
 
 // Health Check Route
 app.get('/api/health', (req, res) => {
@@ -103,4 +114,4 @@ const server = app.listen(PORT, '0.0.0.0', () => {
   console.log('🌐 Frontend should run separately on: http://localhost:3000 or http://localhost:5173');
 });
 
-module.exports = app;
+export default app;
