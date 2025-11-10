@@ -5,6 +5,7 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
+    "fullstack": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
     "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
     "dev:backend": "nodemon server.js",
     "dev:frontend": "cd frontend && npx http-server -p 3000 -c-1 -o",
