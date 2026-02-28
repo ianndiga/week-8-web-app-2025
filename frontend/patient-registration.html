@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="patient-registration.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
+
 <body>
     <!-- Header -->
     <header class="portal-header">
@@ -58,7 +60,7 @@
             <!-- Step 1: Personal Information -->
             <div class="form-section active" id="step-1">
                 <h3 style="margin-bottom: 20px; color: var(--primary);">Personal Information</h3>
-                
+
                 <div class="form-row">
                     <div class="form-group">
                         <label for="first-name">First Name <span class="required">*</span></label>
@@ -71,18 +73,18 @@
                         <div class="error-message">Please enter your last name</div>
                     </div>
                 </div>
-                
+
                 <!-- UPDATED: Date of Birth with custom input -->
                 <div class="form-group">
                     <label for="date-of-birth">Date of Birth <span class="required">*</span></label>
                     <div class="date-input-wrapper">
-                        <input type="text" id="date-of-birth" class="form-control" required 
-                               placeholder="YYYY/MM/DD" maxlength="10">
+                        <input type="text" id="date-of-birth" class="form-control" required placeholder="YYYY/MM/DD"
+                            maxlength="10">
                     </div>
-                    <div class="date-format-hint">Format: YYYY/MM/DD (e.g., 1990/05/15)</div>
+                    <div class="date-format-hint">Format: YYYY/MM/DD</div>
                     <div class="error-message">Please enter your date of birth in YYYY/MM/DD format</div>
                 </div>
-                
+
                 <div class="form-row">
                     <div class="form-group">
                         <label for="gender">Gender <span class="required">*</span></label>
@@ -100,12 +102,12 @@
                             <i class="fas fa-id-card"></i>
                             National ID Number <span class="required">*</span>
                         </label>
-                        <input type="text" id="idNumber" class="form-control" required 
-                               placeholder="Enter your national ID number" maxlength="20">
+                        <input type="text" id="idNumber" class="form-control" required
+                            placeholder="Enter your national ID number" maxlength="20">
                         <div class="error-message">Please enter your national ID number</div>
                     </div>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="marital-status">Marital Status <span class="optional-label">(optional)</span></label>
                     <select id="marital-status" class="form-control select">
@@ -116,7 +118,7 @@
                         <option value="widowed">Widowed</option>
                     </select>
                 </div>
-                
+
                 <div class="form-navigation">
                     <a href="patient-portal.html" class="btn btn-outline">
                         <i class="fas fa-arrow-left"></i>
@@ -132,14 +134,15 @@
             <!-- Step 2: Contact Details -->
             <div class="form-section" id="step-2">
                 <h3 style="margin-bottom: 20px; color: var(--primary);">Contact Details</h3>
-                
+
                 <!-- UPDATED: Email made optional -->
                 <div class="form-group">
                     <label for="email">Email Address <span class="optional-label">(optional)</span></label>
-                    <input type="email" id="email" class="form-control" placeholder="Enter your email address (optional)">
+                    <input type="email" id="email" class="form-control"
+                        placeholder="Enter your email address (optional)">
                     <div class="error-message">Please enter a valid email address</div>
                 </div>
-                
+
                 <!-- UPDATED: Phone number with country code selection -->
                 <div class="form-group">
                     <label for="phone">Phone Number <span class="required">*</span></label>
@@ -172,12 +175,12 @@
                                 <option value="+64">New Zealand (+64)</option>
                             </select>
                         </div>
-                        <input type="tel" id="phone" class="form-control phone-number" required 
-                               placeholder="Enter phone number">
+                        <input type="tel" id="phone" class="form-control phone-number" required
+                            placeholder="Enter phone number">
                     </div>
                     <div class="error-message">Please enter your phone number</div>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="alternate-phone">Alternate Phone <span class="optional-label">(optional)</span></label>
                     <div class="phone-input-wrapper">
@@ -209,17 +212,17 @@
                                 <option value="+64">New Zealand (+64)</option>
                             </select>
                         </div>
-                        <input type="tel" id="alternate-phone" class="form-control phone-number" 
-                               placeholder="Enter alternate phone number (optional)">
+                        <input type="tel" id="alternate-phone" class="form-control phone-number"
+                            placeholder="Enter alternate phone number (optional)">
                     </div>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="address">Residential Address <span class="required">*</span></label>
                     <input type="text" id="address" class="form-control" required>
                     <div class="error-message">Please enter your address</div>
                 </div>
-                
+
                 <div class="form-row">
                     <div class="form-group">
                         <label for="city">City <span class="required">*</span></label>
@@ -231,7 +234,7 @@
                         <input type="text" id="postal-code" class="form-control" placeholder="Optional">
                     </div>
                 </div>
-                
+
                 <div class="form-navigation">
                     <button type="button" class="btn btn-outline" onclick="previousStep(2)">
                         <i class="fas fa-arrow-left"></i>
@@ -247,8 +250,9 @@
             <!-- Step 3: Medical History -->
             <div class="form-section" id="step-3">
                 <h3 style="margin-bottom: 20px; color: var(--primary);">Medical History</h3>
-                <p style="margin-bottom: 20px; color: var(--gray);">This information helps us provide you with the best possible care. All fields are optional.</p>
-                
+                <p style="margin-bottom: 20px; color: var(--gray);">This information helps us provide you with the best
+                    possible care. All fields are optional.</p>
+
                 <div class="form-group">
                     <label for="blood-type">Blood Type <span class="optional-label">(optional)</span></label>
                     <select id="blood-type" class="form-control select">
@@ -264,27 +268,34 @@
                         <option value="unknown">Unknown</option>
                     </select>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="allergies">Allergies <span class="optional-label">(optional)</span></label>
-                    <textarea id="allergies" class="form-control" rows="3" placeholder="List any allergies to medications, food, or other substances"></textarea>
+                    <textarea id="allergies" class="form-control" rows="3"
+                        placeholder="List any allergies to medications, food, or other substances"></textarea>
                 </div>
-                
+
                 <div class="form-group">
-                    <label for="current-medications">Current Medications <span class="optional-label">(optional)</span></label>
-                    <textarea id="current-medications" class="form-control" rows="3" placeholder="List any medications you are currently taking"></textarea>
+                    <label for="current-medications">Current Medications <span
+                            class="optional-label">(optional)</span></label>
+                    <textarea id="current-medications" class="form-control" rows="3"
+                        placeholder="List any medications you are currently taking"></textarea>
                 </div>
-                
+
                 <div class="form-group">
-                    <label for="medical-conditions">Existing Medical Conditions <span class="optional-label">(optional)</span></label>
-                    <textarea id="medical-conditions" class="form-control" rows="3" placeholder="List any existing medical conditions (e.g., diabetes, hypertension, asthma)"></textarea>
+                    <label for="medical-conditions">Existing Medical Conditions <span
+                            class="optional-label">(optional)</span></label>
+                    <textarea id="medical-conditions" class="form-control" rows="3"
+                        placeholder="List any existing medical conditions (e.g., diabetes, hypertension, asthma)"></textarea>
                 </div>
-                
+
                 <div class="form-group">
-                    <label for="family-history">Family Medical History <span class="optional-label">(optional)</span></label>
-                    <textarea id="family-history" class="form-control" rows="3" placeholder="List any significant medical conditions in your immediate family"></textarea>
+                    <label for="family-history">Family Medical History <span
+                            class="optional-label">(optional)</span></label>
+                    <textarea id="family-history" class="form-control" rows="3"
+                        placeholder="List any significant medical conditions in your immediate family"></textarea>
                 </div>
-                
+
                 <div class="form-navigation">
                     <button type="button" class="btn btn-outline" onclick="previousStep(3)">
                         <i class="fas fa-arrow-left"></i>
@@ -300,8 +311,9 @@
             <!-- Step 4: Payment & Insurance Information -->
             <div class="form-section" id="step-4">
                 <h3 style="margin-bottom: 20px; color: var(--primary);">Payment & Insurance Information</h3>
-                <p style="margin-bottom: 20px; color: var(--gray);">Select your preferred payment method and provide relevant details.</p>
-                
+                <p style="margin-bottom: 20px; color: var(--gray);">Select your preferred payment method and provide
+                    relevant details.</p>
+
                 <!-- Payment Method Selection -->
                 <div class="form-group">
                     <label for="payment-method">Preferred Payment Method <span class="required">*</span></label>
@@ -322,7 +334,8 @@
                 <!-- Insurance Details (Shown only when insurance is selected) -->
                 <div id="insurance-details" class="payment-details">
                     <div class="form-group">
-                        <label for="insurance-provider">Insurance Provider <span class="optional-label">(optional)</span></label>
+                        <label for="insurance-provider">Insurance Provider <span
+                                class="optional-label">(optional)</span></label>
                         <select id="insurance-provider" class="form-control select">
                             <option value="">Select Provider</option>
                             <option value="aetna">Aetna</option>
@@ -334,29 +347,36 @@
                             <option value="other">Other Provider</option>
                         </select>
                     </div>
-                    
+
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="policy-number">Policy/Member Number <span class="optional-label">(optional)</span></label>
-                            <input type="text" id="policy-number" class="form-control" placeholder="Enter your policy number">
+                            <label for="policy-number">Policy/Member Number <span
+                                    class="optional-label">(optional)</span></label>
+                            <input type="text" id="policy-number" class="form-control"
+                                placeholder="Enter your policy number">
                         </div>
                         <div class="form-group">
-                            <label for="group-number">Group Number <span class="optional-label">(optional)</span></label>
+                            <label for="group-number">Group Number <span
+                                    class="optional-label">(optional)</span></label>
                             <input type="text" id="group-number" class="form-control" placeholder="Enter group number">
                         </div>
                     </div>
-                    
+
                     <div class="form-group">
-                        <label for="insurance-phone">Insurance Provider Phone <span class="optional-label">(optional)</span></label>
-                        <input type="tel" id="insurance-phone" class="form-control" placeholder="Provider contact number">
+                        <label for="insurance-phone">Insurance Provider Phone <span
+                                class="optional-label">(optional)</span></label>
+                        <input type="tel" id="insurance-phone" class="form-control"
+                            placeholder="Provider contact number">
                     </div>
                 </div>
 
                 <!-- SHA Details (Shown only when SHA is selected) -->
                 <div id="sha-details" class="payment-details">
                     <div class="form-group">
-                        <label for="sha-number">SHA Membership Number <span class="optional-label">(optional)</span></label>
-                        <input type="text" id="sha-number" class="form-control" placeholder="Enter your SHA membership number">
+                        <label for="sha-number">SHA Membership Number <span
+                                class="optional-label">(optional)</span></label>
+                        <input type="text" id="sha-number" class="form-control"
+                            placeholder="Enter your SHA membership number">
                     </div>
                     <div class="form-group">
                         <label for="sha-provider">SHA Provider <span class="optional-label">(optional)</span></label>
@@ -378,12 +398,16 @@
                     </div>
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="account-number">Account Number <span class="optional-label">(optional)</span></label>
-                            <input type="text" id="account-number" class="form-control" placeholder="Enter account number">
+                            <label for="account-number">Account Number <span
+                                    class="optional-label">(optional)</span></label>
+                            <input type="text" id="account-number" class="form-control"
+                                placeholder="Enter account number">
                         </div>
                         <div class="form-group">
-                            <label for="account-name">Account Holder Name <span class="optional-label">(optional)</span></label>
-                            <input type="text" id="account-name" class="form-control" placeholder="Enter account holder name">
+                            <label for="account-name">Account Holder Name <span
+                                    class="optional-label">(optional)</span></label>
+                            <input type="text" id="account-name" class="form-control"
+                                placeholder="Enter account holder name">
                         </div>
                     </div>
                 </div>
@@ -391,7 +415,8 @@
                 <!-- Mobile Money Details -->
                 <div id="mobile-details" class="payment-details">
                     <div class="form-group">
-                        <label for="mobile-provider">Mobile Money Provider <span class="optional-label">(optional)</span></label>
+                        <label for="mobile-provider">Mobile Money Provider <span
+                                class="optional-label">(optional)</span></label>
                         <select id="mobile-provider" class="form-control select">
                             <option value="">Select Provider</option>
                             <option value="mpesa">M-Pesa</option>
@@ -426,7 +451,7 @@
                     <div class="form-row">
                         <div class="form-group">
                             <label for="expiry-date">Expiry Date <span class="optional-label">(optional)</span></label>
-                            <input type="month" id="expiry-date" class="form-control">
+                            <input type="text" id="expiry-date" class="form-control" placeholder="MM/YY" maxlength="5">
                         </div>
                         <div class="form-group">
                             <label for="cvv">CVV <span class="optional-label">(optional)</span></label>
@@ -438,21 +463,26 @@
                 <!-- Other Payment Method -->
                 <div id="other-details" class="payment-details">
                     <div class="form-group">
-                        <label for="other-method">Specify Payment Method <span class="optional-label">(optional)</span></label>
-                        <input type="text" id="other-method" class="form-control" placeholder="Please specify your payment method">
+                        <label for="other-method">Specify Payment Method <span
+                                class="optional-label">(optional)</span></label>
+                        <input type="text" id="other-method" class="form-control"
+                            placeholder="Please specify your payment method">
                     </div>
                     <div class="form-group">
-                        <label for="other-details-text">Additional Details <span class="optional-label">(optional)</span></label>
-                        <textarea id="other-details-text" class="form-control" rows="3" placeholder="Provide any additional details about your payment method..."></textarea>
+                        <label for="other-details-text">Additional Details <span
+                                class="optional-label">(optional)</span></label>
+                        <textarea id="other-details-text" class="form-control" rows="3"
+                            placeholder="Provide any additional details about your payment method..."></textarea>
                     </div>
                 </div>
 
                 <!-- Cash Payment Notice -->
                 <div id="cash-notice" class="payment-details">
-                    <div style="background: #e7f3ff; padding: 15px; border-radius: 8px; border-left: 4px solid var(--primary);">
+                    <div
+                        style="background: #e7f3ff; padding: 15px; border-radius: 8px; border-left: 4px solid var(--primary);">
                         <h4 style="color: var(--primary); margin-bottom: 10px;">💵 Cash Payment</h4>
                         <p style="color: var(--gray); margin-bottom: 0;">
-                            For cash payments, please proceed to the billing department upon arrival at the hospital. 
+                            For cash payments, please proceed to the billing department upon arrival at the hospital.
                             Payment is required before services are rendered unless otherwise arranged.
                         </p>
                     </div>
@@ -461,13 +491,13 @@
                 <!-- Emergency Contact Information -->
                 <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid var(--light-gray);">
                     <h4 style="color: var(--primary); margin-bottom: 15px;">Emergency Contact Information</h4>
-                    
+
                     <div class="form-group">
                         <label for="emergency-contact">Emergency Contact Person <span class="required">*</span></label>
                         <input type="text" id="emergency-contact" class="form-control" required>
                         <div class="error-message">Please provide an emergency contact</div>
                     </div>
-                    
+
                     <!-- UPDATED: Emergency contact phone with country code -->
                     <div class="form-group">
                         <label for="emergency-phone">Emergency Contact Phone <span class="required">*</span></label>
@@ -500,19 +530,19 @@
                                     <option value="+64">New Zealand (+64)</option>
                                 </select>
                             </div>
-                            <input type="tel" id="emergency-phone" class="form-control phone-number" required 
-                                   placeholder="Enter emergency contact phone">
+                            <input type="tel" id="emergency-phone" class="form-control phone-number" required
+                                placeholder="Enter emergency contact phone">
                         </div>
                         <div class="error-message">Please provide emergency contact phone</div>
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="emergency-relationship">Relationship <span class="required">*</span></label>
                         <input type="text" id="emergency-relationship" class="form-control" required>
                         <div class="error-message">Please specify relationship</div>
                     </div>
                 </div>
-                
+
                 <div class="form-navigation">
                     <button type="button" class="btn btn-outline" onclick="previousStep(4)">
                         <i class="fas fa-arrow-left"></i>
@@ -562,495 +592,450 @@
         </div>
     </div>
 
-<script>
-    let currentStep = 1;
-    const totalSteps = 4;
-    const API_BASE = 'http://localhost:5000/api';
+    <script>
+        let currentStep = 1;
+        const totalSteps = 4;
+        const API_BASE = 'http://localhost:5000/api';
 
-    // Function to get formatted phone number with country code
-    function getFormattedPhoneNumber(countryCodeId, phoneInputId) {
-        const countryCode = document.getElementById(countryCodeId).value;
-        const phoneNumber = document.getElementById(phoneInputId).value.trim();
-        
-        if (!phoneNumber) return '';
-        
-        // Remove any existing country code from the phone number
-        let cleanPhone = phoneNumber.replace(/[^\d]/g, '');
-        
-        // If phone number already starts with country code (without +), remove it
-        const countryCodeDigits = countryCode.replace('+', '');
-        if (cleanPhone.startsWith(countryCodeDigits)) {
-            cleanPhone = cleanPhone.substring(countryCodeDigits.length);
-        }
-        
-        // Remove leading zero if present
-        if (cleanPhone.startsWith('0')) {
-            cleanPhone = cleanPhone.substring(1);
-        }
-        
-        return countryCode + cleanPhone;
-    }
+        // Function to get formatted phone number with country code
+        function getFormattedPhoneNumber(countryCodeId, phoneInputId) {
+            const countryCode = document.getElementById(countryCodeId).value;
+            const phoneNumber = document.getElementById(phoneInputId).value.trim();
 
-    // Enhanced Date of Birth functions
-    function setupDateInput() {
-        const dobInput = document.getElementById('date-of-birth');
-        
-        // Add event listeners for manual input
-        dobInput.addEventListener('input', function(e) {
-            let value = e.target.value;
-            
-            // Auto-format as user types
-            value = value.replace(/\D/g, ''); // Remove non-digits
-            
-            if (value.length > 4) {
-                value = value.substring(0, 4) + '/' + value.substring(4);
-            }
-            if (value.length > 7) {
-                value = value.substring(0, 7) + '/' + value.substring(7, 9);
-            }
-            
-            e.target.value = value;
-            validateDateOfBirth();
-        });
-        
-        // Add placeholder behavior
-        dobInput.addEventListener('focus', function(e) {
-            if (!e.target.value) {
-                e.target.setAttribute('placeholder', 'YYYY/MM/DD');
-            }
-        });
-        
-        dobInput.addEventListener('blur', function(e) {
-            e.target.removeAttribute('placeholder');
-        });
-    }
+            if (!phoneNumber) return '';
 
-    function validateDateOfBirth() {
-        const dobInput = document.getElementById('date-of-birth');
-        const dobValue = dobInput.value.trim();
-        
-        if (!dobValue) {
-            return { isValid: false, message: 'Please enter your date of birth' };
-        }
-        
-        // Check if the date is in YYYY/MM/DD format
-        const dateRegex = /^\d{4}\/\d{2}\/\d{2}$/;
-        if (!dateRegex.test(dobValue)) {
-            return { isValid: false, message: 'Please enter date in YYYY/MM/DD format' };
-        }
-        
-        // Parse the date components
-        const parts = dobValue.split('/');
-        const year = parseInt(parts[0]);
-        const month = parseInt(parts[1]);
-        const day = parseInt(parts[2]);
-        
-        // Basic validation
-        const currentYear = new Date().getFullYear();
-        if (year < 1900 || year > currentYear) {
-            return { isValid: false, message: `Please enter a valid year (1900-${currentYear})` };
-        }
-        
-        if (month < 1 || month > 12) {
-            return { isValid: false, message: 'Please enter a valid month (1-12)' };
-        }
-        
-        // Check day validity based on month
-        const daysInMonth = new Date(year, month, 0).getDate();
-        if (day < 1 || day > daysInMonth) {
-            return { isValid: false, message: `Please enter a valid day (1-${daysInMonth} for ${month}/${year})` };
-        }
-        
-        const selectedDate = new Date(year, month - 1, day);
-        const today = new Date();
-        today.setHours(0, 0, 0, 0); // Reset time part for accurate comparison
-        
-        if (selectedDate > today) {
-            return { isValid: false, message: 'Date of birth cannot be in the future' };
-        }
-        
-        const minDate = new Date(1900, 0, 1);
-        if (selectedDate < minDate) {
-            return { isValid: false, message: 'Please enter a valid date of birth (after 1900)' };
-        }
-        
-        return { isValid: true };
-    }
+            // Remove any existing country code from the phone number
+            let cleanPhone = phoneNumber.replace(/[^\d]/g, '');
 
-    function getSelectedDate() {
-        const dobInput = document.getElementById('date-of-birth');
-        let dobValue = dobInput.value.trim();
-        
-        if (!dobValue) return '';
-        
-        // Convert from YYYY/MM/DD to YYYY-MM-DD for backend
-        if (dobValue.includes('/')) {
-            dobValue = dobValue.replace(/\//g, '-');
-        }
-        
-        return dobValue;
-    }
+            // If phone number already starts with country code (without +), remove it
+            const countryCodeDigits = countryCode.replace('+', '');
+            if (cleanPhone.startsWith(countryCodeDigits)) {
+                cleanPhone = cleanPhone.substring(countryCodeDigits.length);
+            }
 
-    function updateProgressBar() {
-        const progressBar = document.getElementById('progress-bar');
-        const progress = ((currentStep - 1) / (totalSteps - 1)) * 100;
-        progressBar.style.width = progress + '%';
-        
-        document.querySelectorAll('.step').forEach(function(step, index) {
-            const stepNumber = index + 1;
-            if (stepNumber < currentStep) {
-                step.classList.add('completed');
-                step.classList.remove('active');
-            } else if (stepNumber === currentStep) {
-                step.classList.add('active');
-                step.classList.remove('completed');
-            } else {
-                step.classList.remove('active', 'completed');
+            // Remove leading zero if present
+            if (cleanPhone.startsWith('0')) {
+                cleanPhone = cleanPhone.substring(1);
             }
-        });
-    }
 
-    function togglePaymentDetails() {
-        const paymentMethod = document.getElementById('payment-method').value;
-        
-        document.querySelectorAll('.payment-details').forEach(function(section) {
-            section.style.display = 'none';
-        });
-        
-        switch(paymentMethod) {
-            case 'insurance':
-                document.getElementById('insurance-details').style.display = 'block';
-                break;
-            case 'sha':
-                document.getElementById('sha-details').style.display = 'block';
-                break;
-            case 'cash':
-                document.getElementById('cash-notice').style.display = 'block';
-                break;
-            case 'bank':
-                document.getElementById('bank-details').style.display = 'block';
-                break;
-            case 'mobile':
-                document.getElementById('mobile-details').style.display = 'block';
-                break;
-            case 'credit':
-            case 'debit':
-                document.getElementById('card-details').style.display = 'block';
-                break;
-            case 'other':
-                document.getElementById('other-details').style.display = 'block';
-                break;
+            return countryCode + cleanPhone;
         }
-    }
 
-    function validateStep(step) {
-        let isValid = true;
-        
-        if (step === 1) {
-            const firstName = document.getElementById('first-name');
-            const lastName = document.getElementById('last-name');
-            const gender = document.getElementById('gender');
-            const idNumber = document.getElementById('idNumber');
-            
-            if (!firstName.value.trim()) {
-                showError(firstName, 'Please enter your first name');
-                isValid = false;
-            } else {
-                clearError(firstName);
-            }
-            
-            if (!lastName.value.trim()) {
-                showError(lastName, 'Please enter your last name');
-                isValid = false;
-            } else {
-                clearError(lastName);
-            }
-            
-            const dobValidation = validateDateOfBirth();
-            if (!dobValidation.isValid) {
-                showError(document.getElementById('date-of-birth'), dobValidation.message);
-                isValid = false;
-            } else {
-                clearError(document.getElementById('date-of-birth'));
-            }
-            
-            if (!gender.value) {
-                showError(gender, 'Please select your gender');
-                isValid = false;
-            } else {
-                clearError(gender);
-            }
-            
-            if (!idNumber.value.trim()) {
-                showError(idNumber, 'Please enter your national ID number');
-                isValid = false;
-            } else {
-                clearError(idNumber);
-            }
-        }
-        
-        if (step === 2) {
-            const email = document.getElementById('email');
-            const phone = document.getElementById('phone');
-            const address = document.getElementById('address');
-            const city = document.getElementById('city');
-            
-            // Email is now optional, but if provided, must be valid
-            if (email.value.trim() && !isValidEmail(email.value)) {
-                showError(email, 'Please enter a valid email address');
-                isValid = false;
-            } else {
-                clearError(email);
-            }
-            
-            // Phone is required
-            if (!phone.value.trim()) {
-                showError(phone, 'Please enter your phone number');
-                isValid = false;
-            } else {
-                clearError(phone);
-            }
-            
-            if (!address.value.trim()) {
-                showError(address, 'Please enter your address');
-                isValid = false;
-            } else {
-                clearError(address);
-            }
-            
-            if (!city.value.trim()) {
-                showError(city, 'Please enter your city');
-                isValid = false;
-            } else {
-                clearError(city);
-            }
-        }
-        
-        if (step === 4) {
-            const paymentMethod = document.getElementById('payment-method');
-            const emergencyContact = document.getElementById('emergency-contact');
-            const emergencyPhone = document.getElementById('emergency-phone');
-            const emergencyRelationship = document.getElementById('emergency-relationship');
-            
-            if (!paymentMethod.value) {
-                showError(paymentMethod, 'Please select your preferred payment method');
-                isValid = false;
-            } else {
-                clearError(paymentMethod);
-            }
-            
-            if (!emergencyContact.value.trim()) {
-                showError(emergencyContact, 'Please provide an emergency contact');
-                isValid = false;
-            } else {
-                clearError(emergencyContact);
-            }
-            
-            if (!emergencyPhone.value.trim()) {
-                showError(emergencyPhone, 'Please provide emergency contact phone');
-                isValid = false;
-            } else {
-                clearError(emergencyPhone);
-            }
-            
-            if (!emergencyRelationship.value.trim()) {
-                showError(emergencyRelationship, 'Please specify relationship');
-                isValid = false;
-            } else {
-                clearError(emergencyRelationship);
-            }
-        }
-        
-        return isValid;
-    }
+        // Expiry Date auto-formatting
+        function setupExpiryDateInput() {
+            const expiryInput = document.getElementById('expiry-date');
+            if (expiryInput) {
+                expiryInput.addEventListener('input', function (e) {
+                    let value = e.target.value.replace(/\D/g, ''); // Remove non-digits
 
-    function showError(field, message) {
-        field.classList.add('error');
-        const errorDiv = field.nextElementSibling;
-        if (errorDiv && errorDiv.classList.contains('error-message')) {
-            errorDiv.textContent = message;
-            errorDiv.style.display = 'block';
-        }
-    }
+                    // Add slash after month
+                    if (value.length > 2) {
+                        value = value.substring(0, 2) + '/' + value.substring(2, 4);
+                    }
 
-    function clearError(field) {
-        field.classList.remove('error');
-        const errorDiv = field.nextElementSibling;
-        if (errorDiv && errorDiv.classList.contains('error-message')) {
-            errorDiv.style.display = 'none';
-        }
-    }
-
-    function isValidEmail(email) {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return emailRegex.test(email);
-    }
-
-    function nextStep(step) {
-        if (!validateStep(step)) {
-            return;
-        }
-        
-        if (step < totalSteps) {
-            document.getElementById('step-' + step).classList.remove('active');
-            document.getElementById('step-' + (step + 1)).classList.add('active');
-            currentStep = step + 1;
-            updateProgressBar();
-        }
-    }
-
-    function previousStep(step) {
-        if (step > 1) {
-            document.getElementById('step-' + step).classList.remove('active');
-            document.getElementById('step-' + (step - 1)).classList.add('active');
-            currentStep = step - 1;
-            updateProgressBar();
-        }
-    }
-
-    async function testBackendConnection() {
-        try {
-            const response = await fetch(API_BASE + '/health');
-            if (response.ok) {
-                console.log('Backend connection successful');
-                return true;
-            } else {
-                console.error('Backend health check failed');
-                return false;
+                    e.target.value = value;
+                });
             }
-        } catch (error) {
-            console.error('Cannot connect to backend:', error);
-            return false;
         }
-    }
 
-    async function autoLoginAfterRegistration(patientData) {
-        try {
-            console.log('Auto-login after registration...');
-            
-            const loginResponse = await fetch(API_BASE + '/patients/login', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    email: patientData.email || '',
-                    phone: patientData.phone,
-                    idNumber: patientData.idNumber
-                })
+        // Enhanced Date of Birth functions
+        function setupDateInput() {
+            const dobInput = document.getElementById('date-of-birth');
+
+            // Add event listeners for manual input
+            dobInput.addEventListener('input', function (e) {
+                let value = e.target.value;
+
+                // Auto-format as user types
+                value = value.replace(/\D/g, ''); // Remove non-digits
+
+                if (value.length > 4) {
+                    value = value.substring(0, 4) + '/' + value.substring(4);
+                }
+                if (value.length > 7) {
+                    value = value.substring(0, 7) + '/' + value.substring(7, 9);
+                }
+
+                e.target.value = value;
+                validateDateOfBirth();
             });
 
-            if (loginResponse.ok) {
-                const loginResult = await loginResponse.json();
-                
-                if (loginResult.success) {
-                    localStorage.setItem('currentPatient', JSON.stringify(loginResult.patient));
-                    localStorage.setItem('authToken', loginResult.token);
-                    
-                    console.log('Auto-login successful, redirecting to dashboard...');
-                    
-                    showSuccessMessage(loginResult.patient);
-                    
-                    setTimeout(function() {
-                        window.location.href = 'patient-dashboard.html';
-                    }, 2000);
-                    
-                    return true;
+            // Add placeholder behavior
+            dobInput.addEventListener('focus', function (e) {
+                if (!e.target.value) {
+                    e.target.setAttribute('placeholder', 'YYYY/MM/DD');
+                }
+            });
+
+            dobInput.addEventListener('blur', function (e) {
+                e.target.removeAttribute('placeholder');
+            });
+        }
+
+        function validateDateOfBirth() {
+            const dobInput = document.getElementById('date-of-birth');
+            const dobValue = dobInput.value.trim();
+
+            if (!dobValue) {
+                return { isValid: false, message: 'Please enter your date of birth' };
+            }
+
+            // Check if the date is in YYYY/MM/DD format
+            const dateRegex = /^\d{4}\/\d{2}\/\d{2}$/;
+            if (!dateRegex.test(dobValue)) {
+                return { isValid: false, message: 'Please enter date in YYYY/MM/DD format' };
+            }
+
+            // Parse the date components
+            const parts = dobValue.split('/');
+            const year = parseInt(parts[0]);
+            const month = parseInt(parts[1]);
+            const day = parseInt(parts[2]);
+
+            // Basic validation
+            const currentYear = new Date().getFullYear();
+            if (year < 1900 || year > currentYear) {
+                return { isValid: false, message: `Please enter a valid year (1900-${currentYear})` };
+            }
+
+            if (month < 1 || month > 12) {
+                return { isValid: false, message: 'Please enter a valid month (1-12)' };
+            }
+
+            // Check day validity based on month
+            const daysInMonth = new Date(year, month, 0).getDate();
+            if (day < 1 || day > daysInMonth) {
+                return { isValid: false, message: `Please enter a valid day (1-${daysInMonth} for ${month}/${year})` };
+            }
+
+            const selectedDate = new Date(year, month - 1, day);
+            const today = new Date();
+            today.setHours(0, 0, 0, 0); // Reset time part for accurate comparison
+
+            if (selectedDate > today) {
+                return { isValid: false, message: 'Date of birth cannot be in the future' };
+            }
+
+            const minDate = new Date(1900, 0, 1);
+            if (selectedDate < minDate) {
+                return { isValid: false, message: 'Please enter a valid date of birth (after 1900)' };
+            }
+
+            return { isValid: true };
+        }
+
+        function getSelectedDate() {
+            const dobInput = document.getElementById('date-of-birth');
+            let dobValue = dobInput.value.trim();
+
+            if (!dobValue) return '';
+
+            // Convert from YYYY/MM/DD to YYYY-MM-DD for backend
+            if (dobValue.includes('/')) {
+                dobValue = dobValue.replace(/\//g, '-');
+            }
+
+            return dobValue;
+        }
+
+        function updateProgressBar() {
+            const progressBar = document.getElementById('progress-bar');
+            const progress = ((currentStep - 1) / (totalSteps - 1)) * 100;
+            progressBar.style.width = progress + '%';
+
+            document.querySelectorAll('.step').forEach(function (step, index) {
+                const stepNumber = index + 1;
+                if (stepNumber < currentStep) {
+                    step.classList.add('completed');
+                    step.classList.remove('active');
+                } else if (stepNumber === currentStep) {
+                    step.classList.add('active');
+                    step.classList.remove('completed');
+                } else {
+                    step.classList.remove('active', 'completed');
+                }
+            });
+        }
+
+        function togglePaymentDetails() {
+            const paymentMethod = document.getElementById('payment-method').value;
+
+            document.querySelectorAll('.payment-details').forEach(function (section) {
+                section.style.display = 'none';
+            });
+
+            switch (paymentMethod) {
+                case 'insurance':
+                    document.getElementById('insurance-details').style.display = 'block';
+                    break;
+                case 'sha':
+                    document.getElementById('sha-details').style.display = 'block';
+                    break;
+                case 'cash':
+                    document.getElementById('cash-notice').style.display = 'block';
+                    break;
+                case 'bank':
+                    document.getElementById('bank-details').style.display = 'block';
+                    break;
+                case 'mobile':
+                    document.getElementById('mobile-details').style.display = 'block';
+                    break;
+                case 'credit':
+                case 'debit':
+                    document.getElementById('card-details').style.display = 'block';
+                    break;
+                case 'other':
+                    document.getElementById('other-details').style.display = 'block';
+                    break;
+            }
+        }
+
+        function validateStep(step) {
+            let isValid = true;
+
+            if (step === 1) {
+                const firstName = document.getElementById('first-name');
+                const lastName = document.getElementById('last-name');
+                const gender = document.getElementById('gender');
+                const idNumber = document.getElementById('idNumber');
+
+                if (!firstName.value.trim()) {
+                    showError(firstName, 'Please enter your first name');
+                    isValid = false;
+                } else {
+                    clearError(firstName);
+                }
+
+                if (!lastName.value.trim()) {
+                    showError(lastName, 'Please enter your last name');
+                    isValid = false;
+                } else {
+                    clearError(lastName);
+                }
+
+                const dobValidation = validateDateOfBirth();
+                if (!dobValidation.isValid) {
+                    showError(document.getElementById('date-of-birth'), dobValidation.message);
+                    isValid = false;
+                } else {
+                    clearError(document.getElementById('date-of-birth'));
+                }
+
+                if (!gender.value) {
+                    showError(gender, 'Please select your gender');
+                    isValid = false;
+                } else {
+                    clearError(gender);
+                }
+
+                if (!idNumber.value.trim()) {
+                    showError(idNumber, 'Please enter your national ID number');
+                    isValid = false;
+                } else {
+                    clearError(idNumber);
                 }
             }
-            
-            console.warn('Auto-login failed, showing manual login option');
-            showManualLoginOption(patientData);
-            return false;
-            
-        } catch (error) {
-            console.error('Auto-login error:', error);
-            showManualLoginOption(patientData);
-            return false;
-        }
-    }
 
-    function showSuccessMessage(patient) {
-        document.querySelectorAll('.form-section').forEach(function(section) {
-            section.classList.remove('active');
-        });
-        
-        // Update login method display based on available credentials
-        const loginMethodDisplay = document.getElementById('login-method-display');
-        let loginInfo = '';
-        
-        if (patient.email) {
-            loginInfo += 'Email: ' + patient.email + '<br>';
-        }
-        loginInfo += 'Phone: ' + patient.phone + '<br>';
-        loginInfo += 'ID Number: ' + patient.idNumber;
-        
-        loginMethodDisplay.innerHTML = loginInfo;
-        
-        const successMessage = document.getElementById('success-message');
-        
-        successMessage.innerHTML = [
-            '<div class="success-icon">✅</div>',
-            '<h3>Registration Successful!</h3>',
-            '<p style="margin-bottom: 20px; color: var(--gray);">',
-            'Thank you for registering with Jijue Hospital. Your patient account has been created successfully.',
-            '</p>',
-            '<p style="margin-bottom: 30px;">',
-            '<strong>Login Details:</strong><br>',
-            loginInfo,
-            '</p>',
-            '<div class="redirect-countdown">',
-            '<i class="fas fa-spinner fa-spin"></i>',
-            '<span>Redirecting to dashboard in <span id="countdown">3</span> seconds...</span>',
-            '</div>',
-            '<div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-top: 20px;">',
-            '<button class="btn" onclick="redirectToDashboardNow()">',
-            '<i class="fas fa-tachometer-alt"></i>',
-            'Go to Dashboard Now',
-            '</button>',
-            '<button class="btn btn-outline" onclick="showManualLoginOption()">',
-            '<i class="fas fa-sign-in-alt"></i>',
-            'Manual Login',
-            '</button>',
-            '</div>'
-        ].join('');
-        
-        successMessage.classList.add('active');
-        successMessage.scrollIntoView({ behavior: 'smooth' });
-        
-        startCountdown();
-    }
+            if (step === 2) {
+                const email = document.getElementById('email');
+                const phone = document.getElementById('phone');
+                const address = document.getElementById('address');
+                const city = document.getElementById('city');
 
-    function startCountdown() {
-        let countdown = 3;
-        const countdownElement = document.getElementById('countdown');
-        const countdownInterval = setInterval(function() {
-            countdown--;
-            if (countdownElement) {
-                countdownElement.textContent = countdown;
+                // Email is now optional, but if provided, must be valid
+                if (email.value.trim() && !isValidEmail(email.value)) {
+                    showError(email, 'Please enter a valid email address');
+                    isValid = false;
+                } else {
+                    clearError(email);
+                }
+
+                // Phone is required
+                if (!phone.value.trim()) {
+                    showError(phone, 'Please enter your phone number');
+                    isValid = false;
+                } else {
+                    clearError(phone);
+                }
+
+                if (!address.value.trim()) {
+                    showError(address, 'Please enter your address');
+                    isValid = false;
+                } else {
+                    clearError(address);
+                }
+
+                if (!city.value.trim()) {
+                    showError(city, 'Please enter your city');
+                    isValid = false;
+                } else {
+                    clearError(city);
+                }
             }
-            if (countdown <= 0) {
-                clearInterval(countdownInterval);
-                window.location.href = 'patient-dashboard.html';
+
+            if (step === 4) {
+                const paymentMethod = document.getElementById('payment-method');
+                const emergencyContact = document.getElementById('emergency-contact');
+                const emergencyPhone = document.getElementById('emergency-phone');
+                const emergencyRelationship = document.getElementById('emergency-relationship');
+
+                if (!paymentMethod.value) {
+                    showError(paymentMethod, 'Please select your preferred payment method');
+                    isValid = false;
+                } else {
+                    clearError(paymentMethod);
+                }
+
+                if (!emergencyContact.value.trim()) {
+                    showError(emergencyContact, 'Please provide an emergency contact');
+                    isValid = false;
+                } else {
+                    clearError(emergencyContact);
+                }
+
+                if (!emergencyPhone.value.trim()) {
+                    showError(emergencyPhone, 'Please provide emergency contact phone');
+                    isValid = false;
+                } else {
+                    clearError(emergencyPhone);
+                }
+
+                if (!emergencyRelationship.value.trim()) {
+                    showError(emergencyRelationship, 'Please specify relationship');
+                    isValid = false;
+                } else {
+                    clearError(emergencyRelationship);
+                }
             }
-        }, 1000);
-    }
 
-    function redirectToDashboardNow() {
-        window.location.href = 'patient-dashboard.html';
-    }
+            return isValid;
+        }
 
-    function showManualLoginOption(patientData) {
-        const successMessage = document.getElementById('success-message');
-        
-        if (patientData) {
+        function showError(field, message) {
+            field.classList.add('error');
+            const errorDiv = field.nextElementSibling;
+            if (errorDiv && errorDiv.classList.contains('error-message')) {
+                errorDiv.textContent = message;
+                errorDiv.style.display = 'block';
+            }
+        }
+
+        function clearError(field) {
+            field.classList.remove('error');
+            const errorDiv = field.nextElementSibling;
+            if (errorDiv && errorDiv.classList.contains('error-message')) {
+                errorDiv.style.display = 'none';
+            }
+        }
+
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        function nextStep(step) {
+            if (!validateStep(step)) {
+                return;
+            }
+
+            if (step < totalSteps) {
+                document.getElementById('step-' + step).classList.remove('active');
+                document.getElementById('step-' + (step + 1)).classList.add('active');
+                currentStep = step + 1;
+                updateProgressBar();
+            }
+        }
+
+        function previousStep(step) {
+            if (step > 1) {
+                document.getElementById('step-' + step).classList.remove('active');
+                document.getElementById('step-' + (step - 1)).classList.add('active');
+                currentStep = step - 1;
+                updateProgressBar();
+            }
+        }
+
+        async function testBackendConnection() {
+            try {
+                const response = await fetch(API_BASE + '/health');
+                if (response.ok) {
+                    console.log('Backend connection successful');
+                    return true;
+                } else {
+                    console.error('Backend health check failed');
+                    return false;
+                }
+            } catch (error) {
+                console.error('Cannot connect to backend:', error);
+                return false;
+            }
+        }
+
+        async function autoLoginAfterRegistration(patientData) {
+            try {
+                console.log('Auto-login after registration...');
+
+                const loginResponse = await fetch(API_BASE + '/patients/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        email: patientData.email || '',
+                        phone: patientData.phone,
+                        idNumber: patientData.idNumber
+                    })
+                });
+
+                if (loginResponse.ok) {
+                    const loginResult = await loginResponse.json();
+
+                    if (loginResult.success) {
+                        localStorage.setItem('currentPatient', JSON.stringify(loginResult.patient));
+                        localStorage.setItem('authToken', loginResult.token);
+
+                        console.log('Auto-login successful, redirecting to dashboard...');
+
+                        showSuccessMessage(loginResult.patient);
+
+                        setTimeout(function () {
+                            window.location.href = 'patient-dashboard.html';
+                        }, 2000);
+
+                        return true;
+                    }
+                }
+
+                console.warn('Auto-login failed, showing manual login option');
+                showManualLoginOption(patientData);
+                return false;
+
+            } catch (error) {
+                console.error('Auto-login error:', error);
+                showManualLoginOption(patientData);
+                return false;
+            }
+        }
+
+        function showSuccessMessage(patient) {
+            document.querySelectorAll('.form-section').forEach(function (section) {
+                section.classList.remove('active');
+            });
+
+            // Update login method display based on available credentials
+            const loginMethodDisplay = document.getElementById('login-method-display');
             let loginInfo = '';
-            if (patientData.email) {
-                loginInfo += 'Email: ' + patientData.email + '<br>';
+
+            if (patient.email) {
+                loginInfo += 'Email: ' + patient.email + '<br>';
             }
-            loginInfo += 'Phone: ' + patientData.phone + '<br>';
-            loginInfo += 'ID Number: ' + patientData.idNumber;
-            
+            loginInfo += 'Phone: ' + patient.phone + '<br>';
+            loginInfo += 'ID Number: ' + patient.idNumber;
+
+            loginMethodDisplay.innerHTML = loginInfo;
+
+            const successMessage = document.getElementById('success-message');
+
             successMessage.innerHTML = [
                 '<div class="success-icon">✅</div>',
                 '<h3>Registration Successful!</h3>',
@@ -1061,171 +1046,235 @@
                 '<strong>Login Details:</strong><br>',
                 loginInfo,
                 '</p>',
-                '<div style="background: #e7f3ff; padding: 15px; border-radius: 8px; margin-bottom: 20px;">',
-                '<p style="margin: 0; color: var(--primary);">',
-                '<i class="fas fa-info-circle"></i>',
-                'Please use your phone number and ID number to login to your account.',
-                '</p>',
+                '<div class="redirect-countdown">',
+                '<i class="fas fa-spinner fa-spin"></i>',
+                '<span>Redirecting to dashboard in <span id="countdown">3</span> seconds...</span>',
                 '</div>',
-                '<div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">',
-                '<a href="patient-portal.html" class="btn">',
+                '<div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-top: 20px;">',
+                '<button class="btn" onclick="redirectToDashboardNow()">',
+                '<i class="fas fa-tachometer-alt"></i>',
+                'Go to Dashboard Now',
+                '</button>',
+                '<button class="btn btn-outline" onclick="showManualLoginOption()">',
                 '<i class="fas fa-sign-in-alt"></i>',
-                'Go to Login Page',
-                '</a>',
-                '<a href="index.html" class="btn btn-outline">',
-                '<i class="fas fa-home"></i>',
-                'Back to Home',
-                '</a>',
+                'Manual Login',
+                '</button>',
                 '</div>'
             ].join('');
+
+            successMessage.classList.add('active');
+            successMessage.scrollIntoView({ behavior: 'smooth' });
+
+            startCountdown();
         }
-        
-        successMessage.classList.add('active');
-        successMessage.scrollIntoView({ behavior: 'smooth' });
-    }
 
-    async function submitRegistration() {
-        if (!validateStep(4)) {
-            return;
-        }
-        
-        const submitBtn = document.querySelector('#step-4 .btn-secondary');
-        const originalText = submitBtn.innerHTML;
-        submitBtn.disabled = true;
-        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
-        
-        try {
-            const isConnected = await testBackendConnection();
-            if (!isConnected) {
-                throw new Error('Cannot connect to server. Please make sure the backend is running.');
-            }
-
-            const formData = {
-                firstName: document.getElementById('first-name').value.trim(),
-                lastName: document.getElementById('last-name').value.trim(),
-                dateOfBirth: getSelectedDate(),
-                gender: document.getElementById('gender').value,
-                idNumber: document.getElementById('idNumber').value.trim(),
-                maritalStatus: document.getElementById('marital-status').value,
-                email: document.getElementById('email').value.trim() || '', // Email is now optional
-                phone: getFormattedPhoneNumber('country-code', 'phone'), // Get formatted phone with country code
-                alternatePhone: document.getElementById('alternate-phone').value.trim() ? 
-                    getFormattedPhoneNumber('alternate-country-code', 'alternate-phone') : '',
-                address: document.getElementById('address').value.trim(),
-                city: document.getElementById('city').value.trim(),
-                postalCode: document.getElementById('postal-code').value.trim(),
-                bloodType: document.getElementById('blood-type').value,
-                allergies: document.getElementById('allergies').value.trim(),
-                currentMedications: document.getElementById('current-medications').value.trim(),
-                medicalConditions: document.getElementById('medical-conditions').value.trim(),
-                familyHistory: document.getElementById('family-history').value.trim(),
-                paymentMethod: document.getElementById('payment-method').value,
-                emergencyContact: document.getElementById('emergency-contact').value.trim(),
-                emergencyPhone: getFormattedPhoneNumber('emergency-country-code', 'emergency-phone'),
-                emergencyRelationship: document.getElementById('emergency-relationship').value.trim(),
-                insuranceProvider: document.getElementById('insurance-provider') ? document.getElementById('insurance-provider').value : '',
-                policyNumber: document.getElementById('policy-number') ? document.getElementById('policy-number').value : ''
-            };
-
-            console.log('Sending registration data:', formData);
-
-            const response = await fetch(API_BASE + '/patients/register', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formData)
-            });
-
-            console.log('Response status:', response.status);
-
-            if (!response.ok) {
-                let errorMessage = 'HTTP error! status: ' + response.status;
-                try {
-                    const errorData = await response.json();
-                    errorMessage = errorData.message || errorMessage;
-                } catch (e) {
-                    errorMessage = response.statusText || errorMessage;
+        function startCountdown() {
+            let countdown = 3;
+            const countdownElement = document.getElementById('countdown');
+            const countdownInterval = setInterval(function () {
+                countdown--;
+                if (countdownElement) {
+                    countdownElement.textContent = countdown;
                 }
-                throw new Error(errorMessage);
+                if (countdown <= 0) {
+                    clearInterval(countdownInterval);
+                    window.location.href = 'patient-dashboard.html';
+                }
+            }, 1000);
+        }
+
+        function redirectToDashboardNow() {
+            window.location.href = 'patient-dashboard.html';
+        }
+
+        function showManualLoginOption(patientData) {
+            const successMessage = document.getElementById('success-message');
+
+            if (patientData) {
+                let loginInfo = '';
+                if (patientData.email) {
+                    loginInfo += 'Email: ' + patientData.email + '<br>';
+                }
+                loginInfo += 'Phone: ' + patientData.phone + '<br>';
+                loginInfo += 'ID Number: ' + patientData.idNumber;
+
+                successMessage.innerHTML = [
+                    '<div class="success-icon">✅</div>',
+                    '<h3>Registration Successful!</h3>',
+                    '<p style="margin-bottom: 20px; color: var(--gray);">',
+                    'Thank you for registering with Jijue Hospital. Your patient account has been created successfully.',
+                    '</p>',
+                    '<p style="margin-bottom: 30px;">',
+                    '<strong>Login Details:</strong><br>',
+                    loginInfo,
+                    '</p>',
+                    '<div style="background: #e7f3ff; padding: 15px; border-radius: 8px; margin-bottom: 20px;">',
+                    '<p style="margin: 0; color: var(--primary);">',
+                    '<i class="fas fa-info-circle"></i>',
+                    'Please use your phone number and ID number to login to your account.',
+                    '</p>',
+                    '</div>',
+                    '<div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">',
+                    '<a href="patient-portal.html" class="btn">',
+                    '<i class="fas fa-sign-in-alt"></i>',
+                    'Go to Login Page',
+                    '</a>',
+                    '<a href="index.html" class="btn btn-outline">',
+                    '<i class="fas fa-home"></i>',
+                    'Back to Home',
+                    '</a>',
+                    '</div>'
+                ].join('');
             }
 
-            const result = await response.json();
-            console.log('Registration response:', result);
+            successMessage.classList.add('active');
+            successMessage.scrollIntoView({ behavior: 'smooth' });
+        }
 
-            if (result.success) {
-                const autoLoginSuccess = await autoLoginAfterRegistration({
-                    email: formData.email,
-                    phone: formData.phone,
-                    idNumber: formData.idNumber
+        async function submitRegistration() {
+            if (!validateStep(4)) {
+                return;
+            }
+
+            const submitBtn = document.querySelector('#step-4 .btn-secondary');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+
+            try {
+                const isConnected = await testBackendConnection();
+                if (!isConnected) {
+                    throw new Error('Cannot connect to server. Please make sure the backend is running.');
+                }
+
+                const formData = {
+                    firstName: document.getElementById('first-name').value.trim(),
+                    lastName: document.getElementById('last-name').value.trim(),
+                    dateOfBirth: getSelectedDate(),
+                    gender: document.getElementById('gender').value,
+                    idNumber: document.getElementById('idNumber').value.trim(),
+                    maritalStatus: document.getElementById('marital-status').value,
+                    email: document.getElementById('email').value.trim() || '', // Email is now optional
+                    phone: getFormattedPhoneNumber('country-code', 'phone'), // Get formatted phone with country code
+                    alternatePhone: document.getElementById('alternate-phone').value.trim() ?
+                        getFormattedPhoneNumber('alternate-country-code', 'alternate-phone') : '',
+                    address: document.getElementById('address').value.trim(),
+                    city: document.getElementById('city').value.trim(),
+                    postalCode: document.getElementById('postal-code').value.trim(),
+                    bloodType: document.getElementById('blood-type').value,
+                    allergies: document.getElementById('allergies').value.trim(),
+                    currentMedications: document.getElementById('current-medications').value.trim(),
+                    medicalConditions: document.getElementById('medical-conditions').value.trim(),
+                    familyHistory: document.getElementById('family-history').value.trim(),
+                    paymentMethod: document.getElementById('payment-method').value,
+                    emergencyContact: document.getElementById('emergency-contact').value.trim(),
+                    emergencyPhone: getFormattedPhoneNumber('emergency-country-code', 'emergency-phone'),
+                    emergencyRelationship: document.getElementById('emergency-relationship').value.trim(),
+                    insuranceProvider: document.getElementById('insurance-provider') ? document.getElementById('insurance-provider').value : '',
+                    policyNumber: document.getElementById('policy-number') ? document.getElementById('policy-number').value : ''
+                };
+
+                console.log('Sending registration data:', formData);
+
+                const response = await fetch(API_BASE + '/patients/register', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData)
                 });
-                
-                if (!autoLoginSuccess) {
-                    showManualLoginOption({
-                        email: result.patient.email,
-                        phone: result.patient.phone,
-                        idNumber: result.patient.idNumber
-                    });
+
+                console.log('Response status:', response.status);
+
+                if (!response.ok) {
+                    let errorMessage = 'HTTP error! status: ' + response.status;
+                    try {
+                        const errorData = await response.json();
+                        errorMessage = errorData.message || errorMessage;
+                    } catch (e) {
+                        errorMessage = response.statusText || errorMessage;
+                    }
+                    throw new Error(errorMessage);
                 }
-                
-            } else {
-                throw new Error(result.message || 'Registration failed');
-            }
 
-        } catch (error) {
-            console.error('Registration error:', error);
-            
-            if (error.name === 'TypeError' && error.message.includes('Failed to fetch')) {
-                alert('Cannot connect to server. Please:\n\n1. Make sure the backend server is running on port 5000\n2. Check that you are accessing the site through http://localhost:3000\n3. Refresh the page and try again');
-            } else if (error.message.includes('NetworkError')) {
-                alert('Network error. Please check your internet connection and try again.');
-            } else if (error.message.includes('Cannot connect to server')) {
-                alert('Backend server is not running. Please start the server and try again.');
-            } else {
-                alert('Registration failed: ' + error.message);
+                const result = await response.json();
+                console.log('Registration response:', result);
+
+                if (result.success) {
+                    const autoLoginSuccess = await autoLoginAfterRegistration({
+                        email: formData.email,
+                        phone: formData.phone,
+                        idNumber: formData.idNumber
+                    });
+
+                    if (!autoLoginSuccess) {
+                        showManualLoginOption({
+                            email: result.patient.email,
+                            phone: result.patient.phone,
+                            idNumber: result.patient.idNumber
+                        });
+                    }
+
+                } else {
+                    throw new Error(result.message || 'Registration failed');
+                }
+
+            } catch (error) {
+                console.error('Registration error:', error);
+
+                if (error.name === 'TypeError' && error.message.includes('Failed to fetch')) {
+                    alert('Cannot connect to server. Please:\n\n1. Make sure the backend server is running on port 5000\n2. Check that you are accessing the site through http://localhost:3000\n3. Refresh the page and try again');
+                } else if (error.message.includes('NetworkError')) {
+                    alert('Network error. Please check your internet connection and try again.');
+                } else if (error.message.includes('Cannot connect to server')) {
+                    alert('Backend server is not running. Please start the server and try again.');
+                } else {
+                    alert('Registration failed: ' + error.message);
+                }
+
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalText;
             }
-            
-            submitBtn.disabled = false;
-            submitBtn.innerHTML = originalText;
         }
-    }
 
-    document.addEventListener('DOMContentLoaded', function() {
-        console.log('Patient registration form loaded');
-        console.log('Frontend: http://localhost:3000');
-        console.log('Backend API:', API_BASE);
-        
-        // Setup the date input for manual entry
-        setupDateInput();
-        
-        testBackendConnection();
-        
-        updateProgressBar();
-        
-        document.querySelectorAll('.form-control').forEach(function(input) {
-            input.addEventListener('input', function() {
-                clearError(this);
+        document.addEventListener('DOMContentLoaded', function () {
+            console.log('Patient registration form loaded');
+            console.log('Frontend: http://localhost:3000');
+            console.log('Backend API:', API_BASE);
+
+            // Setup the date input for manual entry
+            setupDateInput();
+            setupExpiryDateInput();
+
+            testBackendConnection();
+
+            updateProgressBar();
+
+            document.querySelectorAll('.form-control').forEach(function (input) {
+                input.addEventListener('input', function () {
+                    clearError(this);
+                });
             });
-        });
-        
-        window.addEventListener('scroll', function() {
-            const header = document.querySelector('.portal-header');
-            if (window.scrollY > 50) {
-                header.style.boxShadow = '0 5px 20px rgba(0,0,0,0.1)';
-                header.style.background = 'rgba(255,255,255,0.95)';
-                header.style.backdropFilter = 'blur(10px)';
-            } else {
-                header.style.boxShadow = '0 2px 15px rgba(0,0,0,0.1)';
-                header.style.background = 'white';
-                header.style.backdropFilter = 'none';
+
+            window.addEventListener('scroll', function () {
+                const header = document.querySelector('.portal-header');
+                if (window.scrollY > 50) {
+                    header.style.boxShadow = '0 5px 20px rgba(0,0,0,0.1)';
+                    header.style.background = 'rgba(255,255,255,0.95)';
+                    header.style.backdropFilter = 'blur(10px)';
+                } else {
+                    header.style.boxShadow = '0 2px 15px rgba(0,0,0,0.1)';
+                    header.style.background = 'white';
+                    header.style.backdropFilter = 'none';
+                }
+            });
+
+            const paymentMethod = document.getElementById('payment-method');
+            if (paymentMethod) {
+                paymentMethod.addEventListener('change', togglePaymentDetails);
             }
         });
-
-        const paymentMethod = document.getElementById('payment-method');
-        if (paymentMethod) {
-            paymentMethod.addEventListener('change', togglePaymentDetails);
-        }
-    });
-</script>
+    </script>
 </body>
+
 </html>
